@@ -37,6 +37,7 @@ long Refresh_Rate = 100000;
   int Menu_pos = 3;
   float In_FeedRate = .001;                             // Initial Inch Feed Rate
   float mm_FeedRate = .01;                              // Initial mm Feed Rate
+  int submenu = 0;
 
 //-----Threading Variables----//
   long Inch_Thread_RPM = 0;
@@ -136,3 +137,8 @@ void mm_Minor_Diameter();
 void in_Minor_Diameter();
 void Auto_Thread();
 void Mode_2_SubMenu_Controls();
+void Turn_to_Diameter();
+void Mode_3_Auto_Turn_Controls();
+void Auto_Feed_Adjust();
+void Mode_3_SubMenu_Controls();
+void Mode_2_SubMenu();

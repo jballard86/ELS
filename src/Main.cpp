@@ -63,9 +63,10 @@ void loop() {
   } 
   if (Mode_Array_Pos == 2) {
     Auto_Thread();
-  } /*else if (Mode_Array_Pos == 4) {
+  }
+  if (Mode_Array_Pos == 3) {
     Turn_to_Diameter();
-  } else if (Mode_Array_Pos == 5) {
+  } /*else if (Mode_Array_Pos == 5) {
     Manual_Z();
   } else if (Mode_Array_Pos == 6) {
     Manual_X();
@@ -76,8 +77,6 @@ void loop() {
   }*/
 }
 
-void Turn_to_Diameter(){
-}
 void Manual_Z() {
 }
 void Manual_X() {

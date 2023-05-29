@@ -1,13 +1,11 @@
-//Find out how long "EncoderCount" takes to run
+
 //possible to track spindle position in order to start stop lead screw at the same angular value?
+//at menu selections as negative mode values aka direction
+ 
 
 
-
-//I2C encoder board: https://www.adafruit.com/product/4991
-              //using: https://www.digikey.com/en/products/detail/bourns-inc/PEC11R-4215K-S0024/4499662
 
 //Knurling?  https://www.youtube.com/watch?v=E2niXyOQSOA
-//convex/concave radius
 //ball turning
 
 

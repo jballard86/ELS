@@ -111,17 +111,67 @@ void Main_Menu() {
       if (Thread_Mode == 1) {Feed_Display.println(mm_Thread_Depth,3);}
   }
 
-  if (Mode_Array_Pos > 2) {
+if (Mode_Array_Pos == 3) {
+    Feed_Display.setTextSize(2);
+    Feed_Display.setCursor(19,20);
+      if (Measure_Array_Pos == 0) {
+        Feed_Display.fillRect(18,19,Measure_Array[0].length() * 12 + 1,16,SSD1327_WHITE);       //fill selection with a contrasting rectangle
+        Feed_Display.setTextColor(SSD1327_BLACK);
+        Feed_Display.print("In ");
+        Feed_Display.setTextColor(SSD1327_WHITE);
+      } else {
+        Feed_Display.setTextColor(SSD1327_WHITE);
+        Feed_Display.print("In ");
+      }
+      Feed_Display.print("/"); 
+      if (Measure_Array_Pos == 1) {
+        Feed_Display.fillRect(77,19,Measure_Array[1].length() * 12 + 2,16,SSD1327_WHITE);       //fill selection with a contrasting rectangle
+        Feed_Display.setTextColor(SSD1327_BLACK);
+        Feed_Display.print(" mm");
+        Feed_Display.setTextColor(SSD1327_WHITE);
+        
+      } else {
+        Feed_Display.setTextColor(SSD1327_WHITE);
+        Feed_Display.print(" mm");
+      }
+    Auto_Feed_Adjust();
+    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,80); Feed_Display.print("D.O.C.:  ");
+      Feed_Display.print("Soon"); 
+      if (Measure_Array_Pos == 0) {Feed_Display.println(" in");}
+      if (Measure_Array_Pos == 1) {Feed_Display.println(" mm");}
+    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,92); Feed_Display.print("Cut Length: ");
+      Feed_Display.print("Soon"); 
+      if (Measure_Array_Pos == 0) {Feed_Display.println(" in");}
+      if (Measure_Array_Pos == 1) {Feed_Display.println(" mm");}
+    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,104); Feed_Display.print("Current OD: ");
+      Feed_Display.print("Soon"); 
+      if (Measure_Array_Pos == 0) {Feed_Display.println(" in");}
+      if (Measure_Array_Pos == 1) {Feed_Display.println(" mm");}
+    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,116); Feed_Display.print("Final OD: ");
+      Feed_Display.print("Soon"); 
+      if (Measure_Array_Pos == 0) {Feed_Display.println(" in");}
+      if (Measure_Array_Pos == 1) {Feed_Display.println(" mm");}
+  }
+
+  if (Mode_Array_Pos > 3) {
     Feed_Display.setCursor(0 + Mode_Array_Pos * 6, 30 + Mode_Array_Pos * 5);
     Feed_Display.println("Coming");
     Feed_Display.setCursor(0 + Mode_Array_Pos * 10, 60 + Mode_Array_Pos * 5);
     Feed_Display.print("Soon");
   }
+  Mode_2_SubMenu();
 }
 
 void Feed_Adjust(){
   Feed_Display.setTextSize(4);
   Feed_Display.setCursor(0,55);
+  if (Measure_Array_Pos == 0) {Feed_Display.print(In_FeedRate, 3);}
+  else {Feed_Display.print(mm_FeedRate, 3);}
+}
+
+void Auto_Feed_Adjust() {
+  Feed_Display.setTextSize(4);
+  Feed_Display.setCursor(0,45);
   if (Measure_Array_Pos == 0) {Feed_Display.print(In_FeedRate, 3);}
   else {Feed_Display.print(mm_FeedRate, 3);}
 }
@@ -133,4 +183,16 @@ int center(int ctr_int) {
 
 void Feed_Clear(){
   Feed_Display.fillRect(0,55,128,30,SSD1327_BLACK);
+}
+
+void Mode_2_SubMenu() {
+  if (Mode_Array_Pos == 2 && submenu == 1) {
+    if (submenu == 1 && Mode_Array_Pos == 2) {
+      Feed_Display.clearDisplay();
+      Feed_Display.setTextColor(SSD1327_WHITE);
+      Feed_Display.setTextSize(4); 
+      Feed_Display.setCursor(0,0);
+      Feed_Display.println("Hello");
+    }
+  }
 }
