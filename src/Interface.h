@@ -3,6 +3,7 @@ void Interface() {
   Mode_Selection();               // mode selection routine using Enc1
     Mode_0_Feed_Controls();       // Feed menu controls
     Mode_1_Thread_Controls();     // Thread menu controls
+    Mode_2_Thread_Controls();     // Thread menu controls
 }
 
 void Mode_Selection() {
@@ -23,7 +24,6 @@ void Mode_Selection() {
       Enc1.setEncoderPosition(Mode_Array_Pos);
     }
 }
-
 
 void Mode_0_Feed_Controls() {
 //----Mode 0 (Feed) Controls----//
@@ -73,6 +73,50 @@ void Mode_0_Feed_Controls() {
 void Mode_1_Thread_Controls() {
 //----Mode 1 (Thread) Controls----//
   if (Mode_Array_Pos == 1) {
+    if (! Enc2.digitalRead(Enc_Button)) {
+      delay(200);
+      if (Thread_Mode == 0) {
+        Thread_Mode = 1;
+      } else {
+        Thread_Mode = 0;
+      }
+    }
+  //----TPI----//
+    if (Thread_Mode == 0) {
+      if (Enc2.getEncoderPosition() < 0) {
+        TPI_Array_Pos++;
+        if (Enc2.getEncoderPosition() < -1) { TPI_Array_Pos = TPI_Array_Pos + 4;}           // Fast Scroll
+        if (TPI_Array_Pos >= TPI_Array_Size) {TPI_Array_Pos = TPI_Array_Size - 1;}            // keeps array position inside the bounds of the array
+        Enc2.setEncoderPosition(0);
+      } 
+      if (Enc2.getEncoderPosition() > 0) {
+        TPI_Array_Pos--;
+        if (Enc2.getEncoderPosition() > 1) { TPI_Array_Pos = TPI_Array_Pos - 4;}             // Fast Scroll
+        if (TPI_Array_Pos < 0) {TPI_Array_Pos = 0;}                                          // keeps array position inside the bounds of the array
+        Enc2.setEncoderPosition(0);
+      } 
+  }
+  //----Pitch----//
+    if (Thread_Mode == 1) {
+      if (Enc2.getEncoderPosition() < 0) {
+        Pitch_Array_Pos++;
+        if (Enc2.getEncoderPosition() < -1) { Pitch_Array_Pos = Pitch_Array_Pos + 4;}           // Fast Scroll
+        if (Pitch_Array_Pos >= Pitch_Array_Size) {Pitch_Array_Pos = Pitch_Array_Size - 1;}        // keeps array position inside the bounds of the array
+        Enc2.setEncoderPosition(0);
+      } 
+      if (Enc2.getEncoderPosition() > 0) {
+        Pitch_Array_Pos--;
+        if (Enc2.getEncoderPosition() > 1) { Pitch_Array_Pos = Pitch_Array_Pos - 4;}             // Fast Scroll
+        if (Pitch_Array_Pos < 0) {Pitch_Array_Pos = 0;}                                          // keeps array position inside the bounds of the array
+        Enc2.setEncoderPosition(0);
+      }
+    }
+  }
+}
+
+void Mode_2_Thread_Controls() {
+//----Mode 2 (Auto Thread) Controls----//
+  if (Mode_Array_Pos == 2) {
     if (! Enc2.digitalRead(Enc_Button)) {
       delay(200);
       if (Thread_Mode == 0) {

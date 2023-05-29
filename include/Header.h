@@ -15,7 +15,6 @@
 //#include <Metro.h>
 //#include <seesaw_neopixel.h> 
 
-
 using namespace TeensyTimerTool;
 using namespace std;
 
@@ -42,13 +41,13 @@ long Refresh_Rate = 100000;
 //-----Threading Variables----//
   long Inch_Thread_RPM = 0;
   long mm_Thread_RPM = 0;
-  int TPI;
+  float TPI;
   float Pitch;
-  float Outside_Diameter;
+  float in_Outside_Diameter = 2;
+  float mm_Outside_Diameter = 12;
   float Minor_Diameter;
-  double mm_Thread_Height;
-  double in_Thread_Height;
-  double rpm;
+  double mm_Thread_Depth;
+  double in_Thread_Depth;
 
 //----setup Interface Encoders thir variables and pins----//
   Adafruit_seesaw Enc1;
@@ -60,8 +59,7 @@ long Refresh_Rate = 100000;
     int Enc2_Pos = 0;
     int Enc2_New_Pos = 0;
     int Enc2_dir = 0;               // -1=cw 1=ccw 0=no movement
-    
-    const int  Enc_Button = 24;   //pin number
+  const int  Enc_Button = 24;   //pin number
 
 //---- Pins ----//
   const int EncA = 7;               // encoder channel A pin              
@@ -111,9 +109,9 @@ ContinuousStepper LeadScrew;
     int TPI_Array_Pos = 17;
     const int TPI_Array[TPI_Array_Size] = {1,2,4,5,6,7,8,9,10,11,12,13,14,16,18,19,20,22,24,26,27,28,30,32,34,36,38,40,42,44,46,48,50,54,56,60,72,80};
   //----Pitch Options----//
-    const int Pitch_Array_Size = 21;
+    const int Pitch_Array_Size = 37;
     int Pitch_Array_Pos = 5;
-    const float Pitch_Array[Pitch_Array_Size] = {.2, .3, .4, .5, .6, .7, .75, .8, .9, 1, 1.1, 1.25, 1.3, 1.4, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3};
+    const float Pitch_Array[Pitch_Array_Size] = {.2, .3, .4, .5, .6, .7, .75, .8, .9, 1, 1.1, 1.25, 1.3, 1.4, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 3.5, 4, 4.5, 5, 6, 7, 8, 9, 10, 12, 14, 16, 18, 20, 22, 24};
 
 double Current_time = 0;
 double oldTime;
@@ -127,6 +125,7 @@ double oldTime;
  void Mode_Selection();
  void Mode_0_Feed_Controls();
  void Mode_1_Thread_Controls();
+ void Mode_2_Thread_Controls();
  void Start_Feed_Display();
  void Feed();
  void Thread();
@@ -134,3 +133,6 @@ double oldTime;
  int center(int ctr_int);
  void RPM_Calc();
  void Refresh();
+ void Auto_Thread();
+ void mm_Minor_Diameter();
+ void in_Minor_Diameter();

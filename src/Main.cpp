@@ -48,22 +48,25 @@ void loop() {
   LeadScrew.loop();
   //if (SpindleRPM == 0) {LeadScrew.stop();}
   //Serial.println(LeadSpeed.speed());
+  //Serial.println(Mode_Array_Pos);
 
   if (Mode_Array_Pos == 0){                       // Feed should be adjustable while spindle is running
     Feed();
-  } else if (Mode_Array_Pos == 1) {
+  } 
+  if (Mode_Array_Pos == 1) {
     Thread();
-  } /*else if (Mode == 3) {
+  } 
+  if (Mode_Array_Pos == 2) {
     Auto_Thread();
-  } else if (Mode == 4) {
+  } /*else if (Mode_Array_Pos == 4) {
     Turn_to_Diameter();
-  } else if (Mode == 5) {
+  } else if (Mode_Array_Pos == 5) {
     Manual_Z();
-  } else if (Mode == 6) {
+  } else if (Mode_Array_Pos == 6) {
     Manual_X();
-  } else if (Mode == 7) {
+  } else if (Mode_Array_Pos == 7) {
     Radius();
-  } else if (Mode == 8) {
+  } else if (Mode_Array_Pos == 8) {
     Chamfer();
   }*/
 }
