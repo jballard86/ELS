@@ -133,6 +133,6 @@ double oldTime;
  int center(int ctr_int);
  void RPM_Calc();
  void Refresh();
- void Auto_Thread();
  void mm_Minor_Diameter();
  void in_Minor_Diameter();
+void Auto_Thread();

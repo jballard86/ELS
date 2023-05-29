@@ -6,6 +6,8 @@ void Interface() {
     Mode_2_Thread_Controls();     // Thread menu controls
 }
 
+//long click to go into submenu for autothread inputs? or use Enc1 click?
+
 void Mode_Selection() {
   //----Select Mode with Encoder 1----//
   

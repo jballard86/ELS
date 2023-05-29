@@ -1,4 +1,5 @@
-
+// https://www.machiningdoctor.com/charts/metric-thread-charts/
+// https://www.machiningdoctor.com/charts/unified-inch-threads-charts/
 
 void Thread() {
   
@@ -26,23 +27,23 @@ void Auto_Thread() {
   //in_Thread_Depth will give the cutting depth for the thread (radius)
   //may need to look up thread wire/minor diameter calculations, or create an array for each thread pitch/tpi if the current method does not work
 
-  if (Thread_Mode == 0 && SpindleRPM != 0) {in_Minor_Diameter();}  // dont want to do unneccessary calcs while the spindle is turning
-  if (Thread_Mode == 1 && SpindleRPM != 0) {mm_Minor_Diameter();}  // dont want to do unneccessary calcs while the spindle is turning
+  if (Thread_Mode == 0 && SpindleRPM == 0) {in_Minor_Diameter();}  // dont want to do unneccessary calcs while the spindle is turning
+  if (Thread_Mode == 1 && SpindleRPM == 0) {mm_Minor_Diameter();}  // dont want to do unneccessary calcs while the spindle is turning
 }
 
 void mm_Minor_Diameter() {
   // only ran when called for in menu, not while lathe is running
   // May have to add a fit class calculation
   Pitch = Pitch_Array[Pitch_Array_Pos];
-  mm_Thread_Depth = Pitch * (sqrt(3)/2);                      //perfect thread depth
-  Minor_Diameter = mm_Outside_Diameter - .75 * mm_Thread_Depth;
-  mm_Thread_Depth = (mm_Outside_Diameter - Minor_Diameter) / 2;               //actual thread depth
+  float Height = .866025404 * Pitch;
+  mm_Thread_Depth = .625 * Height;
 }
 
 void in_Minor_Diameter() {
   // only ran when called for in menu, not while lathe is running
   // May have to add a fit class calculation
   TPI = TPI_Array[TPI_Array_Pos];
-  Minor_Diameter = in_Outside_Diameter - .625 * sqrt(3) * (1/TPI);
-  in_Thread_Depth = (in_Outside_Diameter - Minor_Diameter) / 2;
+  float in_Pitch = 1/TPI;
+  float Height = .866025404 * in_Pitch;
+  in_Thread_Depth = .625 * Height;
 } 
