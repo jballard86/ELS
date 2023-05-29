@@ -45,12 +45,17 @@ void setup() {
 }
 
 void loop() {
-  LeadScrew.loop();
-  //if (SpindleRPM == 0) {LeadScrew.stop();}
-  //Serial.println(LeadSpeed.speed());
-  //Serial.println(Mode_Array_Pos);
+  /* 
+    -Display "Refresh()" is called every "Refresh_rate" milliseconds
+      This allows interface, and menu to be ran
+      Some functions inside of them are called on in special cases to update the display
+    -Spindle Encoder is tracked using interrupts on the A/B pin changes
+    -RPM_Calc runs on an interrupt timer in order to stay accurate with the RPM calculation
+  */
 
-  if (Mode_Array_Pos == 0){                       // Feed should be adjustable while spindle is running
+  LeadScrew.loop();             // Call this as often as possible for stepper control
+
+  if (Mode_Array_Pos == 0){                  
     Feed();
   } 
   if (Mode_Array_Pos == 1) {

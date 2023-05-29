@@ -1,16 +1,17 @@
 
 void Refresh() {
   if (Enc1.getEncoderPosition() != Mode_Array_Pos && SpindleRPM !=0) {Enc1.setEncoderPosition(Mode_Array_Pos);}  //this keeps the mode from being adjusted while the spindle is running
-  Seven_Segment();
+  
+  Seven_Segment();                // Update Seven Segment Display with current RPM
 
   if (SpindleRPM == 0) {
     Interface();
     Main_Menu();
     }
-  if (Mode_Array_Pos == 0 && SpindleRPM != 0) {
-    Mode_0_Feed_Controls();     //  read if feed encoder has been turned
-    Feed_Clear();                //  clear feed value from OLED
-    Feed_Adjust();              //  Redraw Feed value
+  if (Mode_Array_Pos == 0 && SpindleRPM != 0) {   // Feed rates dont need to be as accurate as threading, so feedrates can be adjustable on the fly
+    Mode_0_Feed_Controls();       //  read if feed encoder has been turned
+    Feed_Clear();                 //  clear feed value from OLED
+    Feed_Adjust();                //  Redraw Feed value
   }
   Feed_Display.display();
 }
@@ -27,7 +28,7 @@ void Start_Feed_Display() {
 }
 
 void Seven_Segment() {
-  DisplayRPM = SpindleRPM;            // converts the double to a Int and gets rid of the decimal, rounding is irrelevant for this action
+  int DisplayRPM = SpindleRPM;        // converts the double to a Int and gets rid of the decimal, rounding is irrelevant for this action
   matrix.print(DisplayRPM);           // This will display the RPM on the seven segment display
   matrix.writeDisplay();              // This will send the RPM data to the 7 segment display
 }

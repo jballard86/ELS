@@ -62,7 +62,7 @@ void Main_Menu() {
       if (Pitch_Array[Pitch_Array_Pos] > 9) {DECp = 1;}   // this allows us to shorten the decimal point of the array when displayed so that we dont wrap the decimal to the next line
       else {DECp = 2;}
       Feed_Display.setCursor(10,55); Feed_Display.print(Pitch_Array[Pitch_Array_Pos], DECp); }
-      //Feed_Display.setTextSize(2); Feed_Display.setCursor(80,100); Feed_Display.println("(mm)");}
+      Feed_Display.setTextSize(2); Feed_Display.setCursor(80,100); Feed_Display.println("(mm)");
   }
 
   //----Auto Thread----//
@@ -96,7 +96,6 @@ void Main_Menu() {
       if (Pitch_Array[Pitch_Array_Pos] > 9) {DECp = 1;} // this allows us to shorten the decimal point of the array when displayed so that we dont wrap the decimal to the next line
       else {DECp = 2;}
       Feed_Display.setCursor(10,45); Feed_Display.print(Pitch_Array[Pitch_Array_Pos], DECp); }
-      //Feed_Display.setTextSize(2); Feed_Display.setCursor(80,100); Feed_Display.println("(mm)");}
     Feed_Display.setTextSize(1); Feed_Display.setCursor(0,80); Feed_Display.print("Cut Depth:  ");
       Feed_Display.print("Soon"); 
       if (Thread_Mode == 0) {Feed_Display.println(" in");}

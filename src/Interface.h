@@ -1,9 +1,10 @@
 void Interface() {
 
-  Mode_Selection();               // mode selection routine using Enc1
-    Mode_0_Feed_Controls();       // Feed menu controls
-    Mode_1_Thread_Controls();     // Thread menu controls
-    Mode_2_Thread_Controls();     // Thread menu controls
+  Mode_Selection();                 // mode selection routine using Enc1
+    Mode_0_Feed_Controls();         // Feed menu controls
+    Mode_1_Thread_Controls();       // Thread menu controls
+    Mode_2_Thread_Controls();       // Thread menu controls
+      Mode_2_SubMenu_Controls();    // Sub Menu for Mode 2
 }
 
 //long click to go into submenu for autothread inputs? or use Enc1 click?
@@ -158,4 +159,8 @@ void Mode_2_Thread_Controls() {
       }
     }
   }
+}
+
+void Mode_2_SubMenu_Controls() {
+  
 }
