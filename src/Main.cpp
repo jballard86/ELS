@@ -1,9 +1,6 @@
 #include "Header.h"
-//test
-
 
 //using: https://www.pjrc.com/teensy/td_timing_IntervalTimer.html
-
 
 void setup() {
   Mode = Mode_Array_Pos;
@@ -45,7 +42,6 @@ void setup() {
 //----Timer Setup----// 
   RPM_Check.begin(RPM_Calc, RPM_Check_INTERVAL_MS);       // Sets up an interrupt timer to run every "RPM_Check_INTERVAL_MS" (milli)
   Refresh_Rate_Timer.begin(Refresh, Refresh_Rate);        // Display Refresh Rate
-
 }
 
 void loop() {
@@ -90,5 +86,4 @@ void Chamfer() {
 #include "Interrupts.h"
 #include "Menu.h"
 #include "Thread.h"
-#include "functions.h"
 #include <string>
