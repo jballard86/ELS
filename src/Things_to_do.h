@@ -1,6 +1,8 @@
 
 //possible to track spindle position in order to start stop lead screw at the same angular value?
-//at menu selections as negative mode values aka direction
+//add menu selections as negative mode values aka direction
+// external and internal threading
+// internal and external boring
  
 
 

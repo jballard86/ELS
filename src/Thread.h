@@ -21,14 +21,21 @@ void Thread() {
 }
 
 void Auto_Thread() {
-  //use "Encoder_Angle" to save the spindle angle when starting the thread, and then use the saved value to start the thread
-  //may have to parse info to and from "Spindle_Angle()"
-  //mm_Thread_Depth will give the cutting depth for the thread (radius)
-  //in_Thread_Depth will give the cutting depth for the thread (radius)
-  //may need to look up thread wire/minor diameter calculations, or create an array for each thread pitch/tpi if the current method does not work
+  // use "Encoder_Angle" to save the spindle angle when starting the thread, and then use the saved value to start the thread
+  // may have to parse info to and from "Spindle_Angle()"
+  // add a thread root? calculate proper dims based off of thread?
 
+  /* Variables that are already declared: 
+      in_DOC / mm_DOC - depth of cutting pass - user input
+      in_Outside_Diameter / mm_Outside_Diameter - Outer Diameter of thread - user input
+      in_length_of_cut / mm_length_of_cut - Length of thread - user input
+      in_Thread_Depth / mm_Thread_Depth - total depth of thread - calculated
+  */
+  //----Calculate Thread Depth----//
   if (Thread_Mode == 0 && SpindleRPM == 0) {in_Minor_Diameter();}  // dont want to do unneccessary calcs while the spindle is turning
   if (Thread_Mode == 1 && SpindleRPM == 0) {mm_Minor_Diameter();}  // dont want to do unneccessary calcs while the spindle is turning
+
+
 }
 
 void mm_Minor_Diameter() {
