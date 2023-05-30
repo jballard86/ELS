@@ -1,0 +1,1138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>F:\OneDrive\Documents\KiCad\7.0\projects\ELS\ELS.kicad_sch</source>
+    <date>5/22/2023 4:04:46 PM</date>
+    <tool>Eeschema 7.0.2</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>ELS.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="C1">
+      <value>CL31B106KBHNNNE</value>
+      <footprint>ELS:CAPC3216X140N</footprint>
+      <fields>
+        <field name="CAP">10uf</field>
+      </fields>
+      <libsource lib="ELS-eagle-import" part="CL31B106KBHNNNE" description=""/>
+      <property name="CAP" value="10uf"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>77cdf6ae-8ec9-49f5-acec-ce57ca2d87ce</tstamps>
+    </comp>
+    <comp ref="C2">
+      <value>CL32B226MOJNNNECAP_CL32_SAM-M</value>
+      <footprint>ELS:CAP_CL32_SAM-M</footprint>
+      <fields>
+        <field name="CAP">22uf</field>
+      </fields>
+      <libsource lib="ELS-eagle-import" part="CL32B226MOJNNNECAP_CL32_SAM-M" description=""/>
+      <property name="CAP" value="22uf"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ae3c92fc-1a03-461b-bfd1-0c25e99c1f7f</tstamps>
+    </comp>
+    <comp ref="ENCODER0">
+      <value>1-2834015-4</value>
+      <footprint>ELS:TE_1-2834015-4</footprint>
+      <libsource lib="ELS-eagle-import" part="1-2834015-4" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>8862e9e7-4704-4edf-afca-15dce189533f</tstamps>
+    </comp>
+    <comp ref="J1">
+      <value>B4B-PH-K-S_LF__SN_</value>
+      <footprint>SamacSys_Parts:SHDR4W50P0X200_1X4_990X450X600P</footprint>
+      <datasheet>https://datasheet.lcsc.com/szlcsc/JST-Sales-America-B4B-PH-K-S-LF-SN_C131334.pdf</datasheet>
+      <fields>
+        <field name="Height">6</field>
+        <field name="Manufacturer_Name">JST (JAPAN SOLDERLESS TERMINALS)</field>
+        <field name="Manufacturer_Part_Number">B4B-PH-K-S(LF)(SN)</field>
+        <field name="name">I2C_1_Breakout</field>
+      </fields>
+      <libsource lib="SamacSys_Parts" part="B4B-PH-K-S_LF__SN_" description="Conn Shrouded Header (4 Sides) HDR 4 POS 2mm Solder ST Top Entry Thru-Hole Box"/>
+      <property name="Height" value="6"/>
+      <property name="Mouser Part Number" value=""/>
+      <property name="Mouser Price/Stock" value=""/>
+      <property name="Manufacturer_Name" value="JST (JAPAN SOLDERLESS TERMINALS)"/>
+      <property name="Manufacturer_Part_Number" value="B4B-PH-K-S(LF)(SN)"/>
+      <property name="name" value="I2C_1_Breakout"/>
+      <property name="Field10" value=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <property name="ki_description" value="Conn Shrouded Header (4 Sides) HDR 4 POS 2mm Solder ST Top Entry Thru-Hole Box"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>41413e1a-f890-45d6-b613-71bf3d29c4d0</tstamps>
+    </comp>
+    <comp ref="J2">
+      <value>B4B-PH-K-S_LF__SN_</value>
+      <footprint>SamacSys_Parts:SHDR4W50P0X200_1X4_990X450X600P</footprint>
+      <datasheet>https://datasheet.lcsc.com/szlcsc/JST-Sales-America-B4B-PH-K-S-LF-SN_C131334.pdf</datasheet>
+      <fields>
+        <field name="Connector">Encoder Knob Connector</field>
+        <field name="Height">6</field>
+        <field name="Manufacturer_Name">JST (JAPAN SOLDERLESS TERMINALS)</field>
+        <field name="Manufacturer_Part_Number">B4B-PH-K-S(LF)(SN)</field>
+      </fields>
+      <libsource lib="SamacSys_Parts" part="B4B-PH-K-S_LF__SN_" description="Conn Shrouded Header (4 Sides) HDR 4 POS 2mm Solder ST Top Entry Thru-Hole Box"/>
+      <property name="Height" value="6"/>
+      <property name="Mouser Part Number" value=""/>
+      <property name="Mouser Price/Stock" value=""/>
+      <property name="Manufacturer_Name" value="JST (JAPAN SOLDERLESS TERMINALS)"/>
+      <property name="Manufacturer_Part_Number" value="B4B-PH-K-S(LF)(SN)"/>
+      <property name="Connector" value="Encoder Knob Connector"/>
+      <property name="Field10" value=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <property name="ki_description" value="Conn Shrouded Header (4 Sides) HDR 4 POS 2mm Solder ST Top Entry Thru-Hole Box"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>8b9bd443-2f43-48ce-966f-fc0ac5085716</tstamps>
+    </comp>
+    <comp ref="J3">
+      <value>B4B-PH-K-S_LF__SN_</value>
+      <footprint>SamacSys_Parts:SHDR4W50P0X200_1X4_990X450X600P</footprint>
+      <datasheet>https://datasheet.lcsc.com/szlcsc/JST-Sales-America-B4B-PH-K-S-LF-SN_C131334.pdf</datasheet>
+      <fields>
+        <field name="Connector">7 Segment Connector</field>
+        <field name="Height">6</field>
+        <field name="Manufacturer_Name">JST (JAPAN SOLDERLESS TERMINALS)</field>
+        <field name="Manufacturer_Part_Number">B4B-PH-K-S(LF)(SN)</field>
+      </fields>
+      <libsource lib="SamacSys_Parts" part="B4B-PH-K-S_LF__SN_" description="Conn Shrouded Header (4 Sides) HDR 4 POS 2mm Solder ST Top Entry Thru-Hole Box"/>
+      <property name="Height" value="6"/>
+      <property name="Mouser Part Number" value=""/>
+      <property name="Mouser Price/Stock" value=""/>
+      <property name="Manufacturer_Name" value="JST (JAPAN SOLDERLESS TERMINALS)"/>
+      <property name="Manufacturer_Part_Number" value="B4B-PH-K-S(LF)(SN)"/>
+      <property name="Connector" value="7 Segment Connector"/>
+      <property name="Field10" value=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <property name="ki_description" value="Conn Shrouded Header (4 Sides) HDR 4 POS 2mm Solder ST Top Entry Thru-Hole Box"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ae91de2f-aae0-4c27-992f-d4bcb9a6c917</tstamps>
+    </comp>
+    <comp ref="J4">
+      <value>B4B-PH-K-S_LF__SN_</value>
+      <footprint>SamacSys_Parts:SHDR4W50P0X200_1X4_990X450X600P</footprint>
+      <datasheet>https://datasheet.lcsc.com/szlcsc/JST-Sales-America-B4B-PH-K-S-LF-SN_C131334.pdf</datasheet>
+      <fields>
+        <field name="Height">6</field>
+        <field name="Manufacturer_Name">JST (JAPAN SOLDERLESS TERMINALS)</field>
+        <field name="Manufacturer_Part_Number">B4B-PH-K-S(LF)(SN)</field>
+        <field name="name">Pin_Breakout</field>
+      </fields>
+      <libsource lib="SamacSys_Parts" part="B4B-PH-K-S_LF__SN_" description="Conn Shrouded Header (4 Sides) HDR 4 POS 2mm Solder ST Top Entry Thru-Hole Box"/>
+      <property name="Height" value="6"/>
+      <property name="Mouser Part Number" value=""/>
+      <property name="Mouser Price/Stock" value=""/>
+      <property name="Manufacturer_Name" value="JST (JAPAN SOLDERLESS TERMINALS)"/>
+      <property name="Manufacturer_Part_Number" value="B4B-PH-K-S(LF)(SN)"/>
+      <property name="name" value="Pin_Breakout"/>
+      <property name="Field10" value=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <property name="ki_description" value="Conn Shrouded Header (4 Sides) HDR 4 POS 2mm Solder ST Top Entry Thru-Hole Box"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>8419b0f0-df3b-4e5b-83ce-4b0f31d367f3</tstamps>
+    </comp>
+    <comp ref="J5">
+      <value>B4B-PH-K-S_LF__SN_</value>
+      <footprint>SamacSys_Parts:SHDR4W50P0X200_1X4_990X450X600P</footprint>
+      <datasheet>https://datasheet.lcsc.com/szlcsc/JST-Sales-America-B4B-PH-K-S-LF-SN_C131334.pdf</datasheet>
+      <fields>
+        <field name="Height">6</field>
+        <field name="Manufacturer_Name">JST (JAPAN SOLDERLESS TERMINALS)</field>
+        <field name="Manufacturer_Part_Number">B4B-PH-K-S(LF)(SN)</field>
+        <field name="name">Pin_Breakout_2</field>
+      </fields>
+      <libsource lib="SamacSys_Parts" part="B4B-PH-K-S_LF__SN_" description="Conn Shrouded Header (4 Sides) HDR 4 POS 2mm Solder ST Top Entry Thru-Hole Box"/>
+      <property name="Height" value="6"/>
+      <property name="Mouser Part Number" value=""/>
+      <property name="Mouser Price/Stock" value=""/>
+      <property name="Manufacturer_Name" value="JST (JAPAN SOLDERLESS TERMINALS)"/>
+      <property name="Manufacturer_Part_Number" value="B4B-PH-K-S(LF)(SN)"/>
+      <property name="name" value="Pin_Breakout_2"/>
+      <property name="Field10" value=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <property name="ki_description" value="Conn Shrouded Header (4 Sides) HDR 4 POS 2mm Solder ST Top Entry Thru-Hole Box"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>cba2d311-7394-4012-81a5-4f9a04c1a991</tstamps>
+    </comp>
+    <comp ref="POWER_INPUT0">
+      <value>1-2834015-4</value>
+      <footprint>ELS:TE_1-2834015-4</footprint>
+      <libsource lib="ELS-eagle-import" part="1-2834015-4" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>589eb22d-56d7-4e6d-ae75-084890008613</tstamps>
+    </comp>
+    <comp ref="PS1">
+      <value>P78E05-1000</value>
+      <footprint>ELS:CONV_P78E05-1000</footprint>
+      <fields>
+        <field name="VOLTAGE">5v</field>
+      </fields>
+      <libsource lib="ELS-eagle-import" part="P78E05-1000" description=""/>
+      <property name="VOLTAGE" value="5v"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>fdd464f3-6c0a-478a-8a0f-a2d0cbd37509</tstamps>
+    </comp>
+    <comp ref="Q1">
+      <value>MMBT2222ALT3G</value>
+      <footprint>SamacSys_Parts:SOT96P237X111-3N</footprint>
+      <datasheet>http://www.onsemi.com/pub/Collateral/MMBT2222LT1-D.PDF</datasheet>
+      <fields>
+        <field name="Height">1.11</field>
+        <field name="Manufacturer_Name">onsemi</field>
+        <field name="Manufacturer_Part_Number">MMBT2222ALT3G</field>
+        <field name="Mouser Part Number">863-MMBT2222ALT3G</field>
+        <field name="Mouser Price/Stock">https://www.mouser.co.uk/ProductDetail/onsemi/MMBT2222ALT3G?qs=R2UZ7gjkEjJUeR4kVVA5Qw%3D%3D</field>
+      </fields>
+      <libsource lib="SamacSys_Parts" part="MMBT2222ALT3G" description=""/>
+      <property name="Height" value="1.11"/>
+      <property name="Mouser Part Number" value="863-MMBT2222ALT3G"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.co.uk/ProductDetail/onsemi/MMBT2222ALT3G?qs=R2UZ7gjkEjJUeR4kVVA5Qw%3D%3D"/>
+      <property name="Manufacturer_Name" value="onsemi"/>
+      <property name="Manufacturer_Part_Number" value="MMBT2222ALT3G"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>dee21ea1-a9ff-4748-9477-5f42627b9a53</tstamps>
+    </comp>
+    <comp ref="Q2">
+      <value>MMBT2222ALT3G</value>
+      <footprint>SamacSys_Parts:SOT96P237X111-3N</footprint>
+      <datasheet>http://www.onsemi.com/pub/Collateral/MMBT2222LT1-D.PDF</datasheet>
+      <fields>
+        <field name="Height">1.11</field>
+        <field name="Manufacturer_Name">onsemi</field>
+        <field name="Manufacturer_Part_Number">MMBT2222ALT3G</field>
+        <field name="Mouser Part Number">863-MMBT2222ALT3G</field>
+        <field name="Mouser Price/Stock">https://www.mouser.co.uk/ProductDetail/onsemi/MMBT2222ALT3G?qs=R2UZ7gjkEjJUeR4kVVA5Qw%3D%3D</field>
+      </fields>
+      <libsource lib="SamacSys_Parts" part="MMBT2222ALT3G" description=""/>
+      <property name="Height" value="1.11"/>
+      <property name="Mouser Part Number" value="863-MMBT2222ALT3G"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.co.uk/ProductDetail/onsemi/MMBT2222ALT3G?qs=R2UZ7gjkEjJUeR4kVVA5Qw%3D%3D"/>
+      <property name="Manufacturer_Name" value="onsemi"/>
+      <property name="Manufacturer_Part_Number" value="MMBT2222ALT3G"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>238d3c3f-ef43-4f45-bf10-83bae6783a14</tstamps>
+    </comp>
+    <comp ref="Q3">
+      <value>MMBT2222ALT3G</value>
+      <footprint>SamacSys_Parts:SOT96P237X111-3N</footprint>
+      <datasheet>http://www.onsemi.com/pub/Collateral/MMBT2222LT1-D.PDF</datasheet>
+      <fields>
+        <field name="Height">1.11</field>
+        <field name="Manufacturer_Name">onsemi</field>
+        <field name="Manufacturer_Part_Number">MMBT2222ALT3G</field>
+        <field name="Mouser Part Number">863-MMBT2222ALT3G</field>
+        <field name="Mouser Price/Stock">https://www.mouser.co.uk/ProductDetail/onsemi/MMBT2222ALT3G?qs=R2UZ7gjkEjJUeR4kVVA5Qw%3D%3D</field>
+      </fields>
+      <libsource lib="SamacSys_Parts" part="MMBT2222ALT3G" description=""/>
+      <property name="Height" value="1.11"/>
+      <property name="Mouser Part Number" value="863-MMBT2222ALT3G"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.co.uk/ProductDetail/onsemi/MMBT2222ALT3G?qs=R2UZ7gjkEjJUeR4kVVA5Qw%3D%3D"/>
+      <property name="Manufacturer_Name" value="onsemi"/>
+      <property name="Manufacturer_Part_Number" value="MMBT2222ALT3G"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>062059a3-a5d4-4846-8186-51aab0e9f241</tstamps>
+    </comp>
+    <comp ref="Q4">
+      <value>MMBT2222ALT3G</value>
+      <footprint>SamacSys_Parts:SOT96P237X111-3N</footprint>
+      <datasheet>http://www.onsemi.com/pub/Collateral/MMBT2222LT1-D.PDF</datasheet>
+      <fields>
+        <field name="Height">1.11</field>
+        <field name="Manufacturer_Name">onsemi</field>
+        <field name="Manufacturer_Part_Number">MMBT2222ALT3G</field>
+        <field name="Mouser Part Number">863-MMBT2222ALT3G</field>
+        <field name="Mouser Price/Stock">https://www.mouser.co.uk/ProductDetail/onsemi/MMBT2222ALT3G?qs=R2UZ7gjkEjJUeR4kVVA5Qw%3D%3D</field>
+      </fields>
+      <libsource lib="SamacSys_Parts" part="MMBT2222ALT3G" description=""/>
+      <property name="Height" value="1.11"/>
+      <property name="Mouser Part Number" value="863-MMBT2222ALT3G"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.co.uk/ProductDetail/onsemi/MMBT2222ALT3G?qs=R2UZ7gjkEjJUeR4kVVA5Qw%3D%3D"/>
+      <property name="Manufacturer_Name" value="onsemi"/>
+      <property name="Manufacturer_Part_Number" value="MMBT2222ALT3G"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>8de31507-86ed-4c06-9659-e7e97da009b7</tstamps>
+    </comp>
+    <comp ref="Q5">
+      <value>MMBT2222ALT3G</value>
+      <footprint>SamacSys_Parts:SOT96P237X111-3N</footprint>
+      <datasheet>http://www.onsemi.com/pub/Collateral/MMBT2222LT1-D.PDF</datasheet>
+      <fields>
+        <field name="Height">1.11</field>
+        <field name="Manufacturer_Name">onsemi</field>
+        <field name="Manufacturer_Part_Number">MMBT2222ALT3G</field>
+        <field name="Mouser Part Number">863-MMBT2222ALT3G</field>
+        <field name="Mouser Price/Stock">https://www.mouser.co.uk/ProductDetail/onsemi/MMBT2222ALT3G?qs=R2UZ7gjkEjJUeR4kVVA5Qw%3D%3D</field>
+      </fields>
+      <libsource lib="SamacSys_Parts" part="MMBT2222ALT3G" description=""/>
+      <property name="Height" value="1.11"/>
+      <property name="Mouser Part Number" value="863-MMBT2222ALT3G"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.co.uk/ProductDetail/onsemi/MMBT2222ALT3G?qs=R2UZ7gjkEjJUeR4kVVA5Qw%3D%3D"/>
+      <property name="Manufacturer_Name" value="onsemi"/>
+      <property name="Manufacturer_Part_Number" value="MMBT2222ALT3G"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5b713933-d36f-49f7-8e72-43ffa8b7fd8d</tstamps>
+    </comp>
+    <comp ref="Q6">
+      <value>MMBT2222ALT3G</value>
+      <footprint>SamacSys_Parts:SOT96P237X111-3N</footprint>
+      <datasheet>http://www.onsemi.com/pub/Collateral/MMBT2222LT1-D.PDF</datasheet>
+      <fields>
+        <field name="Height">1.11</field>
+        <field name="Manufacturer_Name">onsemi</field>
+        <field name="Manufacturer_Part_Number">MMBT2222ALT3G</field>
+        <field name="Mouser Part Number">863-MMBT2222ALT3G</field>
+        <field name="Mouser Price/Stock">https://www.mouser.co.uk/ProductDetail/onsemi/MMBT2222ALT3G?qs=R2UZ7gjkEjJUeR4kVVA5Qw%3D%3D</field>
+      </fields>
+      <libsource lib="SamacSys_Parts" part="MMBT2222ALT3G" description=""/>
+      <property name="Height" value="1.11"/>
+      <property name="Mouser Part Number" value="863-MMBT2222ALT3G"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.co.uk/ProductDetail/onsemi/MMBT2222ALT3G?qs=R2UZ7gjkEjJUeR4kVVA5Qw%3D%3D"/>
+      <property name="Manufacturer_Name" value="onsemi"/>
+      <property name="Manufacturer_Part_Number" value="MMBT2222ALT3G"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>76a90544-6f1c-4bbc-a25e-cbba073df593</tstamps>
+    </comp>
+    <comp ref="R1">
+      <value>CRCW12061K00FKEAC</value>
+      <footprint>ELS:RESC3216X60N</footprint>
+      <fields>
+        <field name="RESISTANCE">1k Ohm</field>
+      </fields>
+      <libsource lib="ELS-eagle-import" part="CRCW12061K00FKEAC" description=""/>
+      <property name="RESISTANCE" value="1k Ohm"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>60f5c729-4bcc-435b-8878-f8c3ed63ae36</tstamps>
+    </comp>
+    <comp ref="R2">
+      <value>CR1206-FX-8250ELF</value>
+      <footprint>ELS:RESC3216X75N</footprint>
+      <fields>
+        <field name="DESCRIPTION">800 Ohm</field>
+      </fields>
+      <libsource lib="ELS-eagle-import" part="CR1206-FX-8250ELF" description=""/>
+      <property name="DESCRIPTION" value="800 Ohm"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>da332e20-11c2-4b46-b230-7b1ed7787c1e</tstamps>
+    </comp>
+    <comp ref="R5">
+      <value>CRCW1206220RFKEAC</value>
+      <footprint>ELS:RESC3216X60N</footprint>
+      <fields>
+        <field name="DESCRIPTION">220 Ohm</field>
+      </fields>
+      <libsource lib="ELS-eagle-import" part="CRCW1206220RFKEAC" description=""/>
+      <property name="DESCRIPTION" value="220 Ohm"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>caec8a65-9884-4108-9c1c-9582bb56d16a</tstamps>
+    </comp>
+    <comp ref="R6">
+      <value>CRCW12061K00FKEAC</value>
+      <footprint>ELS:RESC3216X60N</footprint>
+      <fields>
+        <field name="RESISTANCE">1k Ohm</field>
+      </fields>
+      <libsource lib="ELS-eagle-import" part="CRCW12061K00FKEAC" description=""/>
+      <property name="RESISTANCE" value="1k Ohm"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>3f78bf5c-8e84-4b5c-aefc-8d150359a574</tstamps>
+    </comp>
+    <comp ref="R7">
+      <value>CR1206-FX-8250ELF</value>
+      <footprint>ELS:RESC3216X75N</footprint>
+      <fields>
+        <field name="DESCRIPTION">800 Ohm</field>
+      </fields>
+      <libsource lib="ELS-eagle-import" part="CR1206-FX-8250ELF" description=""/>
+      <property name="DESCRIPTION" value="800 Ohm"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>faf765be-9113-47b9-96ed-746a4c704be7</tstamps>
+    </comp>
+    <comp ref="R8">
+      <value>CRCW1206220RFKEAC</value>
+      <footprint>ELS:RESC3216X60N</footprint>
+      <fields>
+        <field name="DESCRIPTION">220 Ohm</field>
+      </fields>
+      <libsource lib="ELS-eagle-import" part="CRCW1206220RFKEAC" description=""/>
+      <property name="DESCRIPTION" value="220 Ohm"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ce94585c-03f5-446c-912a-cf6db74aee97</tstamps>
+    </comp>
+    <comp ref="R9">
+      <value>CRCW12061K00FKEAC</value>
+      <footprint>ELS:RESC3216X60N</footprint>
+      <fields>
+        <field name="RESISTANCE">1k Ohm</field>
+      </fields>
+      <libsource lib="ELS-eagle-import" part="CRCW12061K00FKEAC" description=""/>
+      <property name="RESISTANCE" value="1k Ohm"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>559373df-15ac-49ce-8753-740ed763ec8b</tstamps>
+    </comp>
+    <comp ref="R10">
+      <value>CR1206-FX-8250ELF</value>
+      <footprint>ELS:RESC3216X75N</footprint>
+      <fields>
+        <field name="DESCRIPTION">800 Ohm</field>
+      </fields>
+      <libsource lib="ELS-eagle-import" part="CR1206-FX-8250ELF" description=""/>
+      <property name="DESCRIPTION" value="800 Ohm"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c02cad0e-e4d0-4b38-9c4a-3843080c2dda</tstamps>
+    </comp>
+    <comp ref="R11">
+      <value>CRCW1206220RFKEAC</value>
+      <footprint>ELS:RESC3216X60N</footprint>
+      <fields>
+        <field name="DESCRIPTION">220 Ohm</field>
+      </fields>
+      <libsource lib="ELS-eagle-import" part="CRCW1206220RFKEAC" description=""/>
+      <property name="DESCRIPTION" value="220 Ohm"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>6827206a-e436-4361-8165-d67dc94dccff</tstamps>
+    </comp>
+    <comp ref="R12">
+      <value>CRCW12061K00FKEAC</value>
+      <footprint>ELS:RESC3216X60N</footprint>
+      <fields>
+        <field name="RESISTANCE">1k Ohm</field>
+      </fields>
+      <libsource lib="ELS-eagle-import" part="CRCW12061K00FKEAC" description=""/>
+      <property name="RESISTANCE" value="1k Ohm"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>172f820f-41d5-454e-aed4-df4d56a7b15a</tstamps>
+    </comp>
+    <comp ref="R13">
+      <value>CR1206-FX-8250ELF</value>
+      <footprint>ELS:RESC3216X75N</footprint>
+      <fields>
+        <field name="DESCRIPTION">800 Ohm</field>
+      </fields>
+      <libsource lib="ELS-eagle-import" part="CR1206-FX-8250ELF" description=""/>
+      <property name="DESCRIPTION" value="800 Ohm"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0ec710e5-cb21-4443-9e63-93b158583529</tstamps>
+    </comp>
+    <comp ref="R14">
+      <value>CRCW1206220RFKEAC</value>
+      <footprint>ELS:RESC3216X60N</footprint>
+      <fields>
+        <field name="DESCRIPTION">220 Ohm</field>
+      </fields>
+      <libsource lib="ELS-eagle-import" part="CRCW1206220RFKEAC" description=""/>
+      <property name="DESCRIPTION" value="220 Ohm"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>cd5df1a0-a114-43db-9381-8374fefd8020</tstamps>
+    </comp>
+    <comp ref="R15">
+      <value>CRCW12061K00FKEAC</value>
+      <footprint>ELS:RESC3216X60N</footprint>
+      <fields>
+        <field name="RESISTANCE">1k Ohm</field>
+      </fields>
+      <libsource lib="ELS-eagle-import" part="CRCW12061K00FKEAC" description=""/>
+      <property name="RESISTANCE" value="1k Ohm"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d379383d-dba8-4d89-908c-c32c1d6b5fe3</tstamps>
+    </comp>
+    <comp ref="R16">
+      <value>CR1206-FX-8250ELF</value>
+      <footprint>ELS:RESC3216X75N</footprint>
+      <fields>
+        <field name="DESCRIPTION">800 Ohm</field>
+      </fields>
+      <libsource lib="ELS-eagle-import" part="CR1206-FX-8250ELF" description=""/>
+      <property name="DESCRIPTION" value="800 Ohm"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>24d4ed82-537d-41c9-a760-da38694a2b17</tstamps>
+    </comp>
+    <comp ref="R17">
+      <value>CRCW1206220RFKEAC</value>
+      <footprint>ELS:RESC3216X60N</footprint>
+      <fields>
+        <field name="DESCRIPTION">220 Ohm</field>
+      </fields>
+      <libsource lib="ELS-eagle-import" part="CRCW1206220RFKEAC" description=""/>
+      <property name="DESCRIPTION" value="220 Ohm"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>638f5208-4787-4a8f-a1b4-fd96598a7e9c</tstamps>
+    </comp>
+    <comp ref="R18">
+      <value>CRCW12061K00FKEAC</value>
+      <footprint>ELS:RESC3216X60N</footprint>
+      <fields>
+        <field name="RESISTANCE">1k Ohm</field>
+      </fields>
+      <libsource lib="ELS-eagle-import" part="CRCW12061K00FKEAC" description=""/>
+      <property name="RESISTANCE" value="1k Ohm"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d3d29779-047a-4a2a-8c66-197c46849502</tstamps>
+    </comp>
+    <comp ref="R19">
+      <value>CR1206-FX-8250ELF</value>
+      <footprint>ELS:RESC3216X75N</footprint>
+      <fields>
+        <field name="DESCRIPTION">800 Ohm</field>
+      </fields>
+      <libsource lib="ELS-eagle-import" part="CR1206-FX-8250ELF" description=""/>
+      <property name="DESCRIPTION" value="800 Ohm"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9dcf3e8c-222c-4a86-b7c1-eba1a6d066d7</tstamps>
+    </comp>
+    <comp ref="R20">
+      <value>CRCW1206220RFKEAC</value>
+      <footprint>ELS:RESC3216X60N</footprint>
+      <fields>
+        <field name="DESCRIPTION">220 Ohm</field>
+      </fields>
+      <libsource lib="ELS-eagle-import" part="CRCW1206220RFKEAC" description=""/>
+      <property name="DESCRIPTION" value="220 Ohm"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>bdc03797-c7d4-4462-855d-ecf56d664b90</tstamps>
+    </comp>
+    <comp ref="R23">
+      <value>CRCW12064K70FKEBC</value>
+      <footprint>SamacSys_Parts:RESC3216X60N</footprint>
+      <datasheet>http://componentsearchengine.com/Datasheets/1/CRCW12064K70FKEBC.pdf</datasheet>
+      <fields>
+        <field name="Field9">4.7k</field>
+        <field name="Height">0.6</field>
+        <field name="Manufacturer_Name">Vishay</field>
+        <field name="Manufacturer_Part_Number">CRCW12064K70FKEBC</field>
+        <field name="Mouser Part Number">71-CRCW12064K70FKEBC</field>
+        <field name="Mouser Price/Stock">https://www.mouser.co.uk/ProductDetail/Vishay-Dale/CRCW12064K70FKEBC?qs=wd5RIQLrsJjx1CljEw5ujw%3D%3D</field>
+      </fields>
+      <libsource lib="SamacSys_Parts" part="CRCW12064K70FKEBC" description="Thick Film Resistors - SMD 1/4Watt 4.7Kohms 1% Commercial Use"/>
+      <property name="Height" value="0.6"/>
+      <property name="Mouser Part Number" value="71-CRCW12064K70FKEBC"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.co.uk/ProductDetail/Vishay-Dale/CRCW12064K70FKEBC?qs=wd5RIQLrsJjx1CljEw5ujw%3D%3D"/>
+      <property name="Manufacturer_Name" value="Vishay"/>
+      <property name="Manufacturer_Part_Number" value="CRCW12064K70FKEBC"/>
+      <property name="Field9" value="4.7k"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <property name="ki_description" value="Thick Film Resistors - SMD 1/4Watt 4.7Kohms 1% Commercial Use"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>49df08e3-99e9-4f51-ba2c-52b3ec9ad82f</tstamps>
+    </comp>
+    <comp ref="R24">
+      <value>CRCW12064K70FKEBC</value>
+      <footprint>SamacSys_Parts:RESC3216X60N</footprint>
+      <datasheet>http://componentsearchengine.com/Datasheets/1/CRCW12064K70FKEBC.pdf</datasheet>
+      <fields>
+        <field name="Field9">4.7k</field>
+        <field name="Height">0.6</field>
+        <field name="Manufacturer_Name">Vishay</field>
+        <field name="Manufacturer_Part_Number">CRCW12064K70FKEBC</field>
+        <field name="Mouser Part Number">71-CRCW12064K70FKEBC</field>
+        <field name="Mouser Price/Stock">https://www.mouser.co.uk/ProductDetail/Vishay-Dale/CRCW12064K70FKEBC?qs=wd5RIQLrsJjx1CljEw5ujw%3D%3D</field>
+      </fields>
+      <libsource lib="SamacSys_Parts" part="CRCW12064K70FKEBC" description="Thick Film Resistors - SMD 1/4Watt 4.7Kohms 1% Commercial Use"/>
+      <property name="Height" value="0.6"/>
+      <property name="Mouser Part Number" value="71-CRCW12064K70FKEBC"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.co.uk/ProductDetail/Vishay-Dale/CRCW12064K70FKEBC?qs=wd5RIQLrsJjx1CljEw5ujw%3D%3D"/>
+      <property name="Manufacturer_Name" value="Vishay"/>
+      <property name="Manufacturer_Part_Number" value="CRCW12064K70FKEBC"/>
+      <property name="Field9" value="4.7k"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <property name="ki_description" value="Thick Film Resistors - SMD 1/4Watt 4.7Kohms 1% Commercial Use"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2b8f144a-9cbb-4371-bb69-d7bed908fe3d</tstamps>
+    </comp>
+    <comp ref="R25">
+      <value>CRCW12064K70FKEBC</value>
+      <footprint>SamacSys_Parts:RESC3216X60N</footprint>
+      <datasheet>http://componentsearchengine.com/Datasheets/1/CRCW12064K70FKEBC.pdf</datasheet>
+      <fields>
+        <field name="Field9">4.7k</field>
+        <field name="Height">0.6</field>
+        <field name="Manufacturer_Name">Vishay</field>
+        <field name="Manufacturer_Part_Number">CRCW12064K70FKEBC</field>
+        <field name="Mouser Part Number">71-CRCW12064K70FKEBC</field>
+        <field name="Mouser Price/Stock">https://www.mouser.co.uk/ProductDetail/Vishay-Dale/CRCW12064K70FKEBC?qs=wd5RIQLrsJjx1CljEw5ujw%3D%3D</field>
+      </fields>
+      <libsource lib="SamacSys_Parts" part="CRCW12064K70FKEBC" description="Thick Film Resistors - SMD 1/4Watt 4.7Kohms 1% Commercial Use"/>
+      <property name="Height" value="0.6"/>
+      <property name="Mouser Part Number" value="71-CRCW12064K70FKEBC"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.co.uk/ProductDetail/Vishay-Dale/CRCW12064K70FKEBC?qs=wd5RIQLrsJjx1CljEw5ujw%3D%3D"/>
+      <property name="Manufacturer_Name" value="Vishay"/>
+      <property name="Manufacturer_Part_Number" value="CRCW12064K70FKEBC"/>
+      <property name="Field9" value="4.7k"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <property name="ki_description" value="Thick Film Resistors - SMD 1/4Watt 4.7Kohms 1% Commercial Use"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>8f030041-0053-48c8-8849-3e6e71d2a031</tstamps>
+    </comp>
+    <comp ref="R26">
+      <value>CRCW12064K70FKEBC</value>
+      <footprint>SamacSys_Parts:RESC3216X60N</footprint>
+      <datasheet>http://componentsearchengine.com/Datasheets/1/CRCW12064K70FKEBC.pdf</datasheet>
+      <fields>
+        <field name="Field9">4.7k</field>
+        <field name="Height">0.6</field>
+        <field name="Manufacturer_Name">Vishay</field>
+        <field name="Manufacturer_Part_Number">CRCW12064K70FKEBC</field>
+        <field name="Mouser Part Number">71-CRCW12064K70FKEBC</field>
+        <field name="Mouser Price/Stock">https://www.mouser.co.uk/ProductDetail/Vishay-Dale/CRCW12064K70FKEBC?qs=wd5RIQLrsJjx1CljEw5ujw%3D%3D</field>
+      </fields>
+      <libsource lib="SamacSys_Parts" part="CRCW12064K70FKEBC" description="Thick Film Resistors - SMD 1/4Watt 4.7Kohms 1% Commercial Use"/>
+      <property name="Height" value="0.6"/>
+      <property name="Mouser Part Number" value="71-CRCW12064K70FKEBC"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.co.uk/ProductDetail/Vishay-Dale/CRCW12064K70FKEBC?qs=wd5RIQLrsJjx1CljEw5ujw%3D%3D"/>
+      <property name="Manufacturer_Name" value="Vishay"/>
+      <property name="Manufacturer_Part_Number" value="CRCW12064K70FKEBC"/>
+      <property name="Field9" value="4.7k"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <property name="ki_description" value="Thick Film Resistors - SMD 1/4Watt 4.7Kohms 1% Commercial Use"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>fb61b190-2a1e-461c-8a8c-7e6ca79ba325</tstamps>
+    </comp>
+    <comp ref="STEPPER1">
+      <value>1-2834015-4</value>
+      <footprint>ELS:TE_1-2834015-4</footprint>
+      <libsource lib="ELS-eagle-import" part="1-2834015-4" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ce37c41a-872f-43a7-aeea-338607e0e7f1</tstamps>
+    </comp>
+    <comp ref="STEPPER2">
+      <value>1-2834015-4</value>
+      <footprint>ELS:TE_1-2834015-4</footprint>
+      <libsource lib="ELS-eagle-import" part="1-2834015-4" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7d3dcd47-c618-4bb0-b2cc-b519d1f051be</tstamps>
+    </comp>
+    <comp ref="TEENSY_4.0">
+      <value>TEENSY_4.0</value>
+      <footprint>ELS:TEENSY_4.0</footprint>
+      <libsource lib="ELS-eagle-import" part="TEENSY_4.0" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="ELS.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>4945b4e2-6cc9-4cbe-813e-4a297996515c</tstamps>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="ELS-eagle-import" part="1-2834015-4">
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Footprint">ELS:TE_1-2834015-4</field>
+      </fields>
+      <pins>
+        <pin num="1_1" name="1" type="passive"/>
+        <pin num="1_2" name="1" type="passive"/>
+        <pin num="2_1" name="2" type="passive"/>
+        <pin num="2_2" name="2" type="passive"/>
+        <pin num="3_1" name="3" type="passive"/>
+        <pin num="3_2" name="3" type="passive"/>
+        <pin num="4_1" name="4" type="passive"/>
+        <pin num="4_2" name="4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ELS-eagle-import" part="CL31B106KBHNNNE">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Footprint">ELS:CAPC3216X140N</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ELS-eagle-import" part="CL32B226MOJNNNECAP_CL32_SAM-M">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Footprint">ELS:CAP_CL32_SAM-M</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ELS-eagle-import" part="CR1206-FX-8250ELF">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Footprint">ELS:RESC3216X75N</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="bidirectional"/>
+        <pin num="2" name="2" type="bidirectional"/>
+      </pins>
+    </libpart>
+    <libpart lib="ELS-eagle-import" part="CRCW12061K00FKEAC">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Footprint">ELS:RESC3216X60N</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="bidirectional"/>
+        <pin num="2" name="2" type="bidirectional"/>
+      </pins>
+    </libpart>
+    <libpart lib="ELS-eagle-import" part="CRCW1206220RFKEAC">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Footprint">ELS:RESC3216X60N</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="bidirectional"/>
+        <pin num="2" name="2" type="bidirectional"/>
+      </pins>
+    </libpart>
+    <libpart lib="ELS-eagle-import" part="P78E05-1000">
+      <fields>
+        <field name="Reference">PS</field>
+        <field name="Footprint">ELS:CONV_P78E05-1000</field>
+      </fields>
+      <pins>
+        <pin num="1" name="+VIN" type="input"/>
+        <pin num="2" name="GND/-VOUT" type="power_in"/>
+        <pin num="3" name="+VOUT/GND" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="ELS-eagle-import" part="TEENSY_4.0">
+      <fields>
+        <field name="Footprint">ELS:TEENSY_4.0</field>
+      </fields>
+      <pins>
+        <pin num="0/RX" name="0/RX1" type="bidirectional"/>
+        <pin num="1/TX" name="1/TX1" type="bidirectional"/>
+        <pin num="2" name="2" type="bidirectional"/>
+        <pin num="3/CANTX" name="3" type="bidirectional"/>
+        <pin num="3V3_LN" name="3V3_LN" type="bidirectional"/>
+        <pin num="3V3_LO" name="3V3_LO" type="bidirectional"/>
+        <pin num="4/CANRX" name="4" type="bidirectional"/>
+        <pin num="5" name="5" type="bidirectional"/>
+        <pin num="6" name="6" type="bidirectional"/>
+        <pin num="7" name="7/RX2" type="bidirectional"/>
+        <pin num="8" name="8/TX2" type="bidirectional"/>
+        <pin num="9/CS" name="9" type="bidirectional"/>
+        <pin num="10/CS" name="10/CS" type="bidirectional"/>
+        <pin num="11/MOSI" name="11/MOSI" type="bidirectional"/>
+        <pin num="12/MISO" name="12/MISO" type="bidirectional"/>
+        <pin num="13/SCK" name="13/SCK" type="bidirectional"/>
+        <pin num="14/A0" name="14/A0/TX3" type="bidirectional"/>
+        <pin num="15/A1" name="15/A1/RX3" type="bidirectional"/>
+        <pin num="16/A2" name="16/A2/RX4" type="bidirectional"/>
+        <pin num="17/A3" name="17/A3/TX4" type="bidirectional"/>
+        <pin num="18/A4/SDA" name="18/A4/SDA" type="bidirectional"/>
+        <pin num="19/A5/SCL" name="19/A5/SCL" type="bidirectional"/>
+        <pin num="20/A6" name="20/A6/TX5" type="bidirectional"/>
+        <pin num="21/A7" name="21/A7/RX5" type="bidirectional"/>
+        <pin num="22/A8" name="22/A8" type="bidirectional"/>
+        <pin num="23/A9" name="23/A9" type="bidirectional"/>
+        <pin num="GND" name="GND" type="bidirectional"/>
+        <pin num="GND2" name="GND2" type="bidirectional"/>
+        <pin num="GND3" name="GND3" type="bidirectional"/>
+        <pin num="ON/OFF" name="ON/OFF" type="bidirectional"/>
+        <pin num="PROG" name="PROG" type="bidirectional"/>
+        <pin num="VBAT\" name="VBAT" type="bidirectional"/>
+        <pin num="VIN" name="VIN" type="bidirectional"/>
+      </pins>
+    </libpart>
+    <libpart lib="SamacSys_Parts" part="B4B-PH-K-S_LF__SN_">
+      <description>Conn Shrouded Header (4 Sides) HDR 4 POS 2mm Solder ST Top Entry Thru-Hole Box</description>
+      <docs>https://datasheet.lcsc.com/szlcsc/JST-Sales-America-B4B-PH-K-S-LF-SN_C131334.pdf</docs>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">B4B-PH-K-S_LF__SN_</field>
+        <field name="Footprint">SHDR4W50P0X200_1X4_990X450X600P</field>
+        <field name="Datasheet">https://datasheet.lcsc.com/szlcsc/JST-Sales-America-B4B-PH-K-S-LF-SN_C131334.pdf</field>
+        <field name="Height">6</field>
+        <field name="Manufacturer_Name">JST (JAPAN SOLDERLESS TERMINALS)</field>
+        <field name="Manufacturer_Part_Number">B4B-PH-K-S(LF)(SN)</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+        <pin num="4" name="4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="SamacSys_Parts" part="CRCW12064K70FKEBC">
+      <description>Thick Film Resistors - SMD 1/4Watt 4.7Kohms 1% Commercial Use</description>
+      <docs>http://componentsearchengine.com/Datasheets/1/CRCW12064K70FKEBC.pdf</docs>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">CRCW12064K70FKEBC</field>
+        <field name="Footprint">RESC3216X60N</field>
+        <field name="Datasheet">http://componentsearchengine.com/Datasheets/1/CRCW12064K70FKEBC.pdf</field>
+        <field name="Height">0.6</field>
+        <field name="Mouser Part Number">71-CRCW12064K70FKEBC</field>
+        <field name="Mouser Price/Stock">https://www.mouser.co.uk/ProductDetail/Vishay-Dale/CRCW12064K70FKEBC?qs=wd5RIQLrsJjx1CljEw5ujw%3D%3D</field>
+        <field name="Manufacturer_Name">Vishay</field>
+        <field name="Manufacturer_Part_Number">CRCW12064K70FKEBC</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="SamacSys_Parts" part="MMBT2222ALT3G">
+      <docs>http://www.onsemi.com/pub/Collateral/MMBT2222LT1-D.PDF</docs>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">MMBT2222ALT3G</field>
+        <field name="Footprint">SOT96P237X111-3N</field>
+        <field name="Datasheet">http://www.onsemi.com/pub/Collateral/MMBT2222LT1-D.PDF</field>
+        <field name="Height">1.11</field>
+        <field name="Mouser Part Number">863-MMBT2222ALT3G</field>
+        <field name="Mouser Price/Stock">https://www.mouser.co.uk/ProductDetail/onsemi/MMBT2222ALT3G?qs=R2UZ7gjkEjJUeR4kVVA5Qw%3D%3D</field>
+        <field name="Manufacturer_Name">onsemi</field>
+        <field name="Manufacturer_Part_Number">MMBT2222ALT3G</field>
+      </fields>
+      <pins>
+        <pin num="1" name="B" type="passive"/>
+        <pin num="2" name="E" type="passive"/>
+        <pin num="3" name="C" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="ELS-eagle-import">
+      <uri>F:\OneDrive\Documents\KiCad\7.0\projects\ELS/ELS-eagle-import.kicad_sym</uri>
+    </library>
+    <library logical="SamacSys_Parts">
+      <uri>F:/OneDrive/Documents/KiCad/7.0/SamacSys_Parts.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="/5V">
+      <node ref="C2" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="PS1" pin="3" pinfunction="+VOUT/GND" pintype="power_in"/>
+      <node ref="R11" pin="2" pinfunction="2" pintype="bidirectional"/>
+      <node ref="R14" pin="2" pinfunction="2" pintype="bidirectional"/>
+      <node ref="R17" pin="2" pinfunction="2" pintype="bidirectional"/>
+      <node ref="R20" pin="2" pinfunction="2" pintype="bidirectional"/>
+      <node ref="R5" pin="2" pinfunction="2" pintype="bidirectional"/>
+      <node ref="R8" pin="2" pinfunction="2" pintype="bidirectional"/>
+      <node ref="TEENSY_4.0" pin="VIN" pinfunction="VIN" pintype="bidirectional"/>
+    </net>
+    <net code="2" name="/12V">
+      <node ref="C1" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="POWER_INPUT0" pin="1_1" pinfunction="1" pintype="passive"/>
+      <node ref="POWER_INPUT0" pin="1_2" pinfunction="1" pintype="passive"/>
+      <node ref="PS1" pin="1" pinfunction="+VIN" pintype="input"/>
+    </net>
+    <net code="3" name="/EN_3V3">
+      <node ref="R18" pin="1" pinfunction="1" pintype="bidirectional"/>
+      <node ref="R9" pin="1" pinfunction="1" pintype="bidirectional"/>
+      <node ref="TEENSY_4.0" pin="2" pinfunction="2" pintype="bidirectional"/>
+    </net>
+    <net code="4" name="/S1_DIR_3V3">
+      <node ref="R6" pin="1" pinfunction="1" pintype="bidirectional"/>
+      <node ref="TEENSY_4.0" pin="3/CANTX" pinfunction="3" pintype="bidirectional"/>
+    </net>
+    <net code="5" name="/S1_STEP_3V3">
+      <node ref="R1" pin="1" pinfunction="1" pintype="bidirectional"/>
+      <node ref="TEENSY_4.0" pin="4/CANRX" pinfunction="4" pintype="bidirectional"/>
+    </net>
+    <net code="6" name="/S2_DIR_3V3">
+      <node ref="R15" pin="1" pinfunction="1" pintype="bidirectional"/>
+      <node ref="TEENSY_4.0" pin="5" pinfunction="5" pintype="bidirectional"/>
+    </net>
+    <net code="7" name="/S2_STEP_3V3">
+      <node ref="R12" pin="1" pinfunction="1" pintype="bidirectional"/>
+      <node ref="TEENSY_4.0" pin="6" pinfunction="6" pintype="bidirectional"/>
+    </net>
+    <net code="8" name="3V3">
+      <node ref="ENCODER0" pin="2_1" pinfunction="2" pintype="passive"/>
+      <node ref="ENCODER0" pin="2_2" pinfunction="2" pintype="passive"/>
+      <node ref="J1" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="J2" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="J3" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="R23" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="R24" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="R25" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="R26" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="TEENSY_4.0" pin="3V3_LO" pinfunction="3V3_LO" pintype="bidirectional"/>
+    </net>
+    <net code="9" name="DIR_1">
+      <node ref="R7" pin="2" pinfunction="2" pintype="bidirectional"/>
+      <node ref="STEPPER1" pin="2_1" pinfunction="2" pintype="passive"/>
+      <node ref="STEPPER1" pin="2_2" pinfunction="2" pintype="passive"/>
+    </net>
+    <net code="10" name="DIR_2">
+      <node ref="R16" pin="2" pinfunction="2" pintype="bidirectional"/>
+      <node ref="STEPPER2" pin="2_1" pinfunction="2" pintype="passive"/>
+      <node ref="STEPPER2" pin="2_2" pinfunction="2" pintype="passive"/>
+    </net>
+    <net code="11" name="ENC_A">
+      <node ref="ENCODER0" pin="3_1" pinfunction="3" pintype="passive"/>
+      <node ref="ENCODER0" pin="3_2" pinfunction="3" pintype="passive"/>
+      <node ref="TEENSY_4.0" pin="15/A1" pinfunction="15/A1/RX3" pintype="bidirectional"/>
+    </net>
+    <net code="12" name="ENC_B">
+      <node ref="ENCODER0" pin="4_1" pinfunction="4" pintype="passive"/>
+      <node ref="ENCODER0" pin="4_2" pinfunction="4" pintype="passive"/>
+      <node ref="TEENSY_4.0" pin="14/A0" pinfunction="14/A0/TX3" pintype="bidirectional"/>
+    </net>
+    <net code="13" name="ENC_Knob_A">
+      <node ref="TEENSY_4.0" pin="0/RX" pinfunction="0/RX1" pintype="bidirectional"/>
+    </net>
+    <net code="14" name="ENC_Knob_B">
+      <node ref="TEENSY_4.0" pin="1/TX" pinfunction="1/TX1" pintype="bidirectional"/>
+    </net>
+    <net code="15" name="EN_1">
+      <node ref="R10" pin="2" pinfunction="2" pintype="bidirectional"/>
+      <node ref="STEPPER1" pin="1_1" pinfunction="1" pintype="passive"/>
+      <node ref="STEPPER1" pin="1_2" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="16" name="EN_2">
+      <node ref="R19" pin="2" pinfunction="2" pintype="bidirectional"/>
+      <node ref="STEPPER2" pin="1_1" pinfunction="1" pintype="passive"/>
+      <node ref="STEPPER2" pin="1_2" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="17" name="GND">
+      <node ref="C1" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="C2" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="ENCODER0" pin="1_1" pinfunction="1" pintype="passive"/>
+      <node ref="ENCODER0" pin="1_2" pinfunction="1" pintype="passive"/>
+      <node ref="J1" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="J2" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="J3" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="POWER_INPUT0" pin="2_1" pinfunction="2" pintype="passive"/>
+      <node ref="POWER_INPUT0" pin="2_2" pinfunction="2" pintype="passive"/>
+      <node ref="PS1" pin="2" pinfunction="GND/-VOUT" pintype="power_in"/>
+      <node ref="Q1" pin="2" pinfunction="E" pintype="passive"/>
+      <node ref="Q2" pin="2" pinfunction="E" pintype="passive"/>
+      <node ref="Q3" pin="2" pinfunction="E" pintype="passive"/>
+      <node ref="Q4" pin="2" pinfunction="E" pintype="passive"/>
+      <node ref="Q5" pin="2" pinfunction="E" pintype="passive"/>
+      <node ref="Q6" pin="2" pinfunction="E" pintype="passive"/>
+      <node ref="STEPPER1" pin="4_1" pinfunction="4" pintype="passive"/>
+      <node ref="STEPPER1" pin="4_2" pinfunction="4" pintype="passive"/>
+      <node ref="STEPPER2" pin="4_1" pinfunction="4" pintype="passive"/>
+      <node ref="STEPPER2" pin="4_2" pinfunction="4" pintype="passive"/>
+      <node ref="TEENSY_4.0" pin="GND" pinfunction="GND" pintype="bidirectional"/>
+      <node ref="TEENSY_4.0" pin="GND2" pinfunction="GND2" pintype="bidirectional"/>
+      <node ref="TEENSY_4.0" pin="GND3" pinfunction="GND3" pintype="bidirectional"/>
+    </net>
+    <net code="18" name="Net-(Q1-B)">
+      <node ref="Q1" pin="1" pinfunction="B" pintype="passive"/>
+      <node ref="R18" pin="2" pinfunction="2" pintype="bidirectional"/>
+    </net>
+    <net code="19" name="Net-(Q1-C)">
+      <node ref="Q1" pin="3" pinfunction="C" pintype="passive"/>
+      <node ref="R19" pin="1" pinfunction="1" pintype="bidirectional"/>
+      <node ref="R20" pin="1" pinfunction="1" pintype="bidirectional"/>
+    </net>
+    <net code="20" name="Net-(Q2-B)">
+      <node ref="Q2" pin="1" pinfunction="B" pintype="passive"/>
+      <node ref="R9" pin="2" pinfunction="2" pintype="bidirectional"/>
+    </net>
+    <net code="21" name="Net-(Q2-C)">
+      <node ref="Q2" pin="3" pinfunction="C" pintype="passive"/>
+      <node ref="R10" pin="1" pinfunction="1" pintype="bidirectional"/>
+      <node ref="R11" pin="1" pinfunction="1" pintype="bidirectional"/>
+    </net>
+    <net code="22" name="Net-(Q3-B)">
+      <node ref="Q3" pin="1" pinfunction="B" pintype="passive"/>
+      <node ref="R15" pin="2" pinfunction="2" pintype="bidirectional"/>
+    </net>
+    <net code="23" name="Net-(Q3-C)">
+      <node ref="Q3" pin="3" pinfunction="C" pintype="passive"/>
+      <node ref="R16" pin="1" pinfunction="1" pintype="bidirectional"/>
+      <node ref="R17" pin="1" pinfunction="1" pintype="bidirectional"/>
+    </net>
+    <net code="24" name="Net-(Q4-B)">
+      <node ref="Q4" pin="1" pinfunction="B" pintype="passive"/>
+      <node ref="R6" pin="2" pinfunction="2" pintype="bidirectional"/>
+    </net>
+    <net code="25" name="Net-(Q4-C)">
+      <node ref="Q4" pin="3" pinfunction="C" pintype="passive"/>
+      <node ref="R7" pin="1" pinfunction="1" pintype="bidirectional"/>
+      <node ref="R8" pin="1" pinfunction="1" pintype="bidirectional"/>
+    </net>
+    <net code="26" name="Net-(Q5-B)">
+      <node ref="Q5" pin="1" pinfunction="B" pintype="passive"/>
+      <node ref="R12" pin="2" pinfunction="2" pintype="bidirectional"/>
+    </net>
+    <net code="27" name="Net-(Q5-C)">
+      <node ref="Q5" pin="3" pinfunction="C" pintype="passive"/>
+      <node ref="R13" pin="1" pinfunction="1" pintype="bidirectional"/>
+      <node ref="R14" pin="1" pinfunction="1" pintype="bidirectional"/>
+    </net>
+    <net code="28" name="Net-(Q6-B)">
+      <node ref="Q6" pin="1" pinfunction="B" pintype="passive"/>
+      <node ref="R1" pin="2" pinfunction="2" pintype="bidirectional"/>
+    </net>
+    <net code="29" name="Net-(Q6-C)">
+      <node ref="Q6" pin="3" pinfunction="C" pintype="passive"/>
+      <node ref="R2" pin="1" pinfunction="1" pintype="bidirectional"/>
+      <node ref="R5" pin="1" pinfunction="1" pintype="bidirectional"/>
+    </net>
+    <net code="30" name="P7">
+      <node ref="POWER_INPUT0" pin="3_1" pinfunction="3" pintype="passive"/>
+      <node ref="POWER_INPUT0" pin="3_2" pinfunction="3" pintype="passive"/>
+      <node ref="TEENSY_4.0" pin="7" pinfunction="7/RX2" pintype="bidirectional"/>
+    </net>
+    <net code="31" name="P8">
+      <node ref="POWER_INPUT0" pin="4_1" pinfunction="4" pintype="passive"/>
+      <node ref="POWER_INPUT0" pin="4_2" pinfunction="4" pintype="passive"/>
+      <node ref="TEENSY_4.0" pin="8" pinfunction="8/TX2" pintype="bidirectional"/>
+    </net>
+    <net code="32" name="P9">
+      <node ref="J5" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="TEENSY_4.0" pin="9/CS" pinfunction="9" pintype="bidirectional"/>
+    </net>
+    <net code="33" name="P10">
+      <node ref="J5" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="TEENSY_4.0" pin="10/CS" pinfunction="10/CS" pintype="bidirectional"/>
+    </net>
+    <net code="34" name="P11">
+      <node ref="J5" pin="3" pinfunction="3" pintype="passive"/>
+      <node ref="TEENSY_4.0" pin="11/MOSI" pinfunction="11/MOSI" pintype="bidirectional"/>
+    </net>
+    <net code="35" name="P12">
+      <node ref="J5" pin="4" pinfunction="4" pintype="passive"/>
+      <node ref="TEENSY_4.0" pin="12/MISO" pinfunction="12/MISO" pintype="bidirectional"/>
+    </net>
+    <net code="36" name="P20">
+      <node ref="J4" pin="4" pinfunction="4" pintype="passive"/>
+      <node ref="TEENSY_4.0" pin="20/A6" pinfunction="20/A6/TX5" pintype="bidirectional"/>
+    </net>
+    <net code="37" name="P21">
+      <node ref="J4" pin="3" pinfunction="3" pintype="passive"/>
+      <node ref="TEENSY_4.0" pin="21/A7" pinfunction="21/A7/RX5" pintype="bidirectional"/>
+    </net>
+    <net code="38" name="P22">
+      <node ref="J4" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="TEENSY_4.0" pin="22/A8" pinfunction="22/A8" pintype="bidirectional"/>
+    </net>
+    <net code="39" name="P23">
+      <node ref="J4" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="TEENSY_4.0" pin="23/A9" pinfunction="23/A9" pintype="bidirectional"/>
+    </net>
+    <net code="40" name="SCL">
+      <node ref="J2" pin="4" pinfunction="4" pintype="passive"/>
+      <node ref="J3" pin="4" pinfunction="4" pintype="passive"/>
+      <node ref="R26" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="TEENSY_4.0" pin="19/A5/SCL" pinfunction="19/A5/SCL" pintype="bidirectional"/>
+    </net>
+    <net code="41" name="SCL1">
+      <node ref="J1" pin="4" pinfunction="4" pintype="passive"/>
+      <node ref="R23" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="TEENSY_4.0" pin="16/A2" pinfunction="16/A2/RX4" pintype="bidirectional"/>
+    </net>
+    <net code="42" name="SDA">
+      <node ref="J2" pin="3" pinfunction="3" pintype="passive"/>
+      <node ref="J3" pin="3" pinfunction="3" pintype="passive"/>
+      <node ref="R25" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="TEENSY_4.0" pin="18/A4/SDA" pinfunction="18/A4/SDA" pintype="bidirectional"/>
+    </net>
+    <net code="43" name="SDA1">
+      <node ref="J1" pin="3" pinfunction="3" pintype="passive"/>
+      <node ref="R24" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="TEENSY_4.0" pin="17/A3" pinfunction="17/A3/TX4" pintype="bidirectional"/>
+    </net>
+    <net code="44" name="STEP_1">
+      <node ref="R2" pin="2" pinfunction="2" pintype="bidirectional"/>
+      <node ref="STEPPER1" pin="3_1" pinfunction="3" pintype="passive"/>
+      <node ref="STEPPER1" pin="3_2" pinfunction="3" pintype="passive"/>
+    </net>
+    <net code="45" name="STEP_2">
+      <node ref="R13" pin="2" pinfunction="2" pintype="bidirectional"/>
+      <node ref="STEPPER2" pin="3_1" pinfunction="3" pintype="passive"/>
+      <node ref="STEPPER2" pin="3_2" pinfunction="3" pintype="passive"/>
+    </net>
+    <net code="46" name="unconnected-(TEENSY_4.0-Pad3V3_LN)">
+      <node ref="TEENSY_4.0" pin="3V3_LN" pinfunction="3V3_LN" pintype="bidirectional"/>
+    </net>
+    <net code="47" name="unconnected-(TEENSY_4.0-Pad13{slash}SCK)">
+      <node ref="TEENSY_4.0" pin="13/SCK" pinfunction="13/SCK" pintype="bidirectional"/>
+    </net>
+    <net code="48" name="unconnected-(TEENSY_4.0-PadON{slash}OFF)">
+      <node ref="TEENSY_4.0" pin="ON/OFF" pinfunction="ON/OFF" pintype="bidirectional"/>
+    </net>
+    <net code="49" name="unconnected-(TEENSY_4.0-PadPROG)">
+      <node ref="TEENSY_4.0" pin="PROG" pinfunction="PROG" pintype="bidirectional"/>
+    </net>
+    <net code="50" name="unconnected-(TEENSY_4.0-VBAT-PadVBAT\)">
+      <node ref="TEENSY_4.0" pin="VBAT\" pinfunction="VBAT" pintype="bidirectional"/>
+    </net>
+  </nets>
+</export>
