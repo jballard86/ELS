@@ -42,6 +42,10 @@ void setup() {
 //----Timer Setup----// 
   RPM_Check.begin(RPM_Calc, RPM_Check_INTERVAL_MS);       // Sets up an interrupt timer to run every "RPM_Check_INTERVAL_MS" (milli)
   Refresh_Rate_Timer.begin(Refresh, Refresh_Rate);        // Display Refresh Rate
+  S_Timer.interval((124/60)*1000);
+  S_Timer.reset();
+  
+  
 }
 
 void loop() {
@@ -52,6 +56,11 @@ void loop() {
     -Spindle Encoder is tracked using interrupts on the A/B pin changes
     -RPM_Calc runs on an interrupt timer in order to stay accurate with the RPM calculation
   */
+
+Spindle_Angle();
+if (S_Timer.check() == 1) {Serial.print(TotalRotations,4); Serial.print("  "); Serial.print(TotalRot_noDEC, DEC);
+Serial.print("  "); Serial.println(Encoder_Angle, 4);
+}
 
   LeadScrew.loop();             // Call this as often as possible for stepper control
 

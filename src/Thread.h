@@ -31,10 +31,13 @@ void Auto_Thread() {
       in_length_of_cut / mm_length_of_cut - Length of thread - user input
       in_Thread_Depth / mm_Thread_Depth - total depth of thread - calculated
   */
+
+  Spindle_Angle();                      // will need to be continuously polled inorder to start at the same angle with each restart
   //----Calculate Thread Depth----//
   if (Thread_Mode == 0 && SpindleRPM == 0) {in_Minor_Diameter();}  // dont want to do unneccessary calcs while the spindle is turning
   if (Thread_Mode == 1 && SpindleRPM == 0) {mm_Minor_Diameter();}  // dont want to do unneccessary calcs while the spindle is turning
 
+  //start feed if Current Encoder angle == original encoder angle
 
 }
 

@@ -12,7 +12,7 @@
 #include "TeensyTimerTool.h"
 #include "Adafruit_seesaw.h"
 //#include "TeensyTimerInterrupt.h"
-//#include <Metro.h>
+#include <Metro.h>
 //#include <seesaw_neopixel.h> 
 
 using namespace TeensyTimerTool;
@@ -25,7 +25,7 @@ long Refresh_Rate = 100000;
 
 //----Machine Specific----//
   const int LeadScrew_TPI = 10; 
-  const unsigned int SpindleCPR = 3416; //4096;               // Spindle Counts per rev  include any gear ratios
+  volatile long SpindleCPR = 3416.00; //4096;               // Spindle Counts per rev  include any gear ratios
   const int LeadSPR = 800;                          // Lead Screw Steps per rev  include any gear ratios
   const int MaxLeadRPM = 1500;
 
@@ -79,15 +79,16 @@ long Refresh_Rate = 100000;
   //const byte SCL1_Pin = 16;        // I2C SCL1 Pin
 
 //----All Other Variables----//
-  volatile long spindleCount  = 0;
-  volatile long newSpindle = 0;
-  long oldSpindle = 0;
   int LeadRPM = 0;
   volatile double SpindleRPM = 0;
   volatile double Encoder_Angle = 0;                    // Encoder angle for spindle, used for auto threading not an actual angle in degrees, this is the encoder angle
-  volatile long long Spindle_Rotations = 0;                  // total rotations of the spindle
   double LeadSpeed;                                     // Leadscrew Max Steps/sec
   float ctr;                                          // value for center of oled screen
+  volatile double oldSpindle;
+  volatile double Spindle_Rotations;
+  volatile double newSpindle;
+  volatile double TotalRotations;
+  volatile int TotalRot_noDEC;
 
 Adafruit_7segment matrix = Adafruit_7segment();
 Adafruit_SSD1327 Feed_Display(128, 128, &Wire, OLED_RESET, 1000000);
@@ -95,6 +96,7 @@ IntervalTimer RPM_Check;                              // Interval timer tp check
 PeriodicTimer Refresh_Rate_Timer(TCK);                  // Software Timer to call the 7seg display routine
 QuadEncoder spindle(1, EncA, EncB);
 ContinuousStepper LeadScrew;
+Metro S_Timer = Metro(1000);
 
 //----Menu Strings----//
   //----Direction Options----//
@@ -147,3 +149,4 @@ void Mode_3_Auto_Turn_Controls();
 void Auto_Feed_Adjust();
 void Mode_3_SubMenu_Controls();
 void Mode_2_SubMenu();
+void Spindle_Angle();

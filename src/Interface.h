@@ -312,13 +312,11 @@ void Mode_2_SubMenu_Controls() {
       if (Enc2.getEncoderPosition() < 0) {
         in_DOC = in_DOC + .001;
         if (Enc2.getEncoderPosition() < -1) { in_DOC = in_DOC + .01;}           // Fast Scroll
-        if (Enc2.getEncoderPosition() < -3) { in_DOC = in_DOC + .25;}           // Faster Scroll
         Enc2.setEncoderPosition(0);
       } 
       if (Enc2.getEncoderPosition() > 0) {
         in_DOC = in_DOC -.001;
         if (Enc2.getEncoderPosition() > 1) { in_DOC = in_DOC - .01;}            // Fast Scroll
-        if (Enc2.getEncoderPosition() > 3) { in_DOC = in_DOC - .25;}            // Faster Scroll
         if (in_DOC < .001) {in_DOC = .001;}                                     // limits the lower bound of length of cut
         Enc2.setEncoderPosition(0);
       } 
@@ -328,13 +326,11 @@ void Mode_2_SubMenu_Controls() {
       if (Enc2.getEncoderPosition() < 0) {
         mm_DOC = mm_DOC + .01;
         if (Enc2.getEncoderPosition() < -1) { mm_DOC = mm_DOC + .1;}           // Fast Scroll
-        if (Enc2.getEncoderPosition() < -3) { mm_DOC = mm_DOC + 1;}            // Faster Scroll
         Enc2.setEncoderPosition(0);
       } 
       if (Enc2.getEncoderPosition() > 0) {
         mm_DOC = mm_DOC -.01;
         if (Enc2.getEncoderPosition() > 1) { mm_DOC = mm_DOC - .1;}            // Fast Scroll
-        if (Enc2.getEncoderPosition() > 3) { mm_DOC = mm_DOC - 1;}             // Faster Scroll
         if (mm_DOC < .01) {mm_DOC = .01;}                                    // limits the lower bound of length of cut
         Enc2.setEncoderPosition(0);
       } 
