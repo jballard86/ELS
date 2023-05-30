@@ -191,8 +191,8 @@ void Feed_Clear(){
 
 void Mode_2_SubMenu() {
   // need DOC, Thread Diameter, Thread Length
-  if (Mode_Array_Pos == 2 && submenu == 1) {
-    if (submenu == 1 && Mode_Array_Pos == 2) {
+  if (Mode_Array_Pos == 2 && submenu >= 1) {
+    if (submenu >= 1 && Mode_Array_Pos == 2) {
       Feed_Display.clearDisplay();
       Feed_Display.setTextColor(SSD1327_WHITE);
       Feed_Display.setTextSize(2); 
@@ -207,8 +207,8 @@ void Mode_2_SubMenu() {
     Feed_Display.setCursor(0,65);
     Feed_Display.println("Cut Length");
     Feed_Display.setCursor(0,100);
-      if (Thread_Mode == 0) {Feed_Display.print(" "); Feed_Display.print(length_of_cut,3); Feed_Display.println(" in");}
-      if (Thread_Mode == 1) {Feed_Display.print(" "); Feed_Display.print(length_of_cut,3); Feed_Display.println(" mm");} 
+      if (Thread_Mode == 0) {Feed_Display.print(" "); Feed_Display.print(in_length_of_cut,3); Feed_Display.println(" in");}
+      if (Thread_Mode == 1) {Feed_Display.print(" "); Feed_Display.print(mm_length_of_cut,3); Feed_Display.println(" mm");} 
   }
   if (submenu == 2) {                                   // submenu page two --- Thread Diameter
     Feed_Display.setCursor(0,45);
@@ -217,13 +217,13 @@ void Mode_2_SubMenu() {
     Feed_Display.println("Thread OD");
     Feed_Display.setCursor(0,100);
     if (Thread_Mode == 0) {Feed_Display.print(" "); Feed_Display.print(in_Outside_Diameter,3); Feed_Display.println(" in");}
-    if (Thread_Mode == 1) {Feed_Display.print(" "); Feed_Display.print(in_Outside_Diameter,2); Feed_Display.println(" mm");}
+    if (Thread_Mode == 1) {Feed_Display.print(" "); Feed_Display.print(mm_Outside_Diameter,2); Feed_Display.println(" mm");}
   }
   if (submenu == 3) {                                   // submenu page three --- Depth of cut
     Feed_Display.setCursor(0,45);
     Feed_Display.println("  Input");
     Feed_Display.setCursor(0,65);
-    Feed_Display.println("D.O.C.");
+    Feed_Display.println("  D.O.C.");
     Feed_Display.setCursor(0,100);
       if (Thread_Mode == 0) {Feed_Display.print(" "); Feed_Display.print(in_DOC,3); Feed_Display.println(" in");}
       if (Thread_Mode == 1) {Feed_Display.print(" "); Feed_Display.print(mm_DOC,2); Feed_Display.println(" mm");} 

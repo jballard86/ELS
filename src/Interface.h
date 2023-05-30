@@ -3,7 +3,7 @@ void Interface() {
   Mode_Selection();                 // mode selection routine using Enc1
     Mode_0_Feed_Controls();         // Feed menu controls
     Mode_1_Thread_Controls();       // Thread menu controls
-    Mode_2_Thread_Controls();       // Thread menu controls
+    Mode_2_Auto_Thread_Controls();       // Thread menu controls
       Mode_2_SubMenu_Controls();    // Sub Menu for Mode 2
     Mode_3_Auto_Turn_Controls();
       Mode_3_SubMenu_Controls();
@@ -121,9 +121,9 @@ void Mode_1_Thread_Controls() {
   }
 }
 
-void Mode_2_Thread_Controls() {
+void Mode_2_Auto_Thread_Controls() {
 //----Mode 2 (Auto Thread) Controls----//
-  if (Mode_Array_Pos == 2) {
+  if (Mode_Array_Pos == 2 && submenu == 0) {
     if (! Enc2.digitalRead(Enc_Button)) {
       delay(200);
       if (Thread_Mode == 0) {
@@ -217,14 +217,65 @@ void Mode_2_SubMenu_Controls() {
   // use Enc2 encoder to modify values
   //   attempt a coarse medium and fine adjustment
 
-  if (! Enc1.digitalRead(Enc_Button) && Mode_Array_Pos == 2 && submenu == 0) {
+  if (! Enc1.digitalRead(Enc_Button) && Mode_Array_Pos == 2 && submenu == 0) {    // submenu button control
     delay(200); 
     submenu = 1;
+    Enc1.setEncoderPosition(submenu);
   }
-  if (! Enc1.digitalRead(Enc_Button) && Mode_Array_Pos == 2 && submenu == 1) {
+  /*if (! Enc1.digitalRead(Enc_Button) && Mode_Array_Pos == 2 && submenu == 1) {
     delay(200); 
     submenu = 0;
     Enc1.setEncoderPosition(Mode_Array_Pos);
+  }*/
+
+  if (submenu >= 1) {                                                             // submenu display control
+      if (Enc1.getEncoderPosition() > submenu && submenu > 1) {
+        submenu --;
+        Enc1.setEncoderPosition(submenu);
+      } else if (Enc1.getEncoderPosition() < submenu ) {
+        submenu ++;
+        Enc1.setEncoderPosition(submenu);
+      }
+      if (submenu > 3) {
+        submenu = 0;
+        Enc1.setEncoderPosition(Mode_Array_Pos);
+        Main_Menu(); Feed_Display.display(); delay(400);                          // reduces the chance of changing mode when leaving submenu
+      }
+    }
+  
+  if (submenu == 1) {                                                           // submenu 1 thread length value adjustment
+    //----Inch----//
+    if (Thread_Mode == 0) {
+      if (Enc2.getEncoderPosition() < 0) {
+        in_length_of_cut = in_length_of_cut + .001;
+        if (Enc2.getEncoderPosition() < -1) { in_length_of_cut = in_length_of_cut + .01;}           // Fast Scroll
+        if (Enc2.getEncoderPosition() < -3) { in_length_of_cut = in_length_of_cut + .25;}           // Faster Scroll
+        Enc2.setEncoderPosition(0);
+      } 
+      if (Enc2.getEncoderPosition() > 0) {
+        in_length_of_cut = in_length_of_cut -.001;
+        if (Enc2.getEncoderPosition() > 1) { in_length_of_cut = in_length_of_cut - .01;}            // Fast Scroll
+        if (Enc2.getEncoderPosition() > 3) { in_length_of_cut = in_length_of_cut - .25;}            // Faster Scroll
+        if (in_length_of_cut < .001) {in_length_of_cut = .001;}                                     // limits the lower bound of length of cut
+        Enc2.setEncoderPosition(0);
+      } 
+    }
+    //----mm----//
+    if (Thread_Mode == 1) {
+      if (Enc2.getEncoderPosition() < 0) {
+        mm_length_of_cut = mm_length_of_cut + .01;
+        if (Enc2.getEncoderPosition() < -1) { mm_length_of_cut = mm_length_of_cut + .1;}           // Fast Scroll
+        if (Enc2.getEncoderPosition() < -3) { mm_length_of_cut = mm_length_of_cut + 1;}            // Faster Scroll
+        Enc2.setEncoderPosition(0);
+      } 
+      if (Enc2.getEncoderPosition() > 0) {
+        mm_length_of_cut = mm_length_of_cut -.01;
+        if (Enc2.getEncoderPosition() > 1) { mm_length_of_cut = mm_length_of_cut - .1;}            // Fast Scroll
+        if (Enc2.getEncoderPosition() > 3) { mm_length_of_cut = mm_length_of_cut - 1;}             // Faster Scroll
+        if (mm_length_of_cut < .001) {mm_length_of_cut = .001;}                                    // limits the lower bound of length of cut
+        Enc2.setEncoderPosition(0);
+      } 
+    }
   }
 }
 void Mode_3_SubMenu_Controls() {

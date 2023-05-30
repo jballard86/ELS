@@ -51,7 +51,8 @@ long Refresh_Rate = 100000;
   double in_Thread_Depth;
   float in_DOC;
   float mm_DOC;
-  float length_of_cut = 1;
+  float in_length_of_cut = 1;
+  float mm_length_of_cut = 1;
 
 //----setup Interface Encoders thir variables and pins----//
   Adafruit_seesaw Enc1;
@@ -128,7 +129,7 @@ void Feed_Adjust();
 void Mode_Selection();
 void Mode_0_Feed_Controls();
 void Mode_1_Thread_Controls();
-void Mode_2_Thread_Controls();
+void Mode_2_Auto_Thread_Controls();
 void Start_Feed_Display();
 void Feed();
 void Thread();
