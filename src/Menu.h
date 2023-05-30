@@ -97,17 +97,16 @@ void Main_Menu() {
       if (Pitch_Array[Pitch_Array_Pos] > 9) {DECp = 1;} // this allows us to shorten the decimal point of the array when displayed so that we dont wrap the decimal to the next line
       else {DECp = 2;}
       Feed_Display.setCursor(10,45); Feed_Display.print(Pitch_Array[Pitch_Array_Pos], DECp); }
-    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,80); Feed_Display.print("Cut Depth:  ");
-      Feed_Display.print("Soon"); 
-      if (Thread_Mode == 0) {Feed_Display.println(" in");}
-      if (Thread_Mode == 1) {Feed_Display.println(" mm");}
-    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,92); Feed_Display.print("Thread Dia: ");
-      Feed_Display.print("Soon"); 
-      if (Thread_Mode == 0) {Feed_Display.println(" in");}
-      if (Thread_Mode == 1) {Feed_Display.println(" mm");}
-    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,104); Feed_Display.print("Thread Length: ");
-      Feed_Display.println("Soon");
-    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,116); Feed_Display.print("Thread Depth: ");
+    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,80); Feed_Display.print("Cut Depth:    ");
+      if (Thread_Mode == 0) {Feed_Display.print(" "); Feed_Display.print(in_DOC,3);}
+      if (Thread_Mode == 1) {Feed_Display.print(" "); Feed_Display.print(mm_DOC,2);} 
+    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,92); Feed_Display.print("Thread Dia:   ");
+      if (Thread_Mode == 0) {Feed_Display.print(" "); Feed_Display.print(in_Outside_Diameter,3);}
+      if (Thread_Mode == 1) {Feed_Display.print(" "); Feed_Display.print(mm_Outside_Diameter,2);}
+    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,104); Feed_Display.print("Thread Length:");
+      if (Thread_Mode == 0) {Feed_Display.print(" "); Feed_Display.print(in_length_of_cut,3);}
+      if (Thread_Mode == 1) {Feed_Display.print(" "); Feed_Display.print(mm_length_of_cut,3);}
+    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,116); Feed_Display.print("Thread Depth:  ");
       if (Thread_Mode == 0) {Feed_Display.println(in_Thread_Depth,4);}
       if (Thread_Mode == 1) {Feed_Display.println(mm_Thread_Depth,3);}
   }

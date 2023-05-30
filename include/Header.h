@@ -40,19 +40,20 @@ long Refresh_Rate = 100000;
   int submenu = 0;
 
 //-----Threading/Feed Variables----//
+  // MAny of the threading variables have an in/mm equvilant inorder to allow saving between selections
   long Inch_Thread_RPM = 0;
   long mm_Thread_RPM = 0;
   float TPI;
   float Pitch;
-  float in_Outside_Diameter = 2;
+  float in_Outside_Diameter = 1;
   float mm_Outside_Diameter = 12;
   float Minor_Diameter;
   double mm_Thread_Depth;
   double in_Thread_Depth;
-  float in_DOC;
-  float mm_DOC;
-  float in_length_of_cut = 1;
-  float mm_length_of_cut = 1;
+  float in_DOC = .01;
+  float mm_DOC = .25;
+  float in_length_of_cut = .5;
+  float mm_length_of_cut = 12;
 
 //----setup Interface Encoders thir variables and pins----//
   Adafruit_seesaw Enc1;
