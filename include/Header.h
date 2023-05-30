@@ -39,7 +39,7 @@ long Refresh_Rate = 100000;
   float mm_FeedRate = .01;                              // Initial mm Feed Rate
   int submenu = 0;
 
-//-----Threading Variables----//
+//-----Threading/Feed Variables----//
   long Inch_Thread_RPM = 0;
   long mm_Thread_RPM = 0;
   float TPI;
@@ -49,6 +49,9 @@ long Refresh_Rate = 100000;
   float Minor_Diameter;
   double mm_Thread_Depth;
   double in_Thread_Depth;
+  float in_DOC;
+  float mm_DOC;
+  float length_of_cut = 1;
 
 //----setup Interface Encoders thir variables and pins----//
   Adafruit_seesaw Enc1;
