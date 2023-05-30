@@ -1,4 +1,0 @@
-(fp_lib_table
-  (version 7)
-  (lib (name "ELS")(type "KiCad")(uri "$(KIPRJMOD)/ELS.pretty")(options "")(descr ""))
-)
