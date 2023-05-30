@@ -1,4 +1,4 @@
-# ELS Lead Screw
+# Electronic Lead Screw
     By Jeff Ballard
 
 Anticipated features:
