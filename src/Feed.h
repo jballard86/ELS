@@ -14,6 +14,13 @@ void Feed() {
 }
 
 void Turn_to_Diameter(){
+ 
+}
 
-  
+void Manual_Z() {
+
+}
+
+void Manual_X() {
+
 }

@@ -64,32 +64,17 @@ Serial.print("  "); Serial.println(Encoder_Angle, 4);
 
   LeadScrew.loop();             // Call this as often as possible for stepper control
 
-  if (Mode_Array_Pos == 0){                  
-    Feed();
-  } 
-  if (Mode_Array_Pos == 1) {
-    Thread();
-  } 
-  if (Mode_Array_Pos == 2) {
-    Auto_Thread();
-  }
-  if (Mode_Array_Pos == 3) {
-    Turn_to_Diameter();
-  } /*else if (Mode_Array_Pos == 5) {
-    Manual_Z();
-  } else if (Mode_Array_Pos == 6) {
-    Manual_X();
-  } else if (Mode_Array_Pos == 7) {
-    Radius();
-  } else if (Mode_Array_Pos == 8) {
-    Chamfer();
-  }*/
+  if (Mode_Array_Pos == 0) {Feed();} 
+  if (Mode_Array_Pos == 1) {Thread();} 
+  if (Mode_Array_Pos == 2) {Auto_Thread();}
+  if (Mode_Array_Pos == 3) {Turn_to_Diameter();}
+  if (Mode_Array_Pos == 5) {Manual_Z();}
+  if (Mode_Array_Pos == 6) {Manual_X();}
+  if (Mode_Array_Pos == 7) {Radius();}
+  if (Mode_Array_Pos == 8) {Chamfer();}
 }
 
-void Manual_Z() {
-}
-void Manual_X() {
-}
+
 void Radius() {
 }
 void Chamfer() {

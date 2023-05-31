@@ -153,3 +153,7 @@ void Mode_3_SubMenu_Controls();
 void Mode_2_SubMenu();
 void Mode_3_SubMenu();
 void Spindle_Angle();
+void Manual_Z();
+void Manual_X();
+void Radius();
+void Chamfer();
