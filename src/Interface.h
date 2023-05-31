@@ -337,6 +337,130 @@ void Mode_2_SubMenu_Controls() {
     }
   }
 }
-void Mode_3_SubMenu_Controls() {
+void Mode__SubMenu_Controls() {
+  // use Enc1 button to activate sub menu
+  // use Enc1 encoder to traverse menu
+  // use Enc2 button to exit menu
+  // use Enc2 encoder to modify values
+  //   attempt a coarse medium and fine adjustment
 
+  if (! Enc1.digitalRead(Enc_Button) && Mode_Array_Pos == 3 && submenu == 0) {    // submenu button control
+    delay(200); 
+    submenu = 1;
+    Enc1.setEncoderPosition(submenu);
+  }
+
+  if (submenu >= 1) {                                                             // submenu display control
+      if (Enc1.getEncoderPosition() > submenu && submenu > 1) {
+        submenu --;
+        Enc1.setEncoderPosition(submenu);
+      } else if (Enc1.getEncoderPosition() < submenu ) {
+        submenu ++;
+        Enc1.setEncoderPosition(submenu);
+      }
+      if (submenu > 3) {
+        submenu = 0;
+        Enc1.setEncoderPosition(Mode_Array_Pos);
+        Main_Menu(); Feed_Display.display(); delay(400);                          // reduces the chance of changing mode when leaving submenu
+      }
+    }
+  
+  if (submenu == 1) {                                                           // submenu 1 thread length value adjustment
+    //----Inch----//
+    if (Thread_Mode == 0) {
+      if (Enc2.getEncoderPosition() < 0) {
+        in_length_of_cut = in_length_of_cut + .001;
+        if (Enc2.getEncoderPosition() < -1) { in_length_of_cut = in_length_of_cut + .01;}           // Fast Scroll
+        if (Enc2.getEncoderPosition() < -3) { in_length_of_cut = in_length_of_cut + .25;}           // Faster Scroll
+        Enc2.setEncoderPosition(0);
+      } 
+      if (Enc2.getEncoderPosition() > 0) {
+        in_length_of_cut = in_length_of_cut -.001;
+        if (Enc2.getEncoderPosition() > 1) { in_length_of_cut = in_length_of_cut - .01;}            // Fast Scroll
+        if (Enc2.getEncoderPosition() > 3) { in_length_of_cut = in_length_of_cut - .25;}            // Faster Scroll
+        if (in_length_of_cut < .001) {in_length_of_cut = .001;}                                     // limits the lower bound of length of cut
+        Enc2.setEncoderPosition(0);
+      } 
+    }
+    //----mm----//
+    if (Thread_Mode == 1) {
+      if (Enc2.getEncoderPosition() < 0) {
+        mm_length_of_cut = mm_length_of_cut + .01;
+        if (Enc2.getEncoderPosition() < -1) { mm_length_of_cut = mm_length_of_cut + .1;}           // Fast Scroll
+        if (Enc2.getEncoderPosition() < -3) { mm_length_of_cut = mm_length_of_cut + 1;}            // Faster Scroll
+        Enc2.setEncoderPosition(0);
+      } 
+      if (Enc2.getEncoderPosition() > 0) {
+        mm_length_of_cut = mm_length_of_cut -.01;
+        if (Enc2.getEncoderPosition() > 1) { mm_length_of_cut = mm_length_of_cut - .1;}            // Fast Scroll
+        if (Enc2.getEncoderPosition() > 3) { mm_length_of_cut = mm_length_of_cut - 1;}             // Faster Scroll
+        if (mm_length_of_cut < .01) {mm_length_of_cut = .01;}                                    // limits the lower bound of length of cut
+        Enc2.setEncoderPosition(0);
+      } 
+    }
+  }
+  if (submenu == 2) {                                                           // submenu 2 thread Diameter value adjustment
+    //----Inch----//
+    if (Thread_Mode == 0) {
+      if (Enc2.getEncoderPosition() < 0) {
+        in_Outside_Diameter = in_Outside_Diameter + .001;
+        if (Enc2.getEncoderPosition() < -1) { in_Outside_Diameter = in_Outside_Diameter + .01;}           // Fast Scroll
+        if (Enc2.getEncoderPosition() < -3) { in_Outside_Diameter = in_Outside_Diameter + .25;}           // Faster Scroll
+        Enc2.setEncoderPosition(0);
+      } 
+      if (Enc2.getEncoderPosition() > 0) {
+        in_Outside_Diameter = in_Outside_Diameter -.001;
+        if (Enc2.getEncoderPosition() > 1) { in_Outside_Diameter = in_Outside_Diameter - .01;}            // Fast Scroll
+        if (Enc2.getEncoderPosition() > 3) { in_Outside_Diameter = in_Outside_Diameter - .25;}            // Faster Scroll
+        if (in_Outside_Diameter < .001) {in_Outside_Diameter = .001;}                                     // limits the lower bound of length of cut
+        Enc2.setEncoderPosition(0);
+      } 
+    }
+    //----mm----//
+    if (Thread_Mode == 1) {
+      if (Enc2.getEncoderPosition() < 0) {
+        mm_Outside_Diameter = mm_Outside_Diameter + .01;
+        if (Enc2.getEncoderPosition() < -1) { mm_Outside_Diameter = mm_Outside_Diameter + .1;}           // Fast Scroll
+        if (Enc2.getEncoderPosition() < -3) { mm_Outside_Diameter = mm_Outside_Diameter + 1.5;}            // Faster Scroll
+        Enc2.setEncoderPosition(0);
+      } 
+      if (Enc2.getEncoderPosition() > 0) {
+        mm_Outside_Diameter = mm_Outside_Diameter -.01;
+        if (Enc2.getEncoderPosition() > 1) { mm_Outside_Diameter = mm_Outside_Diameter - .1;}            // Fast Scroll
+        if (Enc2.getEncoderPosition() > 3) { mm_Outside_Diameter = mm_Outside_Diameter - 1.5;}             // Faster Scroll
+        if (mm_Outside_Diameter < .01) {mm_Outside_Diameter = .01;}                                    // limits the lower bound of length of cut
+        Enc2.setEncoderPosition(0);
+      } 
+    }
+  }
+  if (submenu == 3) {                                                           // submenu 3 thread Depth of cut value adjustment
+    //----Inch----//
+    if (Thread_Mode == 0) {
+      if (Enc2.getEncoderPosition() < 0) {
+        in_DOC = in_DOC + .001;
+        if (Enc2.getEncoderPosition() < -1) { in_DOC = in_DOC + .01;}           // Fast Scroll
+        Enc2.setEncoderPosition(0);
+      } 
+      if (Enc2.getEncoderPosition() > 0) {
+        in_DOC = in_DOC -.001;
+        if (Enc2.getEncoderPosition() > 1) { in_DOC = in_DOC - .01;}            // Fast Scroll
+        if (in_DOC < .001) {in_DOC = .001;}                                     // limits the lower bound of length of cut
+        Enc2.setEncoderPosition(0);
+      } 
+    }
+    //----mm----//
+    if (Thread_Mode == 1) {
+      if (Enc2.getEncoderPosition() < 0) {
+        mm_DOC = mm_DOC + .01;
+        if (Enc2.getEncoderPosition() < -1) { mm_DOC = mm_DOC + .1;}           // Fast Scroll
+        Enc2.setEncoderPosition(0);
+      } 
+      if (Enc2.getEncoderPosition() > 0) {
+        mm_DOC = mm_DOC -.01;
+        if (Enc2.getEncoderPosition() > 1) { mm_DOC = mm_DOC - .1;}            // Fast Scroll
+        if (mm_DOC < .01) {mm_DOC = .01;}                                    // limits the lower bound of length of cut
+        Enc2.setEncoderPosition(0);
+      } 
+    }
+  }
 }
