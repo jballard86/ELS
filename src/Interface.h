@@ -4,14 +4,12 @@ void Interface() {
     Mode_0_Feed_Controls();                                   // Feed menu controls
     Mode_1_Thread_Controls();                                 // Thread menu controls
     Mode_2_Auto_Thread_Controls();                            // Thread menu controls
-      if (Mode_Array_Pos ==2) {Mode_2_SubMenu_Controls();}    // Sub Menu for Mode 2, ran only when Mode = 2
+      if (Mode_Array_Pos == 2) {Mode_2_SubMenu_Controls();}    // Sub Menu for Mode 2, ran only when Mode = 2
     Mode_3_Auto_Turn_Controls();                              // Auto Turn controls
-      if (Mode_Array_Pos ==3) {Mode_3_SubMenu_Controls();}    // Sub Menu for Mode 2, ran only when Mode = 2
+      if (Mode_Array_Pos == 3) {Mode_3_SubMenu_Controls();}    // Sub Menu for Mode 2, ran only when Mode = 2
 }
 
-//long click to go into submenu for autothread inputs? or use Enc1 click?
-
-void Mode_Selection() {
+void Mode_Selection() {                                       // Mode Selection
   //----Select Mode with Encoder 1----//
     if (submenu == 0) {
       if (Enc1.getEncoderPosition() > Mode_Array_Pos) {
@@ -32,7 +30,7 @@ void Mode_Selection() {
 
 }
 
-void Mode_0_Feed_Controls() {
+void Mode_0_Feed_Controls() {                                 // Feed Mode
 //----Mode 0 (Feed) Controls----//
   if (Mode_Array_Pos == 0) {
     if (! Enc2.digitalRead(Enc_Button) && SpindleRPM == 0) {        //do stuff if Encoder button is pressed and spindle speed is zero
@@ -77,7 +75,7 @@ void Mode_0_Feed_Controls() {
   }
 }
 
-void Mode_1_Thread_Controls() {
+void Mode_1_Thread_Controls() {                               // Thread Mode
 //----Mode 1 (Thread) Controls----//
   if (Mode_Array_Pos == 1) {
     if (! Enc2.digitalRead(Enc_Button)) {
@@ -121,7 +119,7 @@ void Mode_1_Thread_Controls() {
   }
 }
 
-void Mode_2_Auto_Thread_Controls() {
+void Mode_2_Auto_Thread_Controls() {                          // Auto Thread Mode
 //----Mode 2 (Auto Thread) Controls----//
   if (Mode_Array_Pos == 2 && submenu == 0) {
     if (! Enc2.digitalRead(Enc_Button)) {
@@ -165,17 +163,15 @@ void Mode_2_Auto_Thread_Controls() {
   }
 }
 
-void Mode_3_Auto_Turn_Controls() {
+void Mode_3_Auto_Turn_Controls() {                            // Auto Turn Mode
 //----Mode 0 (Feed) Controls----//
-  if (Mode_Array_Pos == 3) {
+  if (Mode_Array_Pos == 3 && submenu == 0) {
     if (! Enc2.digitalRead(Enc_Button) && SpindleRPM == 0) {        //do stuff if Encoder button is pressed and spindle speed is zero
       delay(200);
-      if (Measure_Array_Pos == 0) {
-        Measure_Array_Pos = 1;
-        Metric = 1;                               // set metric flag to 1 (Metric)
+      if (Thread_Mode == 0) {
+        Thread_Mode = 1;
       } else {
-        Measure_Array_Pos = 0;
-        Metric = 0;                               // set metric flag to 0 (Inch)
+        Thread_Mode = 0;
       }
     }
   //----Inch----//
@@ -210,7 +206,7 @@ void Mode_3_Auto_Turn_Controls() {
   }
 }
 
-void Mode_2_SubMenu_Controls() {
+void Mode_2_SubMenu_Controls() {                              // Auto Thread Sub Menu
   // use Enc1 button to activate sub menu
   // use Enc1 encoder to traverse menu
   // use Enc2 button to exit menu
@@ -223,20 +219,14 @@ void Mode_2_SubMenu_Controls() {
     Enc1.setEncoderPosition(submenu);
   }
 
-  if (submenu >= 1) {                                                             // submenu display control
-      if (Enc1.getEncoderPosition() > submenu && submenu > 1) {
-        submenu --;
-        Enc1.setEncoderPosition(submenu);
-      } else if (Enc1.getEncoderPosition() < submenu ) {
-        submenu ++;
-        Enc1.setEncoderPosition(submenu);
-      }
-      if (submenu > 3) {
-        submenu = 0;
-        Enc1.setEncoderPosition(Mode_Array_Pos);
-        Main_Menu(); Feed_Display.display(); delay(400);                          // reduces the chance of changing mode when leaving submenu
-      }
+  if (submenu >= 1) {    
+    if (Enc1.getEncoderPosition() < submenu) { submenu++; Enc1.setEncoderPosition(submenu);}
+    if (Enc1.getEncoderPosition() > submenu && submenu >= 2) { submenu--; Enc1.setEncoderPosition(submenu);}
+    if (Enc1.getEncoderPosition() != submenu) {Enc1.setEncoderPosition(submenu);}
+    if (submenu > 3) { submenu = 0; Enc1.setEncoderPosition(Mode_Array_Pos);
+      Main_Menu(); Feed_Display.display(); delay(400);                          // reduces the chance of changing mode when leaving submenu
     }
+  }
   
   if (submenu == 1) {                                                           // submenu 1 thread length value adjustment
     //----Inch----//
@@ -337,6 +327,153 @@ void Mode_2_SubMenu_Controls() {
     }
   }
 }
-void Mode_3_SubMenu_Controls() {
 
+void Mode_3_SubMenu_Controls() {                              // Auto Turn Sub Menu
+  // use Enc1 button to activate sub menu
+  // use Enc1 encoder to traverse/exit menu
+  // use Enc2 encoder to modify values
+
+  if (! Enc1.digitalRead(Enc_Button) && Mode_Array_Pos == 3 && submenu == 0) {    // submenu button control
+    //delay(200); 
+    submenu = 1;
+    Enc1.setEncoderPosition(submenu);
+  }
+
+  if (submenu >= 1) {      
+    if (Enc1.getEncoderPosition() < submenu) { submenu++; Enc1.setEncoderPosition(submenu);}
+    if (Enc1.getEncoderPosition() > submenu && submenu >= 2) { submenu--; Enc1.setEncoderPosition(submenu);}
+    if (Enc1.getEncoderPosition() != submenu) {Enc1.setEncoderPosition(submenu);}
+    if (submenu > 4) { submenu = 0; Enc1.setEncoderPosition(Mode_Array_Pos);
+       Main_Menu(); Feed_Display.display(); delay(400);                          // reduces the chance of changing mode when leaving submenu
+    }
+  }
+  
+  if (submenu == 1) {                                                           // submenu 1 thread length value adjustment
+    //----Inch----//
+    if (Thread_Mode == 0) {
+      if (Enc2.getEncoderPosition() < 0) {
+        in_length_of_cut = in_length_of_cut + .001;
+        if (Enc2.getEncoderPosition() < -1) { in_length_of_cut = in_length_of_cut + .01;}           // Fast Scroll
+        if (Enc2.getEncoderPosition() < -3) { in_length_of_cut = in_length_of_cut + .25;}           // Faster Scroll
+        Enc2.setEncoderPosition(0);
+      } 
+      if (Enc2.getEncoderPosition() > 0) {
+        in_length_of_cut = in_length_of_cut -.001;
+        if (Enc2.getEncoderPosition() > 1) { in_length_of_cut = in_length_of_cut - .01;}            // Fast Scroll
+        if (Enc2.getEncoderPosition() > 3) { in_length_of_cut = in_length_of_cut - .25;}            // Faster Scroll
+        if (in_length_of_cut < .001) {in_length_of_cut = .001;}                                     // limits the lower bound of length of cut
+        Enc2.setEncoderPosition(0);
+      } 
+    }
+    //----mm----//
+    if (Thread_Mode == 1) {
+      if (Enc2.getEncoderPosition() < 0) {
+        mm_length_of_cut = mm_length_of_cut + .01;
+        if (Enc2.getEncoderPosition() < -1) { mm_length_of_cut = mm_length_of_cut + .1;}           // Fast Scroll
+        if (Enc2.getEncoderPosition() < -3) { mm_length_of_cut = mm_length_of_cut + 1;}            // Faster Scroll
+        Enc2.setEncoderPosition(0);
+      } 
+      if (Enc2.getEncoderPosition() > 0) {
+        mm_length_of_cut = mm_length_of_cut -.01;
+        if (Enc2.getEncoderPosition() > 1) { mm_length_of_cut = mm_length_of_cut - .1;}            // Fast Scroll
+        if (Enc2.getEncoderPosition() > 3) { mm_length_of_cut = mm_length_of_cut - 1;}             // Faster Scroll
+        if (mm_length_of_cut < .01) {mm_length_of_cut = .01;}                                    // limits the lower bound of length of cut
+        Enc2.setEncoderPosition(0);
+      } 
+    }
+  }
+  if (submenu == 2) {                                                           // submenu 2 thread Diameter value adjustment
+    //----Inch----//
+    if (Thread_Mode == 0) {
+      if (Enc2.getEncoderPosition() < 0) {
+        in_Outside_Diameter = in_Outside_Diameter + .001;
+        if (Enc2.getEncoderPosition() < -1) { in_Outside_Diameter = in_Outside_Diameter + .01;}           // Fast Scroll
+        if (Enc2.getEncoderPosition() < -3) { in_Outside_Diameter = in_Outside_Diameter + .25;}           // Faster Scroll
+        Enc2.setEncoderPosition(0);
+      } 
+      if (Enc2.getEncoderPosition() > 0) {
+        in_Outside_Diameter = in_Outside_Diameter -.001;
+        if (Enc2.getEncoderPosition() > 1) { in_Outside_Diameter = in_Outside_Diameter - .01;}            // Fast Scroll
+        if (Enc2.getEncoderPosition() > 3) { in_Outside_Diameter = in_Outside_Diameter - .25;}            // Faster Scroll
+        if (in_Outside_Diameter < .001) {in_Outside_Diameter = .001;}                                     // limits the lower bound of length of cut
+        Enc2.setEncoderPosition(0);
+      } 
+    }
+    //----mm----//
+    if (Thread_Mode == 1) {
+      if (Enc2.getEncoderPosition() < 0) {
+        mm_Outside_Diameter = mm_Outside_Diameter + .01;
+        if (Enc2.getEncoderPosition() < -1) { mm_Outside_Diameter = mm_Outside_Diameter + .1;}           // Fast Scroll
+        if (Enc2.getEncoderPosition() < -3) { mm_Outside_Diameter = mm_Outside_Diameter + 1.5;}            // Faster Scroll
+        Enc2.setEncoderPosition(0);
+      } 
+      if (Enc2.getEncoderPosition() > 0) {
+        mm_Outside_Diameter = mm_Outside_Diameter -.01;
+        if (Enc2.getEncoderPosition() > 1) { mm_Outside_Diameter = mm_Outside_Diameter - .1;}            // Fast Scroll
+        if (Enc2.getEncoderPosition() > 3) { mm_Outside_Diameter = mm_Outside_Diameter - 1.5;}             // Faster Scroll
+        if (mm_Outside_Diameter < .01) {mm_Outside_Diameter = .01;}                                    // limits the lower bound of length of cut
+        Enc2.setEncoderPosition(0);
+      } 
+    }
+  }
+  if (submenu == 3) {                                                           // submenu 3 thread Final Diameter value adjustment
+    //----Inch----//
+    if (Thread_Mode == 0) {
+      if (Enc2.getEncoderPosition() < 0) {
+        in_Final_Diameter = in_Final_Diameter + .001;
+        if (Enc2.getEncoderPosition() < -1) { in_Final_Diameter = in_Final_Diameter + .01;}           // Fast Scroll
+        Enc2.setEncoderPosition(0);
+      } 
+      if (Enc2.getEncoderPosition() > 0) {
+        in_Final_Diameter = in_Final_Diameter -.001;
+        if (Enc2.getEncoderPosition() > 1) { in_Final_Diameter = in_Final_Diameter - .01;}            // Fast Scroll
+        if (in_Final_Diameter < .001) {in_Final_Diameter = .001;}                                     // limits the lower bound of length of cut
+        Enc2.setEncoderPosition(0);
+      } 
+    }
+    //----mm----//
+    if (Thread_Mode == 1) {
+      if (Enc2.getEncoderPosition() < 0) {
+        mm_Final_Diameter = mm_Final_Diameter + .01;
+        if (Enc2.getEncoderPosition() < -1) { mm_Final_Diameter = mm_Final_Diameter + .1;}           // Fast Scroll
+        Enc2.setEncoderPosition(0);
+      } 
+      if (Enc2.getEncoderPosition() > 0) {
+        mm_Final_Diameter = mm_Final_Diameter -.01;
+        if (Enc2.getEncoderPosition() > 1) { mm_Final_Diameter = mm_Final_Diameter - .1;}            // Fast Scroll
+        if (mm_Final_Diameter < .01) {mm_Final_Diameter = .01;}                                    // limits the lower bound of length of cut
+        Enc2.setEncoderPosition(0);
+      } 
+    }
+  }
+  if (submenu == 4) {                                                           // submenu 4 thread Depth of cut value adjustment
+    //----Inch----//
+    if (Thread_Mode == 0) {
+      if (Enc2.getEncoderPosition() < 0) {
+        in_DOC = in_DOC + .001;
+        if (Enc2.getEncoderPosition() < -1) { in_DOC = in_DOC + .01;}           // Fast Scroll
+        Enc2.setEncoderPosition(0);
+      } 
+      if (Enc2.getEncoderPosition() > 0) {
+        in_DOC = in_DOC -.001;
+        if (Enc2.getEncoderPosition() > 1) { in_DOC = in_DOC - .01;}            // Fast Scroll
+        if (in_DOC < .001) {in_DOC = .001;}                                     // limits the lower bound of length of cut
+        Enc2.setEncoderPosition(0);
+      } 
+    }
+    //----mm----//
+    if (Thread_Mode == 1) {
+      if (Enc2.getEncoderPosition() < 0) {
+        mm_DOC = mm_DOC + .01;
+        if (Enc2.getEncoderPosition() < -1) { mm_DOC = mm_DOC + .1;}           // Fast Scroll
+        Enc2.setEncoderPosition(0);
+      } 
+      if (Enc2.getEncoderPosition() > 0) {
+        mm_DOC = mm_DOC -.01;
+        if (Enc2.getEncoderPosition() > 1) { mm_DOC = mm_DOC - .1;}            // Fast Scroll
+        if (mm_DOC < .01) {mm_DOC = .01;}                                    // limits the lower bound of length of cut
+        Enc2.setEncoderPosition(0);
+      } 
+    }
+  }
 }
