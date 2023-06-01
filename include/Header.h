@@ -62,7 +62,8 @@ long Refresh_Rate = 100000;
   double Fillet_X[Fillet_Max_steps];
   double Fillet_Y[Fillet_Max_steps];
   int Fillet_type = 3;         // 0 = left Convex 1 = right Convex 2 = left concave 3 = right concave
-  double Fillet_Radius = 1;
+  double in_Fillet_Radius = .5;
+  double mm_Fillet_Radius = 12;
   int Fillet_Steps = 100;
 
 //----setup Interface Encoders thir variables and pins----//
@@ -166,3 +167,4 @@ void Manual_X();
 void Radius();
 void Chamfer();
 void Auto_Feed_Clear();
+void Mode_6_SubMenu();

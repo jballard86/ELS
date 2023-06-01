@@ -180,8 +180,8 @@ void Main_Menu() {              // Main Menu
       if (Thread_Mode == 0) {Feed_Display.print(" "); Feed_Display.print(in_DOC,3);}
       if (Thread_Mode == 1) {Feed_Display.print(" "); Feed_Display.print(mm_DOC,2);} 
     Feed_Display.setTextSize(1); Feed_Display.setCursor(0,92); Feed_Display.print("      Radius:");
-      if (Thread_Mode == 0) {Feed_Display.print(" "); Feed_Display.print(Fillet_Radius,3);}
-      if (Thread_Mode == 1) {Feed_Display.print(" "); Feed_Display.print(Fillet_Radius,3);}
+      if (Thread_Mode == 0) {Feed_Display.print(" "); Feed_Display.print(in_Fillet_Radius,3);}
+      if (Thread_Mode == 1) {Feed_Display.print(" "); Feed_Display.print(mm_Fillet_Radius,3);}
     Feed_Display.setTextSize(1); Feed_Display.setCursor(0,104); Feed_Display.print("       Steps:");
       Feed_Display.print(" "); Feed_Display.print(Fillet_Steps,DEC);
     Feed_Display.setTextSize(1); Feed_Display.setCursor(0,80); Feed_Display.print("Type:");
@@ -201,6 +201,7 @@ void Main_Menu() {              // Main Menu
   
   Mode_2_SubMenu();
   Mode_3_SubMenu();
+  Mode_6_SubMenu();
 }
 
 void Feed_Adjust(){             // Feed Adjust sub routine
@@ -317,6 +318,48 @@ void Mode_3_SubMenu() {         // Auto Thread Sub Menu
       Feed_Display.setCursor(0,100);
         if (Thread_Mode == 0) {Feed_Display.print(" "); Feed_Display.print(in_DOC,3); Feed_Display.println(" in");}
         if (Thread_Mode == 1) {Feed_Display.print(" "); Feed_Display.print(mm_DOC,2); Feed_Display.println(" mm");} 
+    }
+  }
+}
+
+void Mode_6_SubMenu() {         // Auto Thread Sub Menu
+  if (Mode_Array_Pos == 6 && submenu >= 1) {
+    if (submenu >= 1 && Mode_Array_Pos == 6) {
+      Feed_Display.clearDisplay();
+      Feed_Display.setTextColor(SSD1327_WHITE);
+      Feed_Display.setTextSize(2); 
+      Feed_Display.setCursor(0,0);
+      Feed_Display.println("Radius Mode");
+       if (Fillet_type == 0 || 1) {Feed_Display.print("  Convex");} 
+       if (Fillet_type == 2 || 3) {Feed_Display.print("  Concave");} 
+    }
+    if (submenu == 1) {                                   // submenu page one --- Thread Length
+      Feed_Display.setCursor(0,45);
+      Feed_Display.println("  Input");
+      Feed_Display.setCursor(0,65);
+      Feed_Display.println("Radius");
+      Feed_Display.setCursor(0,100);
+        if (Thread_Mode == 0) {Feed_Display.print(" "); Feed_Display.print(in_Fillet_Radius,3); Feed_Display.println(" in");}
+        if (Thread_Mode == 1) {Feed_Display.print(" "); Feed_Display.print(mm_Fillet_Radius,3); Feed_Display.println(" mm");} 
+    }
+    if (submenu == 2) {                                   // submenu page two --- Thread Diameter
+      Feed_Display.setCursor(0,45);
+      Feed_Display.println("  Input");
+      Feed_Display.setCursor(0,65);
+      Feed_Display.println("Resolution");
+      Feed_Display.setCursor(0,100);
+        Feed_Display.print(" "); Feed_Display.print(Fillet_Steps,DEC); Feed_Display.println(" Steps");
+    }
+    if (submenu == 3) {                                   // submenu page four --- Depth of cut
+      Feed_Display.setCursor(0,45);
+      Feed_Display.println("  Input");
+      Feed_Display.setCursor(0,65);
+      Feed_Display.println("  D.O.C.");
+      Feed_Display.setCursor(0,100);
+        if (Fillet_type == 0) {Feed_Display.print(" "); Feed_Display.print("Left"); Feed_Display.println("Convex");}
+        if (Fillet_type == 1) {Feed_Display.print(" "); Feed_Display.print("Right"); Feed_Display.println("Convex");}
+        if (Fillet_type == 2) {Feed_Display.print(" "); Feed_Display.print("Left"); Feed_Display.println("Concave");}
+        if (Fillet_type == 3) {Feed_Display.print(" "); Feed_Display.print("Right"); Feed_Display.println("Concave");}
     }
   }
 }
