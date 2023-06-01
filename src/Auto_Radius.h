@@ -1,3 +1,4 @@
+
 /*
 Calculate the X/Y coords by using sine cosine
 store the result in an array
@@ -15,7 +16,7 @@ start of cut starts at Z,-Y (X,-Y)
 
 user input: left/right ,steps (max of 100), radius, depth of cut
 
-//----Fillet Variables----//
+----Fillet Variables----
   const int Fillet_Max_steps = 100;
   double Fillet_X[Fillet_Max_steps];
   double Fillet_Y[Fillet_Max_steps];
