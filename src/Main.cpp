@@ -1,5 +1,6 @@
 #include "Header.h"
 
+
 //using: https://www.pjrc.com/teensy/td_timing_IntervalTimer.html
 
 void setup() {
@@ -78,11 +79,3 @@ void Chamfer() {
 }
 
 
-#include "Display.h"
-#include "Feed.h"
-#include "Interface.h"
-#include "Interrupts.h"
-#include "Menu.h"
-#include "Thread.h"
-#include <string>
-#include "Radius.h"

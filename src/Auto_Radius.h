@@ -15,9 +15,17 @@ start of cut starts at Z,-Y (X,-Y)
 
 user input: left/right ,steps (max of 100), radius, depth of cut
 
-
+//----Fillet Variables----//
+  const int Fillet_Max_steps = 100;
+  double Fillet_X[Fillet_Max_steps];
+  double Fillet_Y[Fillet_Max_steps];
+  int Fillet_type = 3;         // 0 = left Convex 1 = right Convex 2 = left concave 3 = right concave
+  double in_Fillet_Radius = .5;
+  double mm_Fillet_Radius = 12;
+  int Fillet_Steps = 100;
+  double R_Step_Angle = 0;
 */
 
 void Radius() {
-    
+  R_Step_Angle = 1;
 }
