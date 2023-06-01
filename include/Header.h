@@ -57,6 +57,11 @@ long Refresh_Rate = 100000;
   float in_length_of_cut = .5;
   float mm_length_of_cut = 12;
 
+//----Fillet Variables----//
+  const int Fillet_steps = 100;
+  double Fillet_X[Fillet_steps];
+  double Fillet_Y[Fillet_steps];
+
 //----setup Interface Encoders thir variables and pins----//
   Adafruit_seesaw Enc1;
     int Enc1_Pos = 0;
