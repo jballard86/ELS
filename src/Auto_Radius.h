@@ -26,6 +26,6 @@ user input: left/right ,steps (max of 100), radius, depth of cut
   double R_Step_Angle = 0;
 */
 
-void Radius() {
+void Auto_Radius() {
   R_Step_Angle = 1;
 }

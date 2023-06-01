@@ -67,7 +67,7 @@ long Refresh_Rate = 100000;
   double in_Fillet_Radius = .5;
   double mm_Fillet_Radius = 12;
   int Fillet_Steps = 100;
-  double R_Step_Angle = 0;
+  volatile double R_Step_Angle = 0;
 
 //----setup Interface Encoders thir variables and pins----//
   Adafruit_seesaw Enc1;
@@ -170,13 +170,4 @@ void Manual_X();
 void Chamfer();
 void Auto_Feed_Clear();
 void Mode_6_SubMenu();
-void Radius();
-
-#include "Display.h"
-#include "Feed.h"
-#include "Interface.h"
-#include "Interrupts.h"
-#include "Menu.h"
-#include "Thread.h"
-#include <string>
-#include "Auto_Radius.h"
+void Auto_Radius();

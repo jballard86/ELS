@@ -71,7 +71,7 @@ Serial.print("  "); Serial.println(" ");
   if (Mode_Array_Pos == 3) {Turn_to_Diameter();}
   if (Mode_Array_Pos == 4) {Manual_Z();}
   if (Mode_Array_Pos == 5) {Manual_X();}
-  if (Mode_Array_Pos == 6) {Radius();}
+  if (Mode_Array_Pos == 6) {Auto_Radius();}
   if (Mode_Array_Pos == 7) {Chamfer();}
 }
 
@@ -79,3 +79,11 @@ void Chamfer() {
 }
 
 
+#include "Display.h"
+#include "Feed.h"
+#include "Interface.h"
+#include "Interrupts.h"
+#include "Menu.h"
+#include "Thread.h"
+#include <string>
+#include "Auto_Radius.h"
