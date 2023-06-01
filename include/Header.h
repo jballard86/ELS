@@ -58,9 +58,12 @@ long Refresh_Rate = 100000;
   float mm_length_of_cut = 12;
 
 //----Fillet Variables----//
-  const int Fillet_steps = 100;
-  double Fillet_X[Fillet_steps];
-  double Fillet_Y[Fillet_steps];
+  const int Fillet_Max_steps = 100;
+  double Fillet_X[Fillet_Max_steps];
+  double Fillet_Y[Fillet_Max_steps];
+  int Fillet_type = 3;         // 0 = left Convex 1 = right Convex 2 = left concave 3 = right concave
+  double Fillet_Radius = 1;
+  int Fillet_Steps = 100;
 
 //----setup Interface Encoders thir variables and pins----//
   Adafruit_seesaw Enc1;

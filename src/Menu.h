@@ -151,8 +151,48 @@ void Main_Menu() {              // Main Menu
       if (Thread_Mode == 1) {Feed_Display.print(" "); Feed_Display.print(mm_Final_Diameter,2);}
   }
 
+  //----Fillet----//
+  if (Mode_Array_Pos == 6) {
+    Feed_Display.setTextSize(2);
+    Feed_Display.setCursor(19,20);
+      if (Metric == 0) {
+        Feed_Display.fillRect(18,19,Measure_Array[0].length() * 12 + 1,16,SSD1327_WHITE);       //fill selection with a contrasting rectangle
+        Feed_Display.setTextColor(SSD1327_BLACK);
+        Feed_Display.print("In ");
+        Feed_Display.setTextColor(SSD1327_WHITE);
+      } else {
+        Feed_Display.setTextColor(SSD1327_WHITE);
+        Feed_Display.print("In ");
+      }
+      Feed_Display.print("/"); 
+      if (Metric == 1) {
+        Feed_Display.fillRect(77,19,Measure_Array[1].length() * 12 + 2,16,SSD1327_WHITE);       //fill selection with a contrasting rectangle
+        Feed_Display.setTextColor(SSD1327_BLACK);
+        Feed_Display.print(" mm");
+        Feed_Display.setTextColor(SSD1327_WHITE);
+        
+      } else {
+        Feed_Display.setTextColor(SSD1327_WHITE);
+        Feed_Display.print(" mm");
+      }
+    Auto_Feed_Adjust();
+    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,116); Feed_Display.print("      D.O.C.:");
+      if (Thread_Mode == 0) {Feed_Display.print(" "); Feed_Display.print(in_DOC,3);}
+      if (Thread_Mode == 1) {Feed_Display.print(" "); Feed_Display.print(mm_DOC,2);} 
+    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,92); Feed_Display.print("      Radius:");
+      if (Thread_Mode == 0) {Feed_Display.print(" "); Feed_Display.print(Fillet_Radius,3);}
+      if (Thread_Mode == 1) {Feed_Display.print(" "); Feed_Display.print(Fillet_Radius,3);}
+    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,104); Feed_Display.print("       Steps:");
+      Feed_Display.print(" "); Feed_Display.print(Fillet_Steps,DEC);
+    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,80); Feed_Display.print("Type:");
+      if (Fillet_type == 0) {Feed_Display.print(" "); Feed_Display.print("Left Convex");}
+      if (Fillet_type == 1) {Feed_Display.print(" "); Feed_Display.print("Right Convex");}
+      if (Fillet_type == 2) {Feed_Display.print(" "); Feed_Display.print("Left Concave");}
+      if (Fillet_type == 3) {Feed_Display.print(" "); Feed_Display.print("Right Concave");}
+  }
+
   //----Place holder for unused modes----//
-  if (Mode_Array_Pos > 3) {
+  if (Mode_Array_Pos > 3 && Mode_Array_Pos != 6) {
     Feed_Display.setCursor(0 + Mode_Array_Pos * 6, 30 + Mode_Array_Pos * 5);
     Feed_Display.println("Coming");
     Feed_Display.setCursor(0 + Mode_Array_Pos * 10, 60 + Mode_Array_Pos * 5);

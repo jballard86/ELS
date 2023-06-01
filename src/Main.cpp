@@ -68,15 +68,12 @@ Serial.print("  "); Serial.println(" ");
   if (Mode_Array_Pos == 1) {Thread();} 
   if (Mode_Array_Pos == 2) {Auto_Thread();}
   if (Mode_Array_Pos == 3) {Turn_to_Diameter();}
-  if (Mode_Array_Pos == 5) {Manual_Z();}
-  if (Mode_Array_Pos == 6) {Manual_X();}
-  if (Mode_Array_Pos == 7) {Radius();}
-  if (Mode_Array_Pos == 8) {Chamfer();}
+  if (Mode_Array_Pos == 4) {Manual_Z();}
+  if (Mode_Array_Pos == 5) {Manual_X();}
+  if (Mode_Array_Pos == 6) {Radius();}
+  if (Mode_Array_Pos == 7) {Chamfer();}
 }
 
-
-void Radius() {
-}
 void Chamfer() {
 }
 
@@ -88,3 +85,4 @@ void Chamfer() {
 #include "Menu.h"
 #include "Thread.h"
 #include <string>
+#include "Radius.h"
