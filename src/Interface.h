@@ -168,10 +168,12 @@ void Mode_3_Auto_Turn_Controls() {                            // Auto Turn Mode
   if (Mode_Array_Pos == 3 && submenu == 0) {
     if (! Enc2.digitalRead(Enc_Button) && SpindleRPM == 0) {        //do stuff if Encoder button is pressed and spindle speed is zero
       delay(200);
-      if (Thread_Mode == 0) {
-        Thread_Mode = 1;
+      if (Measure_Array_Pos == 0) {
+        Measure_Array_Pos = 1;
+        Metric = 1;                               // set metric flag to 1 (Metric)
       } else {
-        Thread_Mode = 0;
+        Measure_Array_Pos = 0;
+        Metric = 0;                               // set metric flag to 0 (Inch)
       }
     }
   //----Inch----//
@@ -334,7 +336,7 @@ void Mode_3_SubMenu_Controls() {                              // Auto Turn Sub M
   // use Enc2 encoder to modify values
 
   if (! Enc1.digitalRead(Enc_Button) && Mode_Array_Pos == 3 && submenu == 0) {    // submenu button control
-    //delay(200); 
+    delay(200); 
     submenu = 1;
     Enc1.setEncoderPosition(submenu);
   }

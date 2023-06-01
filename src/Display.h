@@ -7,13 +7,20 @@ void Refresh() {
   if (SpindleRPM == 0) {
     Interface();
     Main_Menu();
+    Feed_Display.display();
     }
   if (Mode_Array_Pos == 0 && SpindleRPM != 0) {   // Feed rates dont need to be as accurate as threading, so feedrates can be adjustable on the fly
     Mode_0_Feed_Controls();       //  read if feed encoder has been turned
     Feed_Clear();                 //  clear feed value from OLED
     Feed_Adjust();                //  Redraw Feed value
+    Feed_Display.display();
   }
-  Feed_Display.display();
+  if (Mode_Array_Pos == 3 && SpindleRPM != 0) {   // Feed rates dont need to be as accurate as threading, so feedrates can be adjustable on the fly
+    Mode_3_Auto_Turn_Controls();       //  read if feed encoder has been turned
+    Auto_Feed_Clear();                 //  clear feed value from OLED
+    Auto_Feed_Adjust();                //  Redraw Feed value
+    Feed_Display.display();
+  }
 }
 
 void Start_Feed_Display() {

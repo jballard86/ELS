@@ -157,3 +157,4 @@ void Manual_Z();
 void Manual_X();
 void Radius();
 void Chamfer();
+void Auto_Feed_Clear();

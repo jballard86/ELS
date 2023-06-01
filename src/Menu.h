@@ -97,17 +97,17 @@ void Main_Menu() {              // Main Menu
       if (Pitch_Array[Pitch_Array_Pos] > 9) {DECp = 1;} // this allows us to shorten the decimal point of the array when displayed so that we dont wrap the decimal to the next line
       else {DECp = 2;}
       Feed_Display.setCursor(10,45); Feed_Display.print(Pitch_Array[Pitch_Array_Pos], DECp); }
-    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,80); Feed_Display.print("Cut Depth:    ");
+    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,80); Feed_Display.print("    Cut Depth:");
       if (Thread_Mode == 0) {Feed_Display.print(" "); Feed_Display.print(in_DOC,3);}
       if (Thread_Mode == 1) {Feed_Display.print(" "); Feed_Display.print(mm_DOC,2);} 
-    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,92); Feed_Display.print("Thread Dia:   ");
+    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,92); Feed_Display.print("   Thread Dia:");
       if (Thread_Mode == 0) {Feed_Display.print(" "); Feed_Display.print(in_Outside_Diameter,3);}
       if (Thread_Mode == 1) {Feed_Display.print(" "); Feed_Display.print(mm_Outside_Diameter,2);}
     Feed_Display.setTextSize(1); Feed_Display.setCursor(0,104); Feed_Display.print("Thread Length:");
       if (Thread_Mode == 0) {Feed_Display.print(" "); Feed_Display.print(in_length_of_cut,3);}
       if (Thread_Mode == 1) {Feed_Display.print(" "); Feed_Display.print(mm_length_of_cut,3);}
-    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,116); Feed_Display.print("Thread Depth:  ");
-      if (Thread_Mode == 0) {Feed_Display.println(in_Thread_Depth,4);}
+    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,116); Feed_Display.print(" Thread Depth: ");
+      if (Thread_Mode == 0) {Feed_Display.println(in_Thread_Depth,3);}
       if (Thread_Mode == 1) {Feed_Display.println(mm_Thread_Depth,3);}
   }
 
@@ -115,7 +115,7 @@ void Main_Menu() {              // Main Menu
   if (Mode_Array_Pos == 3) {
     Feed_Display.setTextSize(2);
     Feed_Display.setCursor(19,20);
-      if (Thread_Mode == 0) {
+      if (Metric == 0) {
         Feed_Display.fillRect(18,19,Measure_Array[0].length() * 12 + 1,16,SSD1327_WHITE);       //fill selection with a contrasting rectangle
         Feed_Display.setTextColor(SSD1327_BLACK);
         Feed_Display.print("In ");
@@ -125,7 +125,7 @@ void Main_Menu() {              // Main Menu
         Feed_Display.print("In ");
       }
       Feed_Display.print("/"); 
-      if (Thread_Mode == 1) {
+      if (Metric == 1) {
         Feed_Display.fillRect(77,19,Measure_Array[1].length() * 12 + 2,16,SSD1327_WHITE);       //fill selection with a contrasting rectangle
         Feed_Display.setTextColor(SSD1327_BLACK);
         Feed_Display.print(" mm");
@@ -136,16 +136,17 @@ void Main_Menu() {              // Main Menu
         Feed_Display.print(" mm");
       }
     Auto_Feed_Adjust();
-    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,80); Feed_Display.print("    D.O.C.:  ");
+    //Feed_Adjust();
+    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,80); Feed_Display.print("       D.O.C.:");
       if (Thread_Mode == 0) {Feed_Display.print(" "); Feed_Display.print(in_DOC,3);}
       if (Thread_Mode == 1) {Feed_Display.print(" "); Feed_Display.print(mm_DOC,2);} 
-    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,92); Feed_Display.print("Cut Length: ");
+    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,92); Feed_Display.print("   Cut Length:");
       if (Thread_Mode == 0) {Feed_Display.print(" "); Feed_Display.print(in_length_of_cut,3);}
       if (Thread_Mode == 1) {Feed_Display.print(" "); Feed_Display.print(mm_length_of_cut,3);}
-    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,104); Feed_Display.print("Current OD: ");
+    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,104); Feed_Display.print("   Current OD:");
       if (Thread_Mode == 0) {Feed_Display.print(" "); Feed_Display.print(in_Outside_Diameter,3);}
       if (Thread_Mode == 1) {Feed_Display.print(" "); Feed_Display.print(mm_Outside_Diameter,2);}
-    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,116); Feed_Display.print("  Final OD: ");
+    Feed_Display.setTextSize(1); Feed_Display.setCursor(0,116); Feed_Display.print("     Final OD:");
       if (Thread_Mode == 0) {Feed_Display.print(" "); Feed_Display.print(in_Final_Diameter,3);}
       if (Thread_Mode == 1) {Feed_Display.print(" "); Feed_Display.print(mm_Final_Diameter,2);}
   }
@@ -183,6 +184,10 @@ int center(int ctr_int) {       // Center of Sting Function
 
 void Feed_Clear(){              // Clear Feed Rate on Main Menu
   Feed_Display.fillRect(0,55,128,30,SSD1327_BLACK);
+}
+
+void Auto_Feed_Clear(){              // Clear Feed Rate on Main Menu
+  Feed_Display.fillRect(0,45,128,30,SSD1327_BLACK);
 }
 
 void Mode_2_SubMenu() {         // Auto Thread Sub Menu

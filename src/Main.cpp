@@ -58,8 +58,8 @@ void loop() {
   */
 
 Spindle_Angle();
-if (S_Timer.check() == 1) {Serial.print(TotalRotations,4); Serial.print("  "); Serial.print(TotalRot_noDEC, DEC);
-Serial.print("  "); Serial.println(Encoder_Angle, 4);
+if (S_Timer.check() == 1) {Serial.print(Measure_Array_Pos); Serial.print("  "); Serial.print(In_FeedRate);
+Serial.print("  "); Serial.println(" ");
 }
 
   LeadScrew.loop();             // Call this as often as possible for stepper control
