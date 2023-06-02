@@ -26,6 +26,7 @@ void setup() {
   matrix.begin(0x70);               // starts 7 segment display, the () is the address
     matrix.setBrightness(15);       // sets 7 segment brightness to max, applicable values are 0-15
   Start_Feed_Display();             //runs display start routine
+  Start_Graph_Display();
   delay(500);
 
 //----Start I2C Encoder Interface----//
@@ -59,9 +60,9 @@ void loop() {
   */
 
 Spindle_Angle();
-if (S_Timer.check() == 1) {Serial.print(Measure_Array_Pos); Serial.print("  "); Serial.print(In_FeedRate);
+/*if (S_Timer.check() == 1) {Serial.print(Measure_Array_Pos); Serial.print("  "); Serial.print(In_FeedRate);
 Serial.print("  "); Serial.println(" ");
-}
+}*/
 
   LeadScrew.loop();             // Call this as often as possible for stepper control
 
