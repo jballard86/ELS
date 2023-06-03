@@ -563,32 +563,32 @@ void Mode_6_SubMenu_Controls() {                              // Auto Turn Sub M
     //----Inch----//
     if (Thread_Mode == 0) {
       if (Enc2.getEncoderPosition() < 0) {
-        in_Outside_Diameter = in_Outside_Diameter + .001;
-        if (Enc2.getEncoderPosition() < -1) { in_Outside_Diameter = in_Outside_Diameter + .01;}           // Fast Scroll
-        if (Enc2.getEncoderPosition() < -3) { in_Outside_Diameter = in_Outside_Diameter + .25;}           // Faster Scroll
+        in_Radius = in_Radius + .001;
+        if (Enc2.getEncoderPosition() < -1) { in_Radius = in_Radius + .01;}           // Fast Scroll
+        if (Enc2.getEncoderPosition() < -3) { in_Radius = in_Radius + .25;}           // Faster Scroll
         Enc2.setEncoderPosition(0);
       } 
       if (Enc2.getEncoderPosition() > 0) {
-        in_Outside_Diameter = in_Outside_Diameter -.001;
-        if (Enc2.getEncoderPosition() > 1) { in_Outside_Diameter = in_Outside_Diameter - .01;}            // Fast Scroll
-        if (Enc2.getEncoderPosition() > 3) { in_Outside_Diameter = in_Outside_Diameter - .25;}            // Faster Scroll
-        if (in_Outside_Diameter < .001) {in_Outside_Diameter = .001;}                                     // limits the lower bound of length of cut
+        in_Radius = in_Radius -.001;
+        if (Enc2.getEncoderPosition() > 1) { in_Radius = in_Radius - .01;}            // Fast Scroll
+        if (Enc2.getEncoderPosition() > 3) { in_Radius = in_Radius - .25;}            // Faster Scroll
+        if (in_Radius < .001) {in_Radius = .001;}                                     // limits the lower bound of length of cut
         Enc2.setEncoderPosition(0);
       } 
     }
     //----mm----//
     if (Thread_Mode == 1) {
       if (Enc2.getEncoderPosition() < 0) {
-        mm_Outside_Diameter = mm_Outside_Diameter + .01;
-        if (Enc2.getEncoderPosition() < -1) { mm_Outside_Diameter = mm_Outside_Diameter + .1;}           // Fast Scroll
-        if (Enc2.getEncoderPosition() < -3) { mm_Outside_Diameter = mm_Outside_Diameter + 1.5;}            // Faster Scroll
+        mm_Radius = mm_Radius + .01;
+        if (Enc2.getEncoderPosition() < -1) { mm_Radius = mm_Radius + .1;}           // Fast Scroll
+        if (Enc2.getEncoderPosition() < -3) { mm_Radius = mm_Radius + 1.5;}            // Faster Scroll
         Enc2.setEncoderPosition(0);
       } 
       if (Enc2.getEncoderPosition() > 0) {
-        mm_Outside_Diameter = mm_Outside_Diameter -.01;
-        if (Enc2.getEncoderPosition() > 1) { mm_Outside_Diameter = mm_Outside_Diameter - .1;}            // Fast Scroll
-        if (Enc2.getEncoderPosition() > 3) { mm_Outside_Diameter = mm_Outside_Diameter - 1.5;}             // Faster Scroll
-        if (mm_Outside_Diameter < .01) {mm_Outside_Diameter = .01;}                                    // limits the lower bound of length of cut
+        mm_Radius = mm_Radius -.01;
+        if (Enc2.getEncoderPosition() > 1) { mm_Radius = mm_Radius - .1;}            // Fast Scroll
+        if (Enc2.getEncoderPosition() > 3) { mm_Radius = mm_Radius - 1.5;}             // Faster Scroll
+        if (mm_Radius < .01) {mm_Radius = .01;}                                    // limits the lower bound of length of cut
         Enc2.setEncoderPosition(0);
       } 
     }
@@ -597,28 +597,15 @@ void Mode_6_SubMenu_Controls() {                              // Auto Turn Sub M
     //----Inch----//
     if (Thread_Mode == 0) {
       if (Enc2.getEncoderPosition() < 0) {
-        in_Final_Diameter = in_Final_Diameter + .001;
-        if (Enc2.getEncoderPosition() < -1) { in_Final_Diameter = in_Final_Diameter + .01;}           // Fast Scroll
+        Radius_Steps = Radius_Steps + 1;
+        if (Enc2.getEncoderPosition() < -1) { Radius_Steps = Radius_Steps + 10;}           // Fast Scroll
+        if (Radius_Steps > 100) {Radius_Steps = 100;}
         Enc2.setEncoderPosition(0);
       } 
       if (Enc2.getEncoderPosition() > 0) {
-        in_Final_Diameter = in_Final_Diameter -.001;
-        if (Enc2.getEncoderPosition() > 1) { in_Final_Diameter = in_Final_Diameter - .01;}            // Fast Scroll
-        if (in_Final_Diameter < .001) {in_Final_Diameter = .001;}                                     // limits the lower bound of length of cut
-        Enc2.setEncoderPosition(0);
-      } 
-    }
-    //----mm----//
-    if (Thread_Mode == 1) {
-      if (Enc2.getEncoderPosition() < 0) {
-        mm_Final_Diameter = mm_Final_Diameter + .01;
-        if (Enc2.getEncoderPosition() < -1) { mm_Final_Diameter = mm_Final_Diameter + .1;}           // Fast Scroll
-        Enc2.setEncoderPosition(0);
-      } 
-      if (Enc2.getEncoderPosition() > 0) {
-        mm_Final_Diameter = mm_Final_Diameter -.01;
-        if (Enc2.getEncoderPosition() > 1) { mm_Final_Diameter = mm_Final_Diameter - .1;}            // Fast Scroll
-        if (mm_Final_Diameter < .01) {mm_Final_Diameter = .01;}                                    // limits the lower bound of length of cut
+        Radius_Steps = Radius_Steps -1;
+        if (Enc2.getEncoderPosition() > 1) { Radius_Steps = Radius_Steps - 10;}            // Fast Scroll
+        if (Radius_Steps < 1) {Radius_Steps = 1;}                                     // limits the lower bound of length of cut
         Enc2.setEncoderPosition(0);
       } 
     }
