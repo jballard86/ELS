@@ -1,25 +1,23 @@
 #include "Header.h"
 
-
 //using: https://www.pjrc.com/teensy/td_timing_IntervalTimer.html
 
 void setup() {
   Mode = Mode_Array_Pos;
   TPI = TPI_Array[TPI_Array_Pos];
   Pitch = Pitch_Array[Pitch_Array_Pos];
+  Steps_Per_Thou = (LeadSPR * LeadScrew_TPI) / 1000;
+  Steps_Per_hundredth_mm = 0.000393701 * LeadSPR * LeadScrew_TPI;   //0.000393701 is from the simplified equation: (LeadSPR/((1/LeadScrew_TPI)*25.4))/100
 
   spindle.setInitConfig();  //start spindle encoder
   spindle.init();
 
 //----Stepper Setup----//
   LeadSpeed = MaxLeadRPM * LeadSPR / 60;         // Leadscrew Max Steps/sec
-  //LeadScrew.begin(LeadStp, LeadDir);
-  //LeadScrew.setEnablePin(Stepper_Enable);
   LeadScrew.setMaxSpeed(LeadSpeed);
   LeadScrew.setSpeed(0);
   LeadScrew.setPinsInverted(true,true,true);
   //pinMode(Stepper_Enable, HIGH);    //enables drive
-
 
 //----Setup Various Display Methods----//
   Serial.begin(115200);             // starts serial
