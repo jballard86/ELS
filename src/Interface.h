@@ -547,7 +547,7 @@ void Mode_6_SubMenu_Controls() {                              // Auto Turn Sub M
     }
   }
   
-  if (submenu == 1) {                                                           // submenu 1 thread length value adjustment
+  if (submenu == 1) {                                                           // submenu 1 radius type input
       if (Enc2.getEncoderPosition() < 0) {
         Radius_type = Radius_type + 1;
         if (Radius_type > 3) {Radius_type = 3;}
@@ -559,9 +559,10 @@ void Mode_6_SubMenu_Controls() {                              // Auto Turn Sub M
         Enc2.setEncoderPosition(0);
       } 
     }
-  if (submenu == 2) {                                                           // submenu 2 thread Diameter value adjustment
+  if (submenu == 2) {                                                           // submenu 2 radius input
     //----Inch----//
-    if (Thread_Mode == 0) {
+    if (Metric == 0) {
+      double in_radius_old = in_Radius;
       if (Enc2.getEncoderPosition() < 0) {
         in_Radius = in_Radius + .001;
         if (Enc2.getEncoderPosition() < -1) { in_Radius = in_Radius + .01;}           // Fast Scroll
@@ -575,9 +576,11 @@ void Mode_6_SubMenu_Controls() {                              // Auto Turn Sub M
         if (in_Radius < .001) {in_Radius = .001;}                                     // limits the lower bound of length of cut
         Enc2.setEncoderPosition(0);
       } 
+      if (in_radius_old != in_Radius) {Build_XY = 0;}
     }
     //----mm----//
-    if (Thread_Mode == 1) {
+    if (Metric == 1) {
+      double mm_radius_old = mm_Radius;
       if (Enc2.getEncoderPosition() < 0) {
         mm_Radius = mm_Radius + .01;
         if (Enc2.getEncoderPosition() < -1) { mm_Radius = mm_Radius + .1;}           // Fast Scroll
@@ -591,23 +594,23 @@ void Mode_6_SubMenu_Controls() {                              // Auto Turn Sub M
         if (mm_Radius < .01) {mm_Radius = .01;}                                    // limits the lower bound of length of cut
         Enc2.setEncoderPosition(0);
       } 
+      if (mm_radius_old != mm_Radius) {Build_XY = 0;}
     }
   }
-  if (submenu == 3) {                                                           // submenu 3 thread Final Diameter value adjustment
-    //----Inch----//
-    if (Thread_Mode == 0) {
-      if (Enc2.getEncoderPosition() < 0) {
-        Radius_Steps = Radius_Steps + 1;
-        if (Enc2.getEncoderPosition() < -1) { Radius_Steps = Radius_Steps + 10;}           // Fast Scroll
-        if (Radius_Steps > 100) {Radius_Steps = 100;}
-        Enc2.setEncoderPosition(0);
-      } 
-      if (Enc2.getEncoderPosition() > 0) {
-        Radius_Steps = Radius_Steps -1;
-        if (Enc2.getEncoderPosition() > 1) { Radius_Steps = Radius_Steps - 10;}            // Fast Scroll
-        if (Radius_Steps < 1) {Radius_Steps = 1;}                                     // limits the lower bound of length of cut
-        Enc2.setEncoderPosition(0);
-      } 
-    }
+  if (submenu == 3) {                                                           // submenu 3 steps/resolution input
+    int old_steps = Radius_Steps;
+    if (Enc2.getEncoderPosition() < 0) {
+      Radius_Steps = Radius_Steps + 1;
+      if (Enc2.getEncoderPosition() < -1) { Radius_Steps = Radius_Steps + 10;}           // Fast Scroll
+      if (Radius_Steps > 100) {Radius_Steps = 100;}
+      Enc2.setEncoderPosition(0);
+    } 
+    if (Enc2.getEncoderPosition() > 0) {
+      Radius_Steps = Radius_Steps -1;
+      if (Enc2.getEncoderPosition() > 1) { Radius_Steps = Radius_Steps - 10;}            // Fast Scroll
+      if (Radius_Steps < 1) {Radius_Steps = 1;}                                     // limits the lower bound of length of cut
+      Enc2.setEncoderPosition(0);
+    } 
+    if (old_steps != Radius_Steps) {Build_XY = 0;}
   }
 }

@@ -7,14 +7,19 @@ void setup() {
   Mode = Mode_Array_Pos;
   TPI = TPI_Array[TPI_Array_Pos];
   Pitch = Pitch_Array[Pitch_Array_Pos];
-  LeadSpeed = MaxLeadRPM * LeadSPR / 60;         // Leadscrew Max Steps/sec
 
   spindle.setInitConfig();  //start spindle encoder
   spindle.init();
 
-  LeadScrew.begin(LeadStp, LeadDir);
+//----Stepper Setup----//
+  LeadSpeed = MaxLeadRPM * LeadSPR / 60;         // Leadscrew Max Steps/sec
+  //LeadScrew.begin(LeadStp, LeadDir);
   //LeadScrew.setEnablePin(Stepper_Enable);
+  LeadScrew.setMaxSpeed(LeadSpeed);
+  LeadScrew.setSpeed(0);
+  LeadScrew.setPinsInverted(true,true,true);
   //pinMode(Stepper_Enable, HIGH);    //enables drive
+
 
 //----Setup Various Display Methods----//
   Serial.begin(115200);             // starts serial
@@ -64,7 +69,9 @@ if (S_Timer.check() == 1) {Serial.print(Measure_Array_Pos); Serial.print("  "); 
 Serial.print("  "); Serial.println(submenu);
 }
 
-  LeadScrew.loop();             // Call this as often as possible for stepper control
+  //LeadScrew.loop();             // Call this as often as possible for stepper control
+  LeadScrew.runSpeed();
+  LeadScrew.run();
 
   if (Mode_Array_Pos == 0) {Feed();} 
   if (Mode_Array_Pos == 1) {Thread();} 

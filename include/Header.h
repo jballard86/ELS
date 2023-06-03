@@ -4,7 +4,8 @@
 #include <avr/io.h>
 #include <SPI.h>
 #include <avr/interrupt.h>              //https://www.pjrc.com/teensy/interrupts.html
-#include <ContinuousStepper.h>
+//#include <ContinuousStepper.h>
+#include <AccelStepper.h>
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1327.h>
@@ -28,8 +29,8 @@ long Refresh_Rate = 100000;
 //----Machine Specific----//
   const int LeadScrew_TPI = 10; 
   volatile long SpindleCPR = 3416.00; //4096;               // Spindle Counts per rev  include any gear ratios
-  const int LeadSPR = 800;                          // Lead Screw Steps per rev  include any gear ratios
-  const int MaxLeadRPM = 1500;
+  const double LeadSPR = 800;                          // Lead Screw Steps per rev  include any gear ratios
+  const double MaxLeadRPM = 1500;
 
 //----Menu Specific----//
   int Metric = 0;                                      // Metric designation 0=Inch 1=Metric
@@ -64,9 +65,9 @@ long Refresh_Rate = 100000;
   double Radius_X[Radius_Max_steps];
   double Radius_Y[Radius_Max_steps];
   int Radius_type = 1;         // 0=left Convex; 1=right Convex; 2=left concave; 3=right concave
-  double in_Radius = 3;
-  double mm_Radius = 12;
-  int Radius_Steps = 100;
+  double in_Radius = .25;
+  double mm_Radius = 6;
+  int Radius_Steps = 40;
   volatile double R_Step_Angle = 0;
   int Build_XY = 0;
 
@@ -111,7 +112,8 @@ Adafruit_SSD1327 Graph_Display(128, 128, &Wire, OLED_RESET, 1000000);
 IntervalTimer RPM_Check;                              // Interval timer tp check RPM of the spindle
 PeriodicTimer Refresh_Rate_Timer(TCK);                  // Software Timer to call the 7seg display routine
 QuadEncoder spindle(1, EncA, EncB);
-ContinuousStepper LeadScrew;
+//ContinuousStepper LeadScrew;
+AccelStepper LeadScrew(AccelStepper::DRIVER, LeadStp, LeadDir);
 Metro S_Timer = Metro(1000);
 
 //----Menu Strings----//

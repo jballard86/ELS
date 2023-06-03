@@ -8,7 +8,8 @@ void Thread() {
     double rpm = ((LeadScrew_TPI*(SpindleRPM))/(TPI * TPI));        // This outputs Leadscrew RPM
     rpm = ((rpm/60)*LeadSPR);                                 // This outputs rotations/second in steps
     rpm = rpm;                                               // This is where Forward and Reverse is dictaded, SpindleRPM will change this, however there may be a need to change it manually
-    LeadScrew.spin(rpm);
+    //LeadScrew.spin(rpm);
+    LeadScrew.setSpeed(rpm);
     //Serial.println(rpm);
     //Serial.println(digitalRead(LeadDir));
   } 
@@ -16,7 +17,8 @@ void Thread() {
     Pitch = Pitch_Array[Pitch_Array_Pos];
     double rpm = .00155*SpindleRPM*LeadScrew_TPI*(Pitch*Pitch);
     rpm = ((rpm/60)*LeadSPR);
-    LeadScrew.spin(rpm);  //this should output RPM in steps/sec  
+    //LeadScrew.spin(rpm);  //this should output RPM in steps/sec  
+    LeadScrew.setSpeed(rpm);
   }
 }
 

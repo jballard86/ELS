@@ -347,16 +347,16 @@ void Mode_6_SubMenu() {         // Auto Thread Sub Menu
       Feed_Display.setCursor(0,45);
       Feed_Display.println("  Input");
       Feed_Display.setCursor(0,65);
-      Feed_Display.println("Radius");
+      Feed_Display.println("  Radius");
       Feed_Display.setCursor(0,100);
-        if (Thread_Mode == 0) {Feed_Display.print(" "); Feed_Display.print(in_Radius,3); Feed_Display.println(" in");}
-        if (Thread_Mode == 1) {Feed_Display.print(" "); Feed_Display.print(mm_Radius,3); Feed_Display.println(" mm");} 
+        if (Metric == 0) {Feed_Display.print(" "); Feed_Display.print(in_Radius,3); Feed_Display.println(" in");}
+        if (Metric == 1) {Feed_Display.print(" "); Feed_Display.print(mm_Radius,3); Feed_Display.println(" mm");} 
     }
     if (submenu == 3) {                                   // submenu page two --- Thread Diameter
       Feed_Display.setCursor(0,45);
       Feed_Display.println("  Input");
       Feed_Display.setCursor(0,65);
-      Feed_Display.println("Resolution");
+      Feed_Display.println("  Steps");
       Feed_Display.setCursor(0,100);
         Feed_Display.print(" "); Feed_Display.print(Radius_Steps,DEC); Feed_Display.println(" Steps");
     }
