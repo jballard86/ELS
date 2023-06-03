@@ -4,7 +4,8 @@
 #include <avr/io.h>
 #include <SPI.h>
 #include <avr/interrupt.h>              //https://www.pjrc.com/teensy/interrupts.html
-#include <ContinuousStepper.h>
+//#include <ContinuousStepper.h>
+#include <AccelStepper.h>
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1327.h>
@@ -14,6 +15,8 @@
 //#include "TeensyTimerInterrupt.h"
 #include <Metro.h>
 //#include <seesaw_neopixel.h> 
+
+
 
 using namespace TeensyTimerTool;
 using namespace std;
@@ -26,8 +29,8 @@ long Refresh_Rate = 100000;
 //----Machine Specific----//
   const int LeadScrew_TPI = 10; 
   volatile long SpindleCPR = 3416.00; //4096;               // Spindle Counts per rev  include any gear ratios
-  const int LeadSPR = 800;                          // Lead Screw Steps per rev  include any gear ratios
-  const int MaxLeadRPM = 1500;
+  const double LeadSPR = 800;                          // Lead Screw Steps per rev  include any gear ratios, should be divisable by 10 if possible
+  const double MaxLeadRPM = 1500;
 
 //----Menu Specific----//
   int Metric = 0;                                      // Metric designation 0=Inch 1=Metric
@@ -56,11 +59,19 @@ long Refresh_Rate = 100000;
   float mm_DOC = .25;
   float in_length_of_cut = .5;
   float mm_length_of_cut = 12;
+  double Steps_Per_Thou = 0;
+  double Steps_Per_hundredth_mm = 0;
 
-//----Fillet Variables----//
-  const int Fillet_steps = 100;
-  double Fillet_X[Fillet_steps];
-  double Fillet_Y[Fillet_steps];
+//----Radius Variables----//
+  const int Radius_Max_steps = 100;
+  double Radius_X[Radius_Max_steps];
+  double Radius_Y[Radius_Max_steps];
+  int Radius_type = 1;         // 0=left Convex; 1=right Convex; 2=left concave; 3=right concave
+  double in_Radius = .25;
+  double mm_Radius = 6;
+  int Radius_Steps = 40;
+  volatile double R_Step_Angle = 0;
+  int Build_XY = 0;
 
 //----setup Interface Encoders thir variables and pins----//
   Adafruit_seesaw Enc1;
@@ -99,10 +110,12 @@ long Refresh_Rate = 100000;
 
 Adafruit_7segment matrix = Adafruit_7segment();
 Adafruit_SSD1327 Feed_Display(128, 128, &Wire, OLED_RESET, 1000000);
+Adafruit_SSD1327 Graph_Display(128, 128, &Wire, OLED_RESET, 1000000);
 IntervalTimer RPM_Check;                              // Interval timer tp check RPM of the spindle
 PeriodicTimer Refresh_Rate_Timer(TCK);                  // Software Timer to call the 7seg display routine
 QuadEncoder spindle(1, EncA, EncB);
-ContinuousStepper LeadScrew;
+//ContinuousStepper LeadScrew;
+AccelStepper LeadScrew(AccelStepper::DRIVER, LeadStp, LeadDir);
 Metro S_Timer = Metro(1000);
 
 //----Menu Strings----//
@@ -160,6 +173,14 @@ void Mode_3_SubMenu();
 void Spindle_Angle();
 void Manual_Z();
 void Manual_X();
-void Radius();
 void Chamfer();
 void Auto_Feed_Clear();
+void Mode_6_SubMenu();
+void Auto_Radius();
+double  X_Coord(double X_Coord);
+double  Y_Coord(double Y_Coord);
+void Build_XY_Array();
+void Start_Graph_Display();
+void graph_Radius_Array();
+void Mode_6_Auto_Radius_Controls();
+void Mode_6_SubMenu_Controls();

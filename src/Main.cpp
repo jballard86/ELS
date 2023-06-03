@@ -6,13 +6,17 @@ void setup() {
   Mode = Mode_Array_Pos;
   TPI = TPI_Array[TPI_Array_Pos];
   Pitch = Pitch_Array[Pitch_Array_Pos];
-  LeadSpeed = MaxLeadRPM * LeadSPR / 60;         // Leadscrew Max Steps/sec
+  Steps_Per_Thou = (LeadSPR * LeadScrew_TPI) / 1000;
+  Steps_Per_hundredth_mm = 0.000393701 * LeadSPR * LeadScrew_TPI;   //0.000393701 is from the simplified equation: (LeadSPR/((1/LeadScrew_TPI)*25.4))/100
 
   spindle.setInitConfig();  //start spindle encoder
   spindle.init();
 
-  LeadScrew.begin(LeadStp, LeadDir);
-  //LeadScrew.setEnablePin(Stepper_Enable);
+//----Stepper Setup----//
+  LeadSpeed = MaxLeadRPM * LeadSPR / 60;         // Leadscrew Max Steps/sec
+  LeadScrew.setMaxSpeed(LeadSpeed);
+  LeadScrew.setSpeed(0);
+  LeadScrew.setPinsInverted(true,true,true);
   //pinMode(Stepper_Enable, HIGH);    //enables drive
 
 //----Setup Various Display Methods----//
@@ -25,6 +29,7 @@ void setup() {
   matrix.begin(0x70);               // starts 7 segment display, the () is the address
     matrix.setBrightness(15);       // sets 7 segment brightness to max, applicable values are 0-15
   Start_Feed_Display();             //runs display start routine
+  Start_Graph_Display();
   delay(500);
 
 //----Start I2C Encoder Interface----//
@@ -58,25 +63,24 @@ void loop() {
   */
 
 Spindle_Angle();
-if (S_Timer.check() == 1) {Serial.print(Measure_Array_Pos); Serial.print("  "); Serial.print(In_FeedRate);
-Serial.print("  "); Serial.println(" ");
+if (S_Timer.check() == 1) {Serial.print(Measure_Array_Pos); Serial.print("  "); Serial.print(Mode_Array_Pos);
+Serial.print("  "); Serial.println(submenu);
 }
 
-  LeadScrew.loop();             // Call this as often as possible for stepper control
+  //LeadScrew.loop();             // Call this as often as possible for stepper control
+  LeadScrew.runSpeed();
+  LeadScrew.run();
 
   if (Mode_Array_Pos == 0) {Feed();} 
   if (Mode_Array_Pos == 1) {Thread();} 
   if (Mode_Array_Pos == 2) {Auto_Thread();}
   if (Mode_Array_Pos == 3) {Turn_to_Diameter();}
-  if (Mode_Array_Pos == 5) {Manual_Z();}
-  if (Mode_Array_Pos == 6) {Manual_X();}
-  if (Mode_Array_Pos == 7) {Radius();}
-  if (Mode_Array_Pos == 8) {Chamfer();}
+  if (Mode_Array_Pos == 4) {Manual_Z();}
+  if (Mode_Array_Pos == 5) {Manual_X();}
+  if (Mode_Array_Pos == 6) {Auto_Radius();}
+  if (Mode_Array_Pos == 7) {Chamfer();}
 }
 
-
-void Radius() {
-}
 void Chamfer() {
 }
 
@@ -88,3 +92,4 @@ void Chamfer() {
 #include "Menu.h"
 #include "Thread.h"
 #include <string>
+#include "Auto_Radius.h"
