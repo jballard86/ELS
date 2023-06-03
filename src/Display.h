@@ -22,7 +22,7 @@ void Refresh() {
     Feed_Display.display();
   }
 
-  if (SpindleRPM == 0) {                //do a full screen on feed display as the last sub menu option, draw the bar stock, and do an accurate fillet/radius
+  if (SpindleRPM == 0) {                //do a full screen on feed display as the last sub menu option, draw the bar stock, and do an accurate fillet/radius, show where tool should go to start feature
     Graph_Display.clearDisplay();
     graph_Radius_Array();
     Graph_Display.display();
