@@ -329,11 +329,21 @@ void Mode_6_SubMenu() {         // Auto Thread Sub Menu
       Feed_Display.setTextColor(SSD1327_WHITE);
       Feed_Display.setTextSize(2); 
       Feed_Display.setCursor(0,0);
-      Feed_Display.println("Radius Mode");
-       if (Radius_type == 0 || 1) {Feed_Display.print("  Convex");} 
-       if (Radius_type == 2 || 3) {Feed_Display.print("  Concave");} 
+      Feed_Display.println("  Auto");
+      Feed_Display.println("  Radius");              // this could be a selection in the future for OD or ID
     }
     if (submenu == 1) {                                   // submenu page one --- Thread Length
+      Feed_Display.setCursor(0,45);
+      Feed_Display.println("  Input");
+      Feed_Display.setCursor(0,65);
+      Feed_Display.println("  Type");
+      Feed_Display.setCursor(0,90);
+        if (Radius_type == 0) {Feed_Display.println("  Left"); Feed_Display.println("  Convex");}
+        if (Radius_type == 1) {Feed_Display.println("  Right"); Feed_Display.println("  Convex");}
+        if (Radius_type == 2) {Feed_Display.println("  Left"); Feed_Display.println("  Concave");}
+        if (Radius_type == 3) {Feed_Display.println("  Right"); Feed_Display.println("  Concave");}
+    }
+    if (submenu == 2) {                                   // submenu page one --- Thread Length
       Feed_Display.setCursor(0,45);
       Feed_Display.println("  Input");
       Feed_Display.setCursor(0,65);
@@ -342,7 +352,7 @@ void Mode_6_SubMenu() {         // Auto Thread Sub Menu
         if (Thread_Mode == 0) {Feed_Display.print(" "); Feed_Display.print(in_Radius,3); Feed_Display.println(" in");}
         if (Thread_Mode == 1) {Feed_Display.print(" "); Feed_Display.print(mm_Radius,3); Feed_Display.println(" mm");} 
     }
-    if (submenu == 2) {                                   // submenu page two --- Thread Diameter
+    if (submenu == 3) {                                   // submenu page two --- Thread Diameter
       Feed_Display.setCursor(0,45);
       Feed_Display.println("  Input");
       Feed_Display.setCursor(0,65);
@@ -350,16 +360,29 @@ void Mode_6_SubMenu() {         // Auto Thread Sub Menu
       Feed_Display.setCursor(0,100);
         Feed_Display.print(" "); Feed_Display.print(Radius_Steps,DEC); Feed_Display.println(" Steps");
     }
-    if (submenu == 3) {                                   // submenu page four --- Depth of cut
+    if (submenu == 4) {                                   // submenu page four --- Depth of cut
       Feed_Display.setCursor(0,45);
-      Feed_Display.println("  Input");
+      Feed_Display.println("Generated");
       Feed_Display.setCursor(0,65);
-      Feed_Display.println("  D.O.C.");
-      Feed_Display.setCursor(0,100);
-        if (Radius_type == 0) {Feed_Display.print(" "); Feed_Display.print("Left"); Feed_Display.println("Convex");}
-        if (Radius_type == 1) {Feed_Display.print(" "); Feed_Display.print("Right"); Feed_Display.println("Convex");}
-        if (Radius_type == 2) {Feed_Display.print(" "); Feed_Display.print("Left"); Feed_Display.println("Concave");}
-        if (Radius_type == 3) {Feed_Display.print(" "); Feed_Display.print("Right"); Feed_Display.println("Concave");}
+      Feed_Display.println(" Drawing");
+      
+      //----Draw part example with appropriate radius----//
+        if (Radius_type == 0) {// Left Convex Radius
+          Feed_Display.setCursor(0,100);
+          Feed_Display.println("Convex");
+        }
+        if (Radius_type == 1) {// Right Convex Radius
+          Feed_Display.setCursor(0,100);
+          Feed_Display.println("Convex");
+        }
+        if (Radius_type == 2) {// Left Concave Fillet
+          Feed_Display.setCursor(0,100);
+          Feed_Display.println("Convex");
+        }
+        if (Radius_type == 3) {// Right Concave Fillet
+          Feed_Display.setCursor(0,100);
+          Feed_Display.println("Convex");
+        }
     }
   }
 }

@@ -63,7 +63,7 @@ long Refresh_Rate = 100000;
   const int Radius_Max_steps = 100;
   double Radius_X[Radius_Max_steps];
   double Radius_Y[Radius_Max_steps];
-  int Radius_type = 3;         // 0 = left Convex 1 = right Convex 2 = left concave 3 = right concave
+  int Radius_type = 1;         // 0=left Convex; 1=right Convex; 2=left concave; 3=right concave
   double in_Radius = 3;
   double mm_Radius = 12;
   int Radius_Steps = 100;
@@ -178,3 +178,5 @@ double  Y_Coord(double Y_Coord);
 void Build_XY_Array();
 void Start_Graph_Display();
 void graph_Radius_Array();
+void Mode_6_Auto_Radius_Controls();
+void Mode_6_SubMenu_Controls();

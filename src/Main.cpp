@@ -60,9 +60,9 @@ void loop() {
   */
 
 Spindle_Angle();
-/*if (S_Timer.check() == 1) {Serial.print(Measure_Array_Pos); Serial.print("  "); Serial.print(In_FeedRate);
-Serial.print("  "); Serial.println(" ");
-}*/
+if (S_Timer.check() == 1) {Serial.print(Measure_Array_Pos); Serial.print("  "); Serial.print(Mode_Array_Pos);
+Serial.print("  "); Serial.println(submenu);
+}
 
   LeadScrew.loop();             // Call this as often as possible for stepper control
 
