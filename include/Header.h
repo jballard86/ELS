@@ -29,7 +29,7 @@ long Refresh_Rate = 100000;
 //----Machine Specific----//
   const int LeadScrew_TPI = 10; 
   volatile long SpindleCPR = 3416.00; //4096;               // Spindle Counts per rev  include any gear ratios
-  const double LeadSPR = 800;                          // Lead Screw Steps per rev  include any gear ratios
+  const double LeadSPR = 800;                          // Lead Screw Steps per rev  include any gear ratios, should be divisable by 10 if possible
   const double MaxLeadRPM = 1500;
 
 //----Menu Specific----//
@@ -59,6 +59,8 @@ long Refresh_Rate = 100000;
   float mm_DOC = .25;
   float in_length_of_cut = .5;
   float mm_length_of_cut = 12;
+  double Steps_Per_Thou = 0;
+  double Steps_Per_hundredth_mm = 0;
 
 //----Radius Variables----//
   const int Radius_Max_steps = 100;

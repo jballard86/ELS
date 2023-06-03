@@ -21,7 +21,7 @@ void Turn_to_Diameter(){
 }
 
 void Manual_Z() {
-
+//use Steps_Per_Thou or Steps_Per_hundredth_mm
 }
 
 void Manual_X() {
