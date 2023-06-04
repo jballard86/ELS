@@ -26,14 +26,14 @@ using namespace std;
 
 #define OLED_RESET -1
 #define ENCODER_OPTIMIZE_INTERRUPTS
-volatile long RPM_Check_INTERVAL_MS = 100000;
-long Refresh_Rate = 200000;
+volatile double RPM_Check_INTERVAL_MS = 100000;
+double Refresh_Rate = 200000;
 
 //----Machine Specific----//
-  const int LeadScrew_TPI = 10; 
-  volatile long SpindleCPR = 3416.00; //4096;               // Spindle Counts per rev  include any gear ratios
-  const double LeadSPR = 800;                          // Lead Screw Steps per rev  include any gear ratios, should be divisable by 10 if possible
-  const double MaxLeadRPM = 1500;
+  const double LeadScrew_TPI = 8; 
+  volatile double SpindleCPR = 3416.00; //4096;               // Spindle Counts per rev  include any gear ratios
+  const double LeadSPR = 3200;                          // Lead Screw Steps per rev  include any gear ratios, should be divisable by 10 if possible
+  const double MaxLeadRPM = 600;
 
 //----Menu Specific----//
   int Metric = 0;                                      // Metric designation 0=Inch 1=Metric
@@ -41,29 +41,30 @@ long Refresh_Rate = 200000;
   int Mode;                                             // 1=feed 2=thread 3=auto thread 4=turn to diameter 5=manual_Z 6=manual_X 7=radius 8=chamfer
   volatile int S_Dir = 2;                              // set direction to park, 0=left 1=right 2=park
   int Menu_pos = 3;
-  float In_FeedRate = .001;                             // Initial Inch Feed Rate
-  float mm_FeedRate = .01;                              // Initial mm Feed Rate
+  double In_FeedRate = .001;                             // Initial Inch Feed Rate
+  double mm_FeedRate = .01;                              // Initial mm Feed Rate
   int submenu = 0;
 
 //-----Threading/Feed Variables----//
   // MAny of the threading variables have an in/mm equvilant inorder to allow saving between selections
-  long Inch_Thread_RPM = 0;
-  long mm_Thread_RPM = 0;
-  float TPI;
-  float Pitch;
-  float in_Outside_Diameter = 1;
-  float mm_Outside_Diameter = 12;
-  float in_Final_Diameter = 1;
-  float mm_Final_Diameter = 12;
-  float Minor_Diameter;
+  double Inch_Thread_RPM = 0;
+  double mm_Thread_RPM = 0;
+  double TPI;
+  double Pitch;
+  double in_Outside_Diameter = 1;
+  double mm_Outside_Diameter = 12;
+  double in_Final_Diameter = 1;
+  double mm_Final_Diameter = 12;
+  double Minor_Diameter;
   double mm_Thread_Depth;
   double in_Thread_Depth;
-  float in_DOC = .01;
-  float mm_DOC = .25;
-  float in_length_of_cut = .5;
-  float mm_length_of_cut = 12;
+  double in_DOC = .01;
+  double mm_DOC = .25;
+  double in_length_of_cut = .5;
+  double mm_length_of_cut = 12;
   double Steps_Per_Thou = 0;
   double Steps_Per_hundredth_mm = 0;
+  double rpm;
 
 //----Radius Variables----//
   const int Radius_Max_steps = 100;
@@ -117,10 +118,8 @@ Adafruit_SSD1327 Graph_Display(128, 128, &Wire, OLED_RESET, 1000000);
 IntervalTimer RPM_Check;                              // Interval timer tp check RPM of the spindle
 PeriodicTimer Refresh_Rate_Timer(TCK);                  // Software Timer to call the 7seg display routine
 QuadEncoder spindle(1, EncA, EncB);
-
 AccelStepper LeadScrew(AccelStepper::DRIVER, LeadStp, LeadDir);
-//Stepper LeadScrew(LeadStp, LeadDir);  //using Teensy Stepper 4
-
+  int Step_Pulse_Width = 5;
 Metro S_Timer = Metro(1000);
 
 //----Menu Strings----//
@@ -189,3 +188,4 @@ void Start_Graph_Display();
 void graph_Radius_Array();
 void Mode_6_Auto_Radius_Controls();
 void Mode_6_SubMenu_Controls();
+void testgraph();

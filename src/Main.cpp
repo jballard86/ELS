@@ -15,14 +15,8 @@ void setup() {
 
 //----Stepper Setup----//
   LeadSpeed = MaxLeadRPM * LeadSPR / 60;         // Leadscrew Max Steps/sec
-  LeadScrew.setMinPulseWidth(10);
+  LeadScrew.setMinPulseWidth(Step_Pulse_Width);
   LeadScrew.setMaxSpeed(LeadSpeed);
-  //LeadScrew.setAcceleration(5000);
-  //LeadScrew.setEnablePin(Stepper_Enable);
-  //LeadScrew.setPinsInverted(false,false,false);
-  //pinMode(Stepper_Enable, LOW);    //enables drive
-  
-
 
 //----Setup Various Display Methods----//
   Serial.begin(115200);             // starts serial
@@ -54,8 +48,6 @@ void setup() {
   Refresh_Rate_Timer.begin(Refresh, Refresh_Rate);        // Display Refresh Rate
   S_Timer.interval((124/60)*1000);
   S_Timer.reset();
-  
-  
 }
 
 void loop() {
@@ -68,10 +60,9 @@ void loop() {
   */
 
 Spindle_Angle();
-if (S_Timer.check() == 1) {Serial.print(Metric); Serial.print("  "); Serial.print("");
+if (S_Timer.check() == 1) {Serial.print(rpm,DEC); Serial.print("  "); Serial.print(LeadScrew.speed(),DEC);
 Serial.print("  "); Serial.println(SpindleRPM,DEC);
 }
-
 
   LeadScrew.runSpeed();
   //LeadScrew.run();
@@ -95,10 +86,8 @@ Serial.print("  "); Serial.println(SpindleRPM,DEC);
 }
 
 void Chamfer() {
-
   
 }
-
 
 #include "Display.h"
 #include "Feed.h"

@@ -25,6 +25,7 @@ void Refresh() {
   if (SpindleRPM == 0) {                //do a full screen on feed display as the last sub menu option, draw the bar stock, and do an accurate fillet/radius, show where tool should go to start feature
     Graph_Display.clearDisplay();
     graph_Radius_Array();
+    //testgraph();
     Graph_Display.display();
   }
 }
@@ -49,9 +50,12 @@ void Start_Graph_Display() {
   Graph_Display.setCursor(0,0);
   Graph_Display.println("Jefferson ELS v1.1");
   Graph_Display.display();
+
+  Graph_Display.display();
 }
 
 void Seven_Segment() {
+  
   int DisplayRPM = SpindleRPM;        // converts the double to a Int and gets rid of the decimal, rounding is irrelevant for this action
   matrix.print(DisplayRPM);           // This will display the RPM on the seven segment display
   matrix.writeDisplay();              // This will send the RPM data to the 7 segment display
@@ -67,4 +71,11 @@ void graph_Radius_Array(){
       //Serial.println(array_step);
   }
   
+}
+
+void testgraph() {
+  double scaled_in_OD = (128/in_Outside_Diameter) / 3;
+  Graph_Display.fillRect(0,((64)-(scaled_in_OD/2)),100,(scaled_in_OD),SSD1327_WHITE);
+
+  Graph_Display.display();
 }

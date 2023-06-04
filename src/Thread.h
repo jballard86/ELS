@@ -2,23 +2,21 @@
 // https://www.machiningdoctor.com/charts/unified-inch-threads-charts/
 
 void Thread() {
-  
+  double stepsPerSec;
   if (Thread_Mode == 0) {            //----Inch Threading----//
     TPI = TPI_Array[TPI_Array_Pos];
-    double rpm = ((LeadScrew_TPI*(SpindleRPM))/(TPI * TPI));        // This outputs Leadscrew RPM
-    rpm = ((rpm/60)*LeadSPR);                                 // This outputs rotations/second in steps
-    rpm = rpm;                                               // This is where Forward and Reverse is dictaded, SpindleRPM will change this, however there may be a need to change it manually
-    //LeadScrew.spin(rpm);
-    LeadScrew.setSpeed(rpm);
+    rpm = ((LeadScrew_TPI*(SpindleRPM))/(TPI * TPI));        // This outputs Leadscrew RPM
+    stepsPerSec = ((rpm/60)*LeadSPR);                                 // This outputs rotations/second in steps
+    stepsPerSec = stepsPerSec;                                               // This is where Forward and Reverse is dictaded, SpindleRPM will change this, however there may be a need to change it manually
+    LeadScrew.setSpeed(stepsPerSec);
     //Serial.println(rpm);
     //Serial.println(digitalRead(LeadDir));
   } 
   else if (Thread_Mode == 1) {    //----Metric Threading----//
     Pitch = Pitch_Array[Pitch_Array_Pos];
-    double rpm = .00155*SpindleRPM*LeadScrew_TPI*(Pitch*Pitch);
-    rpm = ((rpm/60)*LeadSPR);
-    //LeadScrew.spin(rpm);  //this should output RPM in steps/sec  
-    LeadScrew.setSpeed(rpm);
+    rpm = .00155*SpindleRPM*LeadScrew_TPI*(Pitch*Pitch);
+    stepsPerSec = ((rpm/60)*LeadSPR);
+    LeadScrew.setSpeed(stepsPerSec);
   }
 }
 

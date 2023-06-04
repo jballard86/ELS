@@ -50,12 +50,13 @@ void Mode_0_Feed_Controls() {                                 // Feed Mode
       if (Enc2.getEncoderPosition() < 0) {
         In_FeedRate = In_FeedRate + .001;
         if (Enc2.getEncoderPosition() < -1) { In_FeedRate = In_FeedRate + .014;}          // Fast Scroll
+        if (Enc2.getEncoderPosition() < -3) { In_FeedRate = In_FeedRate + .1;}            // Faster Scroll
         Enc2.setEncoderPosition(0);
       } 
       if (Enc2.getEncoderPosition() > 0) {
         In_FeedRate = In_FeedRate - .001;
         if (Enc2.getEncoderPosition() > 1) { In_FeedRate = In_FeedRate - .014;}          // Fast Scroll
-
+        if (Enc2.getEncoderPosition() > 3) { In_FeedRate = In_FeedRate - .1;}            // Faster Scroll
         Enc2.setEncoderPosition(0);
       } 
       if (In_FeedRate < .001) {In_FeedRate = .001;}
@@ -65,11 +66,13 @@ void Mode_0_Feed_Controls() {                                 // Feed Mode
       if (Enc2.getEncoderPosition() < 0) {
         mm_FeedRate = mm_FeedRate + .01;
         if (Enc2.getEncoderPosition() < -1) { mm_FeedRate = mm_FeedRate + .09;}           // Fast Scroll
+        if (Enc2.getEncoderPosition() < -3) { mm_FeedRate = mm_FeedRate + 1;}           // Fast Scroll
         Enc2.setEncoderPosition(0);
       } 
       if (Enc2.getEncoderPosition() > 0) {
         mm_FeedRate = mm_FeedRate - .01;
         if (Enc2.getEncoderPosition() > 1) { mm_FeedRate = mm_FeedRate - .09;}           // Fast Scroll
+        if (Enc2.getEncoderPosition() > 3) { mm_FeedRate = mm_FeedRate - 1;}           // Fast Scroll
         Enc2.setEncoderPosition(0);
       } 
       if (mm_FeedRate < .01) {mm_FeedRate = .01;}
