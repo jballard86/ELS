@@ -25,7 +25,7 @@ void Refresh() {
   if (SpindleRPM == 0) {                //do a full screen on feed display as the last sub menu option, draw the bar stock, and do an accurate fillet/radius, show where tool should go to start feature
     Graph_Display.clearDisplay();
     graph_Radius_Array();
-    //testgraph();
+    testgraph();
     Graph_Display.display();
   }
 }
@@ -74,8 +74,13 @@ void graph_Radius_Array(){
 }
 
 void testgraph() {
-  double scaled_in_OD = (128/in_Outside_Diameter) / 3;
-  Graph_Display.fillRect(0,((64)-(scaled_in_OD/2)),100,(scaled_in_OD),SSD1327_WHITE);
+
+  Graph_Display.fillRect(0,50,100,40,SSD1327_WHITE);
+  Graph_Display.fillCircle(100,90,20,SSD1327_BLACK);  //y = y1+y2 from fillrect
+  Graph_Display.setCursor(0,0);
+  Graph_Display.println("Not to Scale");
+  Graph_Display.setCursor(0,20);
+  Graph_Display.println("Example Cut");
 
   Graph_Display.display();
 }
