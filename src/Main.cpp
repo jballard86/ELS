@@ -1,4 +1,5 @@
 #include "Header.h"
+#include "Version.h"
 
 //using: https://www.pjrc.com/teensy/td_timing_IntervalTimer.html
 
@@ -14,10 +15,14 @@ void setup() {
 
 //----Stepper Setup----//
   LeadSpeed = MaxLeadRPM * LeadSPR / 60;         // Leadscrew Max Steps/sec
+  LeadScrew.setMinPulseWidth(10);
   LeadScrew.setMaxSpeed(LeadSpeed);
-  LeadScrew.setSpeed(0);
-  LeadScrew.setPinsInverted(true,true,true);
-  //pinMode(Stepper_Enable, HIGH);    //enables drive
+  //LeadScrew.setAcceleration(5000);
+  //LeadScrew.setEnablePin(Stepper_Enable);
+  //LeadScrew.setPinsInverted(false,false,false);
+  //pinMode(Stepper_Enable, LOW);    //enables drive
+  
+
 
 //----Setup Various Display Methods----//
   Serial.begin(115200);             // starts serial
@@ -63,13 +68,13 @@ void loop() {
   */
 
 Spindle_Angle();
-if (S_Timer.check() == 1) {Serial.print(Measure_Array_Pos); Serial.print("  "); Serial.print(Mode_Array_Pos);
-Serial.print("  "); Serial.println(submenu);
+if (S_Timer.check() == 1) {Serial.print(Metric); Serial.print("  "); Serial.print("");
+Serial.print("  "); Serial.println(SpindleRPM,DEC);
 }
 
-  //LeadScrew.loop();             // Call this as often as possible for stepper control
+
   LeadScrew.runSpeed();
-  LeadScrew.run();
+  //LeadScrew.run();
 
   if (Mode_Array_Pos == 0) {Feed();} 
   if (Mode_Array_Pos == 1) {Thread();} 
@@ -79,9 +84,19 @@ Serial.print("  "); Serial.println(submenu);
   if (Mode_Array_Pos == 5) {Manual_X();}
   if (Mode_Array_Pos == 6) {Auto_Radius();}
   if (Mode_Array_Pos == 7) {Chamfer();}
+
+  /*for (int pop = 1; pop < 1000; pop++) {
+    digitalWrite(LeadStp, HIGH);
+    delayMicroseconds(2);
+    digitalWrite(LeadStp, LOW);
+    delayMicroseconds(2);
+    //Serial.print(" z ");
+  }*/
 }
 
 void Chamfer() {
+
+  
 }
 
 

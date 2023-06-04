@@ -1,4 +1,5 @@
 #include "Arduino.h"
+
 #include <QuadEncoder.h>
 #include <Encoder.h>
 #include <avr/io.h>
@@ -6,6 +7,8 @@
 #include <avr/interrupt.h>              //https://www.pjrc.com/teensy/interrupts.html
 //#include <ContinuousStepper.h>
 #include <AccelStepper.h>
+//#include "teensystep4.h"
+  //using namespace TS4;
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1327.h>
@@ -24,7 +27,7 @@ using namespace std;
 #define OLED_RESET -1
 #define ENCODER_OPTIMIZE_INTERRUPTS
 volatile long RPM_Check_INTERVAL_MS = 100000;
-long Refresh_Rate = 100000;
+long Refresh_Rate = 200000;
 
 //----Machine Specific----//
   const int LeadScrew_TPI = 10; 
@@ -88,7 +91,7 @@ long Refresh_Rate = 100000;
 //---- Pins ----//
   const int EncA = 7;               // encoder channel A pin              
   const int EncB = 8;               // encoder channel B pin    
-  const int LeadDir = 6;            // Leadscrew Stepper Direction Pin    
+  const int LeadDir = 3;            // Leadscrew Stepper Direction Pin    
   const int LeadStp = 4;            // Leadscrew Stepper Step Pin         
   const int Stepper_Enable = 2;     // Leadscrew Stepper Enable pin       
   const int SDA_Pin = 18;           // I2C SDA Pin
@@ -114,8 +117,10 @@ Adafruit_SSD1327 Graph_Display(128, 128, &Wire, OLED_RESET, 1000000);
 IntervalTimer RPM_Check;                              // Interval timer tp check RPM of the spindle
 PeriodicTimer Refresh_Rate_Timer(TCK);                  // Software Timer to call the 7seg display routine
 QuadEncoder spindle(1, EncA, EncB);
-//ContinuousStepper LeadScrew;
+
 AccelStepper LeadScrew(AccelStepper::DRIVER, LeadStp, LeadDir);
+//Stepper LeadScrew(LeadStp, LeadDir);  //using Teensy Stepper 4
+
 Metro S_Timer = Metro(1000);
 
 //----Menu Strings----//
