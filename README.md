@@ -23,6 +23,6 @@ This Lead Screw is 100% untested at this point, the code works on a test stand t
   - 1 DC motor w/encoder
   - various display/interface hardware
 
-The code seams to work as intended on the test board with the exception of stepper motor direction.  This seems to be a PCB trace error, and should be fixed in a revision that is currently in production (5/30/23).
+PCB is 100% operational on test board.  Cad files to come for mounting all components in a housing for mounting near the lathe.
 
 Once the direction issue is fixed, this will be installed on my lathe to start testing.
