@@ -32,7 +32,7 @@ double Refresh_Rate = 200000;
 //----Machine Specific----//
   const double LeadScrew_TPI = 8; 
   volatile double SpindleCPR = 3416.00; //4096;               // Spindle Counts per rev  include any gear ratios
-  const double LeadSPR = 3200;                          // Lead Screw Steps per rev  include any gear ratios, should be divisable by 10 if possible
+  const double LeadSPR = 6400;                                // Lead Screw Steps per rev  include any gear ratios and microstepping =steps/rev * microstepping * gear ratio
   const double MaxLeadRPM = 600;
 
 //----Menu Specific----//
@@ -70,7 +70,7 @@ double Refresh_Rate = 200000;
   const int Radius_Max_steps = 100;
   double Radius_X[Radius_Max_steps];
   double Radius_Y[Radius_Max_steps];
-  int Radius_type = 1;         // 0=left Convex; 1=right Convex; 2=left concave; 3=right concave
+  int Radius_type = 3;         // 0=left Convex; 1=right Convex; 2=left concave; 3=right concave
   double in_Radius = .25;
   double mm_Radius = 6;
   int Radius_Steps = 40;
