@@ -24,7 +24,7 @@ void Spindle_Angle() {
   sei();
 
   TotalRotations = newSpindle / SpindleCPR;
-  TotalRot_noDEC = TotalRotations;
+  TotalRot_noDEC = TotalRotations;                                // Convert the value to an int, so that the whole number can be easily removed
   Encoder_Angle = ((TotalRotations - TotalRot_noDEC))*360;
   
   //if encoder angle = original start angle then start leadscrew

@@ -4,7 +4,11 @@ void Auto_Radius() {
     Build_XY_Array();
   }
 
-  
+// Setup Start_Pos array with current position
+// Setup End_Pos array with desired move cordinate - a finish pass - DOC/Material to be removed
+  //use: ZY_Steppers.moveTo(End_Pos);
+// Finish Pass
+
 
 }
 
@@ -39,4 +43,14 @@ ending point is at 270 degrees (4.71239 Rad) on the OD (x = -radius, -y = OD / 2
 start of cut starts at Z,-Y (X,-Y)
 
 90 degress is 1.5708 rad
+
+
+//----Position Variables----//
+  double CrossZ;
+  double LeadY;
+  double Start_Pos[2];
+  double End_Pos[2];
+
+  move example:
+    ZY_Steppers.moveTo(End_Pos);
 */

@@ -5,17 +5,14 @@
 #include <avr/io.h>
 #include <SPI.h>
 #include <avr/interrupt.h>              //https://www.pjrc.com/teensy/interrupts.html
-//#include <ContinuousStepper.h>
 #include <AccelStepper.h>
-//#include "teensystep4.h"
-  //using namespace TS4;
+#include <MultiStepper.h>
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1327.h>
 #include "Adafruit_LEDBackpack.h"
 #include "TeensyTimerTool.h"
 #include "Adafruit_seesaw.h"
-//#include "TeensyTimerInterrupt.h"
 #include <Metro.h>
 //#include <seesaw_neopixel.h> 
 
@@ -32,8 +29,10 @@ double Refresh_Rate = 200000;
 //----Machine Specific----//
   const double LeadScrew_TPI = 8; 
   volatile double SpindleCPR = 3416.00; //4096;               // Spindle Counts per rev  include any gear ratios
-  const double LeadSPR = 6400;                                // Lead Screw Steps per rev  include any gear ratios and microstepping =steps/rev * microstepping * gear ratio
-  const double MaxLeadRPM = 600;
+  const double LeadSPR = 6400;                                // LeadScrew Steps per rev  include any gear ratios and microstepping =steps/rev * microstepping * gear ratio
+  const double MaxLeadRPM = 600;                              // Leadscrew Max RPM
+  const double CrossSPR = 6400;                               // Cross slide steps per rev
+  const double MaxCrossRPM = 250;                             // Cross slide max RPM
 
 //----Menu Specific----//
   int Metric = 0;                                      // Metric designation 0=Inch 1=Metric
@@ -77,6 +76,12 @@ double Refresh_Rate = 200000;
   volatile double R_Step_Angle = 0;
   int Build_XY = 0;
 
+//----Position Variables----//
+  double CrossZ;
+  double LeadY;
+  double Start_Pos[2];
+  double End_Pos[2];
+
 //----setup Interface Encoders thir variables and pins----//
   Adafruit_seesaw Enc1;
     int Enc1_Pos = 0;
@@ -93,34 +98,45 @@ double Refresh_Rate = 200000;
   const int EncA = 7;               // encoder channel A pin              
   const int EncB = 8;               // encoder channel B pin    
   const int LeadDir = 3;            // Leadscrew Stepper Direction Pin    
-  const int LeadStp = 4;            // Leadscrew Stepper Step Pin         
+  const int LeadStp = 4;            // Leadscrew Stepper Step Pin       
+  const int CrossDir = 5;           // Cross slide Stepper Direction Pin    
+  const int CrossStp = 6;           // Cross slide Stepper Step Pin     
   const int Stepper_Enable = 2;     // Leadscrew Stepper Enable pin       
   const int SDA_Pin = 18;           // I2C SDA Pin
   const int SCL_Pin = 19;           // I2C SCL Pin
-  //const byte SDA1_Pin = 17;        // I2C SDA1 Pin
-  //const byte SCL1_Pin = 16;        // I2C SCL1 Pin
+  //const byte SDA1_Pin = 17;       // I2C SDA1 Pin
+  //const byte SCL1_Pin = 16;       // I2C SCL1 Pin
 
 //----All Other Variables----//
   int LeadRPM = 0;
   volatile double SpindleRPM = 0;
   volatile double Encoder_Angle = 0;                    // Encoder angle for spindle, used for auto threading not an actual angle in degrees, this is the encoder angle
   double LeadSpeed;                                     // Leadscrew Max Steps/sec
-  float ctr;                                          // value for center of oled screen
+  double Cross_Speed;                                   // Cross slide max steps/sec
+  float ctr;                                            // value for center of oled screen
   volatile double oldSpindle;
   volatile double Spindle_Rotations;
   volatile double newSpindle;
   volatile double TotalRotations;
   volatile int TotalRot_noDEC;
 
-Adafruit_7segment matrix = Adafruit_7segment();
-Adafruit_SSD1327 Feed_Display(128, 128, &Wire, OLED_RESET, 1000000);
-Adafruit_SSD1327 Graph_Display(128, 128, &Wire, OLED_RESET, 1000000);
-IntervalTimer RPM_Check;                              // Interval timer tp check RPM of the spindle
-PeriodicTimer Refresh_Rate_Timer(TCK);                  // Software Timer to call the 7seg display routine
-QuadEncoder spindle(1, EncA, EncB);
-AccelStepper LeadScrew(AccelStepper::DRIVER, LeadStp, LeadDir);
+  QuadEncoder spindle(1, EncA, EncB);
+
+//----Timer Initialization----//
+  IntervalTimer RPM_Check;                              // Interval timer tp check RPM of the spindle
+  PeriodicTimer Refresh_Rate_Timer(TCK);                // Software Timer to call the 7seg display routine
+  Metro S_Timer = Metro(1000);                          // Basic Timer for debuging
+
+//----Display Initialization----//
+  Adafruit_7segment matrix = Adafruit_7segment();
+  Adafruit_SSD1327 Feed_Display(128, 128, &Wire, OLED_RESET, 1000000);
+  Adafruit_SSD1327 Graph_Display(128, 128, &Wire, OLED_RESET, 1000000);
+
+//----Stepper Initilization----//
+  AccelStepper LeadScrew(AccelStepper::DRIVER, LeadStp, LeadDir);
+  AccelStepper CrossSlide(AccelStepper::DRIVER, CrossStp, CrossDir);
   int Step_Pulse_Width = 5;
-Metro S_Timer = Metro(1000);
+  MultiStepper ZY_Steppers;             // Sets up a multistepper enviroment for coordinated movement of the leadscrew and crossslide
 
 //----Menu Strings----//
   //----Direction Options----//

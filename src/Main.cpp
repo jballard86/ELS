@@ -14,9 +14,17 @@ void setup() {
   spindle.init();
 
 //----Stepper Setup----//
-  LeadSpeed = MaxLeadRPM * LeadSPR / 60;         // Leadscrew Max Steps/sec
-  LeadScrew.setMinPulseWidth(Step_Pulse_Width);
-  LeadScrew.setMaxSpeed(LeadSpeed);
+  //----Leadscrew----//
+    LeadSpeed = MaxLeadRPM * LeadSPR / 60;         // Leadscrew Max Steps/sec
+    LeadScrew.setMinPulseWidth(Step_Pulse_Width);
+    LeadScrew.setMaxSpeed(LeadSpeed);
+  //----Cross Slide----//
+    Cross_Speed = MaxCrossRPM * CrossSPR / 60;         // CrossSlide Max Steps/sec
+    CrossSlide.setMinPulseWidth(Step_Pulse_Width);
+    CrossSlide.setMaxSpeed(Cross_Speed);
+  //----MultiStepper Setup----//
+    ZY_Steppers.addStepper(LeadScrew);
+    ZY_Steppers.addStepper(CrossSlide);
 
 //----Setup Various Display Methods----//
   Serial.begin(115200);             // starts serial
@@ -59,14 +67,19 @@ void loop() {
     -RPM_Calc runs on an interrupt timer in order to stay accurate with the RPM calculation
   */
 
-Spindle_Angle();
-if (S_Timer.check() == 1) {Serial.print(rpm,DEC); Serial.print("  "); Serial.print(LeadScrew.speed(),DEC);
-Serial.print("  "); Serial.println(SpindleRPM,DEC);
-}
+LeadScrew.runSpeed();       // Accelstepper command for constant speed moves
+LeadScrew.run();            // Accelstepper command for positional moves
+CrossSlide.runSpeed();
+CrossSlide.run();
 
-  LeadScrew.runSpeed();
-  //LeadScrew.run();
+if (SpindleRPM == 0) {Spindle_Angle();}            // Keep track of the spindle angle, only run at spindle speed 0
 
+//----Serial output for current debuging----//
+  if (S_Timer.check() == 1) {Serial.print(rpm,DEC); Serial.print("  "); Serial.print(LeadScrew.speed(),DEC);
+    Serial.print("  "); Serial.println(SpindleRPM,DEC);
+  }
+
+//----Feature/Mode Sub Routines----//
   if (Mode_Array_Pos == 0) {Feed();} 
   if (Mode_Array_Pos == 1) {Thread();} 
   if (Mode_Array_Pos == 2) {Auto_Thread();}
@@ -76,13 +89,6 @@ Serial.print("  "); Serial.println(SpindleRPM,DEC);
   if (Mode_Array_Pos == 6) {Auto_Radius();}
   if (Mode_Array_Pos == 7) {Chamfer();}
 
-  /*for (int pop = 1; pop < 1000; pop++) {
-    digitalWrite(LeadStp, HIGH);
-    delayMicroseconds(2);
-    digitalWrite(LeadStp, LOW);
-    delayMicroseconds(2);
-    //Serial.print(" z ");
-  }*/
 }
 
 void Chamfer() {
