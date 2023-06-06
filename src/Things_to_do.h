@@ -1,4 +1,5 @@
 /*
+Add Gear Ratio Calculation with Inputs: Gear_Teeth_Spindle and Gear_Teeth_Encoder
 Add OD submenu to auto radius, this will be used to draw the projected action
 possible to track spindle position in order to start stop lead screw at the same angular value?
     -Code is done, needs to be tested

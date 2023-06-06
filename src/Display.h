@@ -1,4 +1,3 @@
-
 void Refresh() {
   if (Enc1.getEncoderPosition() != Mode_Array_Pos && SpindleRPM !=0) {Enc1.setEncoderPosition(Mode_Array_Pos);}  //this keeps the mode from being adjusted while the spindle is running
   
@@ -25,9 +24,9 @@ void Refresh() {
   if (SpindleRPM == 0) {                //do a full screen on feed display as the last sub menu option, draw the bar stock, and do an accurate fillet/radius, show where tool should go to start feature
     Graph_Display.clearDisplay();
     graph_Radius_Array();
-    testgraph();
     Graph_Display.display();
   }
+  
 }
 
 void Start_Feed_Display() {
@@ -73,14 +72,34 @@ void graph_Radius_Array(){
   
 }
 
-void testgraph() {
+void Auto_Radius_Draw() {
 
-  Graph_Display.fillRect(0,50,100,40,SSD1327_WHITE);
-  Graph_Display.fillCircle(100,90,20,SSD1327_BLACK);  //y = y1+y2 from fillrect
-  Graph_Display.setCursor(0,0);
-  Graph_Display.println("Not to Scale");
-  Graph_Display.setCursor(0,20);
-  Graph_Display.println("Example Cut");
+  if (Radius_type == 0) {
+    Feed_Display.fillRect(28,45,128,40,SSD1327_WHITE);
+    Feed_Display.fillCircle(28,85,18,SSD1327_BLACK);  //y = y1+y2 from fillrect
+    
+  }
+  if (Radius_type == 1) {
+    Feed_Display.fillRect(0,45,100,40,SSD1327_WHITE);
+    Feed_Display.fillCircle(100,85,18,SSD1327_BLACK);  //y = y1+y2 from fillrect
+    
+  }
+  if (Radius_type == 2) {
+    Feed_Display.fillRect(28,45,128,40,SSD1327_WHITE);
+    Feed_Display.fillCircle(28,85,18,SSD1327_BLACK);  //y = y1+y2 from fillrect
+    Feed_Display.fillCircle(28+19,85-19,18,SSD1327_WHITE);  //y = y1+y2 from fillrect
+    
+  }
+  if (Radius_type == 3) {
+    Feed_Display.fillRect(0,45,100,40,SSD1327_WHITE);
+    Feed_Display.fillCircle(100,85,18,SSD1327_BLACK);  //y = y1+y2 from fillrect
+    Feed_Display.fillCircle(100-19,85-19,18,SSD1327_WHITE);  //y = y1+y2 from fillrect
+    
+  }
+  Feed_Display.setTextSize(1);
+  Feed_Display.setCursor(0,90);
+  Feed_Display.println("Press Right Encoder  to start");
+  Feed_Display.println("Scroll Left Wheel to stop");
 
-  Graph_Display.display();
+  
 }

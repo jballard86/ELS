@@ -361,28 +361,25 @@ void Mode_6_SubMenu() {         // Auto Thread Sub Menu
         Feed_Display.print(" "); Feed_Display.print(Radius_Steps,DEC); Feed_Display.println(" Steps");
     }
     if (submenu == 4) {                                   // submenu page four --- Depth of cut
-      Feed_Display.setCursor(0,45);
+      Feed_Display.clearDisplay();
+      Feed_Display.setCursor(0,0);
       Feed_Display.println("Generated");
-      Feed_Display.setCursor(0,65);
       Feed_Display.println(" Drawing");
-      
-      //----Draw part example with appropriate radius----//
-        if (Radius_type == 0) {// Left Convex Radius
-          Feed_Display.setCursor(0,100);
-          Feed_Display.println("Convex");
-        }
-        if (Radius_type == 1) {// Right Convex Radius
-          Feed_Display.setCursor(0,100);
-          Feed_Display.println("Convex");
-        }
-        if (Radius_type == 2) {// Left Concave Fillet
-          Feed_Display.setCursor(0,100);
-          Feed_Display.println("Convex");
-        }
-        if (Radius_type == 3) {// Right Concave Fillet
-          Feed_Display.setCursor(0,100);
-          Feed_Display.println("Convex");
-        }
+      Auto_Radius_Draw();
+      //display radius
+      //use right encoder button to start cut
+      // scrolling left wheel will stop cut
+    }
+    if (submenu == 5) {                                   // submenu page four --- Depth of cut
+      Feed_Display.setCursor(0,45);
+      Feed_Display.println("Click Right");
+      Feed_Display.setCursor(0,65);
+      Feed_Display.println(" Encoder to");
+      Feed_Display.setCursor(0,85);
+      Feed_Display.println(" Start!");
+      //adjust feed rate
+      //
     }
   }
 }
+

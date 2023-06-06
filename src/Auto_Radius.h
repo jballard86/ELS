@@ -1,7 +1,11 @@
 void Auto_Radius() {
-  R_Step_Angle = 1.5708 / Radius_Steps;  // 90 degrees in radians / radius step value
-  if (Build_XY == 0) {Build_XY_Array();}
-  //Build_Y;
+  if (Build_XY == 0) {
+    R_Step_Angle = 1.5708 / Radius_Steps;  // 90 degrees in radians / radius step value
+    Build_XY_Array();
+  }
+
+  
+
 }
 
 
