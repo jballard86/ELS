@@ -25,4 +25,4 @@ This Lead Screw is 100% untested at this point, the code works on a test stand t
 
 PCB is 100% operational on test board.  Cad files to come for mounting all components in a housing for mounting near the lathe.
 
-Once the direction issue is fixed, this will be installed on my lathe to start testing.
+Lathe installation will happen shortly.
