@@ -15,14 +15,19 @@ void Auto_Radius() {
     // Setup Start_Pos array with current position
     // Setup End_Pos array with desired move cordinate:
       // Position = finish pass - DOC/Material to be removed 
-      // End_Pos[0] = Radius_X[0];
+      // End_Pos[0] = Radius_Z[0];
       // End_Pos[1] = Radius_Y[0];
       // use: ZY_Steppers.moveTo(End_Pos);
     // Finish Pass
 
 
 }
-
+/*
+        if (Radius_type == 0) {Feed_Display.println("  Left"); Feed_Display.println("  Convex");}
+        if (Radius_type == 1) {Feed_Display.println("  Right"); Feed_Display.println("  Convex");}  
+        if (Radius_type == 2) {Feed_Display.println("  Left"); Feed_Display.println("  Concave");}
+        if (Radius_type == 3) {Feed_Display.println("  Right"); Feed_Display.println("  Concave");} 
+*/
 
 void Build_ZY_Array() {                        // Build Radius_X[Radius_Max_steps] array
   for (int array_step = 0; array_step < Radius_Steps; array_step++) {
@@ -31,11 +36,10 @@ void Build_ZY_Array() {                        // Build Radius_X[Radius_Max_step
     //Serial.print(Radius_X[array_step], DEC);Serial.print(", ");Serial.print(Radius_Y[array_step], DEC);Serial.print("    ");Serial.println(array_step);
   }
   Build_ZY = 1;
-  //graph_Radius_Array();
 }
 
 double Z_Coord(double Z_Coord) {        // X Coord function
-  Z_Coord = in_Radius * cos((R_Step_Angle * Z_Coord) + 4.71239);  // 4.71239 = 270 degrees in Radians
+  Z_Coord = in_Radius * cos((R_Step_Angle * -Z_Coord) + 4.71239);  // 4.71239 = 270 degrees in Radians
   return Z_Coord;
 }
 
@@ -44,12 +48,20 @@ double Y_Coord(double Y_Coord) {        // Y Coord function
   return Y_Coord;
 }
 
-void Cut_Pass() {
+void Cut_Pass() {       // This is only calculated while the Depth of Cut Submenu is active
   double Radius;
   double DOC;
+  double hypotenuse;
   if (Metric == 0) {Radius = in_Radius;} else {Radius = mm_Radius;}
   if (Metric == 0) {DOC = in_DOC;} else {DOC = mm_DOC;}
-  Cut_Passes = Radius / DOC;
+  if (Radius_type <= 1) {
+    hypotenuse = sqrt(2*(Radius*Radius));
+    Cut_Depth = hypotenuse - Radius;
+  }
+  if (Radius_type >= 2) {
+    Cut_Depth = Radius;
+  }
+  Cut_Passes = Cut_Depth / DOC;
 }
 
 /*

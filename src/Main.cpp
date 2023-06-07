@@ -74,7 +74,7 @@ CrossSlide.run();
 if (SpindleRPM == 0) {Spindle_Angle();}            // Keep track of the spindle angle, only run at spindle speed 0
 
 //----Serial output for current debuging----//
-  if (S_Timer.check() == 1) {Serial.print(rpm,DEC); Serial.print("  "); Serial.print(LeadScrew.speed(),DEC);
+  if (S_Timer.check() == 1) {Serial.print(Cut_Passes); Serial.print("  "); Serial.print(Cut_Depth,DEC);
     Serial.print("  "); Serial.println(SpindleRPM,DEC);
   }
 

@@ -360,13 +360,13 @@ void Mode_6_SubMenu() {         // Auto Thread Sub Menu
         Feed_Display.print(" "); Feed_Display.print(Radius_Steps,DEC); Feed_Display.println(" Steps");
     }
     if (submenu == 4) {                                   // submenu page four --- Depth of cut
-      Feed_Display.clearDisplay();
-      Feed_Display.setCursor(0,0);
-      Feed_Display.println("Input");
-      Feed_Display.println(" DOC");
-      Feed_Display.setCursor(0,100);
+      Feed_Display.setCursor(0,45);
+      Feed_Display.println("  Input");
+      Feed_Display.println("  DOC");
+      Feed_Display.setCursor(0,90);
         if (Thread_Mode == 0) {Feed_Display.print(" "); Feed_Display.print(in_DOC,3); Feed_Display.println(" in");}
         if (Thread_Mode == 1) {Feed_Display.print(" "); Feed_Display.print(mm_DOC,2); Feed_Display.println(" mm");} 
+        Feed_Display.setTextSize(1); Feed_Display.setCursor(0,115); Feed_Display.print("Total Cut Passes "); Feed_Display.println(Cut_Passes);
       
     }
     if (submenu == 5) {                                   // submenu page four --- Start Cut

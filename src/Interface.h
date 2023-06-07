@@ -617,6 +617,33 @@ void Mode_6_SubMenu_Controls() {                              // Auto Turn Sub M
     if (old_steps != Radius_Steps) {Build_ZY = 0;}
   }
   if (submenu == 4) { 
+    if (Metric == 0) {
+      if (Enc2.getEncoderPosition() < 0) {
+        in_DOC = in_DOC + .001;
+        if (Enc2.getEncoderPosition() < -1) { in_DOC = in_DOC + .01;}           // Fast Scroll
+        Enc2.setEncoderPosition(0);
+      } 
+      if (Enc2.getEncoderPosition() > 0) {
+        in_DOC = in_DOC -.001;
+        if (Enc2.getEncoderPosition() > 1) { in_DOC = in_DOC - .01;}            // Fast Scroll
+        if (in_DOC < .001) {in_DOC = .001;}                                     // limits the lower bound of length of cut
+        Enc2.setEncoderPosition(0);
+      } 
+    }
+    //----mm----//
+    if (Metric == 1) {
+      if (Enc2.getEncoderPosition() < 0) {
+        mm_DOC = mm_DOC + .01;
+        if (Enc2.getEncoderPosition() < -1) { mm_DOC = mm_DOC + .1;}           // Fast Scroll
+        Enc2.setEncoderPosition(0);
+      } 
+      if (Enc2.getEncoderPosition() > 0) {
+        mm_DOC = mm_DOC -.01;
+        if (Enc2.getEncoderPosition() > 1) { mm_DOC = mm_DOC - .1;}            // Fast Scroll
+        if (mm_DOC < .01) {mm_DOC = .01;}                                    // limits the lower bound of length of cut
+        Enc2.setEncoderPosition(0);
+      } 
+    }
 
     Cut_Pass();           //calculate the total cut passes
   } 
