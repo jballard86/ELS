@@ -4,10 +4,21 @@ void Auto_Radius() {
     Build_XY_Array();
   }
 
-// Setup Start_Pos array with current position
-// Setup End_Pos array with desired move cordinate - a finish pass - DOC/Material to be removed
-  //use: ZY_Steppers.moveTo(End_Pos);
-// Finish Pass
+  // loop * cut_passes
+      // rebuild Build_XY_Array() for each pass  change the function to accept DOC
+  // loop * final pass
+      // this cuts Build_XY_Array() with out and modifiers
+
+
+
+    // May be a good idea to rebuild the XY arrays after each full pass
+    // Setup Start_Pos array with current position
+    // Setup End_Pos array with desired move cordinate:
+      // Position = finish pass - DOC/Material to be removed 
+      // End_Pos[0] = Radius_X[0];
+      // End_Pos[1] = Radius_Y[0];
+      // use: ZY_Steppers.moveTo(End_Pos);
+    // Finish Pass
 
 
 }
@@ -31,6 +42,14 @@ double X_Coord(double X_Coord) {        // X Coord function
 double Y_Coord(double Y_Coord) {        // Y Coord function
   Y_Coord = in_Radius * sin((-R_Step_Angle * Y_Coord) + 4.71239);  // 4.71239 = 270 degrees in Radians
   return Y_Coord;
+}
+
+void Cut_Pass() {
+  double Radius;
+  double DOC;
+  if (Metric == 0) {Radius = in_Radius;} else {Radius = mm_Radius;}
+  if (Metric == 0) {DOC = in_DOC;} else {DOC = mm_DOC;}
+  Cut_Passes = Radius / DOC;
 }
 
 /*

@@ -545,7 +545,7 @@ void Mode_6_SubMenu_Controls() {                              // Auto Turn Sub M
     if (Enc1.getEncoderPosition() < submenu) { submenu++; Enc1.setEncoderPosition(submenu);}
     if (Enc1.getEncoderPosition() > submenu && submenu >= 2) { submenu--; Enc1.setEncoderPosition(submenu);}
     if (Enc1.getEncoderPosition() != submenu) {Enc1.setEncoderPosition(submenu);}
-    if (submenu > 4) { submenu = 0; Enc1.setEncoderPosition(Mode_Array_Pos);
+    if (submenu > 5) { submenu = 0; Enc1.setEncoderPosition(Mode_Array_Pos);
        Main_Menu(); Feed_Display.display(); delay(400);                          // reduces the chance of changing mode when leaving submenu
     }
   }
@@ -616,4 +616,9 @@ void Mode_6_SubMenu_Controls() {                              // Auto Turn Sub M
     } 
     if (old_steps != Radius_Steps) {Build_XY = 0;}
   }
+  if (submenu == 4) { 
+
+    Cut_Pass();           //calculate the total cut passes
+  } 
+  if (submenu == 5) { }
 }

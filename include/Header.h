@@ -75,6 +75,8 @@ double Refresh_Rate = 200000;
   int Radius_Steps = 40;
   volatile double R_Step_Angle = 0;
   int Build_XY = 0;
+  double Cut_Depth;
+  int Cut_Passes;
 
 //----Position Variables----//
   double CrossZ;
@@ -205,3 +207,4 @@ void graph_Radius_Array();
 void Mode_6_Auto_Radius_Controls();
 void Mode_6_SubMenu_Controls();
 void testgraph();
+void Cut_Pass();

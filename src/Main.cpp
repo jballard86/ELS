@@ -1,5 +1,4 @@
 #include "Header.h"
-#include "Version.h"
 
 //using: https://www.pjrc.com/teensy/td_timing_IntervalTimer.html
 
@@ -91,10 +90,6 @@ if (SpindleRPM == 0) {Spindle_Angle();}            // Keep track of the spindle 
 
 }
 
-void Chamfer() {
-  
-}
-
 #include "Display.h"
 #include "Feed.h"
 #include "Interface.h"
@@ -103,3 +98,4 @@ void Chamfer() {
 #include "Thread.h"
 #include <string>
 #include "Auto_Radius.h"
+#include "Chamfer.h"

@@ -331,7 +331,7 @@ void Mode_6_SubMenu() {         // Auto Thread Sub Menu
       Feed_Display.println("  Auto");
       Feed_Display.println("  Radius");              // this could be a selection in the future for OD or ID
     }
-    if (submenu == 1) {                                   // submenu page one --- Thread Length
+    if (submenu == 1) {                                   // submenu page one  --- Radius type
       Feed_Display.setCursor(0,45);
       Feed_Display.println("  Input");
       Feed_Display.setCursor(0,65);
@@ -342,7 +342,7 @@ void Mode_6_SubMenu() {         // Auto Thread Sub Menu
         if (Radius_type == 2) {Feed_Display.println("  Left"); Feed_Display.println("  Concave");}
         if (Radius_type == 3) {Feed_Display.println("  Right"); Feed_Display.println("  Concave");}
     }
-    if (submenu == 2) {                                   // submenu page one --- Thread Length
+    if (submenu == 2) {                                   // submenu page one  --- Radius
       Feed_Display.setCursor(0,45);
       Feed_Display.println("  Input");
       Feed_Display.setCursor(0,65);
@@ -351,7 +351,7 @@ void Mode_6_SubMenu() {         // Auto Thread Sub Menu
         if (Metric == 0) {Feed_Display.print(" "); Feed_Display.print(in_Radius,3); Feed_Display.println(" in");}
         if (Metric == 1) {Feed_Display.print(" "); Feed_Display.print(mm_Radius,3); Feed_Display.println(" mm");} 
     }
-    if (submenu == 3) {                                   // submenu page two --- Thread Diameter
+    if (submenu == 3) {                                   // submenu page two  --- Total Steps
       Feed_Display.setCursor(0,45);
       Feed_Display.println("  Input");
       Feed_Display.setCursor(0,65);
@@ -362,22 +362,24 @@ void Mode_6_SubMenu() {         // Auto Thread Sub Menu
     if (submenu == 4) {                                   // submenu page four --- Depth of cut
       Feed_Display.clearDisplay();
       Feed_Display.setCursor(0,0);
-      Feed_Display.println("Generated");
-      Feed_Display.println(" Drawing");
-      Auto_Radius_Draw();
-      //display radius
-      //use right encoder button to start cut
-      // scrolling left wheel will stop cut
+      Feed_Display.println("Input");
+      Feed_Display.println(" DOC");
+      Feed_Display.setCursor(0,100);
+        if (Thread_Mode == 0) {Feed_Display.print(" "); Feed_Display.print(in_DOC,3); Feed_Display.println(" in");}
+        if (Thread_Mode == 1) {Feed_Display.print(" "); Feed_Display.print(mm_DOC,2); Feed_Display.println(" mm");} 
+      
     }
-    if (submenu == 5) {                                   // submenu page four --- Depth of cut
+    if (submenu == 5) {                                   // submenu page four --- Start Cut
       Feed_Display.setCursor(0,45);
       Feed_Display.println("Click Right");
       Feed_Display.setCursor(0,65);
       Feed_Display.println(" Encoder to");
       Feed_Display.setCursor(0,85);
       Feed_Display.println(" Start!");
-      //adjust feed rate
-      //
+      Auto_Radius_Draw();
+      //display radius
+      //use right encoder button to start cut
+      // scrolling left wheel will stop cut
     }
   }
 }
