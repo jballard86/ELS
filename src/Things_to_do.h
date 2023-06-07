@@ -1,6 +1,8 @@
 /*
 Mode_6_SubMenu_Controls() is missing two submenu pages
 
+auto thread needs cut pass calculations
+auto turn needs cut pass calculations
 due to the 2 steppers going on the crossslide and lead screw axis, in threading this could cause the cutter to cut on both sides
     -to fix this calculate the extra lead that the lead screw should start, and start it early so the cut stays on the leading edge of the tool
 Add Gear Ratio Calculation with Inputs: Gear_Teeth_Spindle and Gear_Teeth_Encoder
@@ -14,6 +16,7 @@ internal and external boring
 internal and external radius
 internal and external chamfer
 ball turning
+taper turning
 Knurling?  https:ww.youtube.com/watch?v=E2niXyOQSOA
 
 https://www.airspayce.com/mikem/arduino/AccelStepper/classAccelStepper.html#ac62cae590c2f9c303519a3a1c4adc8ab

@@ -30,16 +30,36 @@ void Auto_Radius() {
 */
 
 void Build_ZY_Array() {                        // Build Radius_X[Radius_Max_steps] array
-  for (int array_step = 0; array_step < Radius_Steps; array_step++) {
-    Radius_Z[array_step] = Z_Coord(array_step);  // Z coordinate
-    Radius_Y[array_step] = Y_Coord(array_step);  // Y coordinate
-    //Serial.print(Radius_X[array_step], DEC);Serial.print(", ");Serial.print(Radius_Y[array_step], DEC);Serial.print("    ");Serial.println(array_step);
+  double modZ;
+  double modY;
+  double Radius;
+  if (Metric == 0) {Radius = in_Radius;} else {Radius = mm_Radius;}
+  if (Radius_type == 0) {modZ = -1;}    // left hand convex modifier
+  if (Radius_type == 1) {modZ =  1;}    // Right hand convex modifier
+  if (Radius_type == 2) {modZ =  1; modY = -1;}    // Right hand convex modifier
+  if (Radius_type == 3) {modZ =  -1; modY = -1;}    // Right hand convex modifier
+
+  if (Radius_type <= 1) {
+    for (int array_step = 0; array_step < Radius_Steps; array_step++) {
+      Radius_Z[array_step] = modZ * Z_Coord(array_step);  // Z coordinate
+      Radius_Y[array_step] = Y_Coord(array_step);  // Y coordinate
+      Serial.print(Radius_Z[array_step], DEC);Serial.print(", ");Serial.print(Radius_Y[array_step], DEC);Serial.print("    ");Serial.println(array_step);
+    }
   }
+
+  if (Radius_type >= 2) {
+    for (int array_step = 0; array_step < Radius_Steps; array_step++) {
+      Radius_Z[array_step] = modZ * Z_Coord(array_step);  // Z coordinate
+      Radius_Y[array_step] = (modY * Y_Coord(array_step))-(Radius);  // Y coordinate
+      Serial.print(Radius_Z[array_step], DEC);Serial.print(" ");Serial.print(Radius_Y[array_step], DEC);Serial.print("    ");Serial.println(array_step);
+    }
+  }
+  
   Build_ZY = 1;
 }
 
 double Z_Coord(double Z_Coord) {        // X Coord function
-  Z_Coord = in_Radius * cos((R_Step_Angle * -Z_Coord) + 4.71239);  // 4.71239 = 270 degrees in Radians
+  Z_Coord = in_Radius * cos((R_Step_Angle * Z_Coord) + 4.71239);  // 4.71239 = 270 degrees in Radians
   return Z_Coord;
 }
 
