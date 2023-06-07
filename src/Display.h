@@ -66,7 +66,7 @@ void graph_Radius_Array(){
   double scale = 128 / in_Radius;
   
   for (int array_step = 0; array_step < Radius_Steps; array_step++) {
-      Graph_Display.drawPixel(Radius_X[array_step] * scale, Radius_Y[array_step] * -scale, SSD1327_WHITE);
+      Graph_Display.drawPixel(Radius_Z[array_step] * scale, Radius_Y[array_step] * -scale, SSD1327_WHITE);
       //Serial.println(array_step);
   }
   

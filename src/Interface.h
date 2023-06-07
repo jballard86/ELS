@@ -579,7 +579,7 @@ void Mode_6_SubMenu_Controls() {                              // Auto Turn Sub M
         if (in_Radius < .001) {in_Radius = .001;}                                     // limits the lower bound of length of cut
         Enc2.setEncoderPosition(0);
       } 
-      if (in_radius_old != in_Radius) {Build_XY = 0;}
+      if (in_radius_old != in_Radius) {Build_ZY = 0;}
     }
     //----mm----//
     if (Metric == 1) {
@@ -597,7 +597,7 @@ void Mode_6_SubMenu_Controls() {                              // Auto Turn Sub M
         if (mm_Radius < .01) {mm_Radius = .01;}                                    // limits the lower bound of length of cut
         Enc2.setEncoderPosition(0);
       } 
-      if (mm_radius_old != mm_Radius) {Build_XY = 0;}
+      if (mm_radius_old != mm_Radius) {Build_ZY = 0;}
     }
   }
   if (submenu == 3) {                                                           // submenu 3 steps/resolution input
@@ -614,7 +614,7 @@ void Mode_6_SubMenu_Controls() {                              // Auto Turn Sub M
       if (Radius_Steps < 1) {Radius_Steps = 1;}                                     // limits the lower bound of length of cut
       Enc2.setEncoderPosition(0);
     } 
-    if (old_steps != Radius_Steps) {Build_XY = 0;}
+    if (old_steps != Radius_Steps) {Build_ZY = 0;}
   }
   if (submenu == 4) { 
 
