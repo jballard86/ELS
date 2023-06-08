@@ -1,17 +1,59 @@
 void Auto_Radius() {
+  double stepsPerSec;
+
   if (Build_ZY == 0) {
-    R_Step_Angle = 1.5708 / Radius_Steps;  // 90 degrees in radians / radius step value
-    Build_ZY_Array();
+    R_Step_Angle = 1.5708 / Radius_Steps;   // 90 degrees in radians / radius step value
+    Build_ZY_Array();                       // Build coordinate array of the radius
+
+    //set feedrate (chip load?)
+    rpm = SpindleRPM*(In_FeedRate*In_FeedRate)*LeadScrew_TPI;
+    stepsPerSec = MaxLeadRPM * LeadSPR / 60;;
+    LeadScrew.setMaxSpeed(stepsPerSec);
+    CrossSlide.setMaxSpeed(stepsPerSec);
+
+    Set_Radius_Start_Postion();             // Set motor start position in Steps, mm/in conversion already done
   }
+  
+//----Will this work for all radius types?----//
 
+if (SpindleRPM != 0) {            //auto radius rough cut
+  if (Z_step <= Radius_Steps) {
+    if (LeadScrew.distanceToGo() == 0 && CrossSlide.distanceToGo() == 0) {
+      if (status == 0){
+        End_Pos[0] = Steps_per_Move(Radius_Z[Z_step]); 
+        End_Pos[1] = Steps_per_Move(Radius_Y[Y_step]);
+        ZY_Steppers.moveTo(End_Pos);
+        status = 1;
+        Serial.print("works"); Serial.println(Z_step);
+      }
+      if (status == 1) {
+        ZY_Steppers.moveTo(Start_Pos);
+      Z_step++;
+      Y_step++; 
+      status = 0;
+      if (Z_step == Radius_Steps) {status = 3;}
+      }
+    } 
+  } 
+  if (LeadScrew.distanceToGo() == 0 && CrossSlide.distanceToGo() == 0) {        // auto radius finaly pass
+    if (status == 3) {
+      Z_step = 0;
+      Y_step = 0;
+      //final pass
+    }
+  }
+  //Serial.print(Z_step);
+  //Z_step = 0;
+  //Y_step = 0;
+  //run final pass
+}
+
+  // Set home position based off of Radius_Type
   // loop * cut_passes
-      // rebuild Build_XY_Array() for each pass  change the function to accept DOC
+      //start at x=0, y=radius and move to x = radius, y = y-DOC, repeat cut_passes, add allowance for final pass
   // loop * final pass
-      // this cuts Build_XY_Array() with out and modifiers
+      // This cuts Build_XY_Array() with out and modifiers
 
-
-
-    // May be a good idea to rebuild the XY arrays after each full pass
     // Setup Start_Pos array with current position
     // Setup End_Pos array with desired move cordinate:
       // Position = finish pass - DOC/Material to be removed 
@@ -20,14 +62,7 @@ void Auto_Radius() {
       // use: ZY_Steppers.moveTo(End_Pos);
     // Finish Pass
 
-
 }
-/*
-        if (Radius_type == 0) {Feed_Display.println("  Left"); Feed_Display.println("  Convex");}
-        if (Radius_type == 1) {Feed_Display.println("  Right"); Feed_Display.println("  Convex");}  
-        if (Radius_type == 2) {Feed_Display.println("  Left"); Feed_Display.println("  Concave");}
-        if (Radius_type == 3) {Feed_Display.println("  Right"); Feed_Display.println("  Concave");} 
-*/
 
 void Build_ZY_Array() {                        // Build Radius_X[Radius_Max_steps] array
   double modZ;
@@ -54,7 +89,7 @@ void Build_ZY_Array() {                        // Build Radius_X[Radius_Max_step
       Serial.print(Radius_Z[array_step], DEC);Serial.print(" ");Serial.print(Radius_Y[array_step], DEC);Serial.print("    ");Serial.println(array_step);
     }
   }
-  
+
   Build_ZY = 1;
 }
 
@@ -84,18 +119,30 @@ void Cut_Pass() {       // This is only calculated while the Depth of Cut Submen
   Cut_Passes = Cut_Depth / DOC;
 }
 
+void Set_Radius_Start_Postion(){
+  double Radius;
+  if (Metric == 0) {Radius = in_Radius;} else {Radius = mm_Radius;}
+  if (Radius_type == 0) {
+    LeadScrew.setCurrentPosition(-Steps_per_Move(Radius));
+    CrossSlide.setCurrentPosition(-Steps_per_Move(Radius));
+    }
+  if (Radius_type == 1) {
+    LeadScrew.setCurrentPosition(Steps_per_Move(Radius));
+    CrossSlide.setCurrentPosition(-Steps_per_Move(Radius));
+  }
+  if (Radius_type == 2) {
+    LeadScrew.setCurrentPosition(0);
+    CrossSlide.setCurrentPosition(-Steps_per_Move(Radius));
+  }
+  if (Radius_type == 3) {
+    LeadScrew.setCurrentPosition(0);
+    CrossSlide.setCurrentPosition(-Steps_per_Move(Radius));
+  }
+
+  Start_Pos[0] = LeadScrew.currentPosition();
+  Start_Pos[1] = CrossSlide.currentPosition();
+}
 /*
-plot x and y on oled on last page of settings to verify settings
-have the user place the tool on the end of the work, tool position will create an origin of x == r and y == -radius
-
-ending point is at 270 degrees (4.71239 Rad) on the OD (x = -radius, -y = OD / 2 )
-    right hand goes to 0 degrees (O.00000 Rad)  (+x = radius)
-    left hand goes to  180 degres (3.14159 Rad) (-x = radius)
-start of cut starts at Z,-Y (X,-Y)
-
-90 degress is 1.5708 rad
-
-
 //----Position Variables----//
   double CrossZ;
   double LeadY;

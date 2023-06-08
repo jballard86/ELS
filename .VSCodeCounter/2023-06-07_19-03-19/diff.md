@@ -1,24 +1,21 @@
 # Diff Summary
 
-Date : 2023-06-01 17:19:48
+Date : 2023-06-07 19:03:19
 
-Directory f:\\OneDrive\\Documents\\PlatformIO\\Projects\\ELS\\include
+Directory f:\\OneDrive\\Documents\\PlatformIO\\Projects\\ELS\\src
 
-Total : 10 files,  -791 codes, -130 comments, -83 blanks, all -1004 lines
+Total : 6 files,  96 codes, 8 comments, 11 blanks, all 115 lines
 
 [Summary](results.md) / [Details](details.md) / Diff Summary / [Diff Details](diff-details.md)
 
 ## Languages
 | language | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| C++ | 10 | -791 | -130 | -83 | -1,004 |
+| C++ | 6 | 96 | 8 | 11 | 115 |
 
 ## Directories
 | path | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| . | 10 | -791 | -130 | -83 | -1,004 |
-| . (Files) | 1 | 139 | 18 | 14 | 171 |
-| .. | 9 | -930 | -148 | -97 | -1,175 |
-| ..\\src | 9 | -930 | -148 | -97 | -1,175 |
+| . | 6 | 96 | 8 | 11 | 115 |
 
 [Summary](results.md) / [Details](details.md) / Diff Summary / [Diff Details](diff-details.md)

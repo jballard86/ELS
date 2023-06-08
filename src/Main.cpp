@@ -66,16 +66,18 @@ void loop() {
     -RPM_Calc runs on an interrupt timer in order to stay accurate with the RPM calculation
   */
 
-LeadScrew.runSpeed();       // Accelstepper command for constant speed moves
-LeadScrew.run();            // Accelstepper command for positional moves
-CrossSlide.runSpeed();
-CrossSlide.run();
+//LeadScrew.runSpeed();       // Accelstepper command for constant speed moves
+//LeadScrew.run();            // Accelstepper command for positional moves
+//CrossSlide.runSpeed();
+//CrossSlide.run();
+ZY_Steppers.run();
+
 
 if (SpindleRPM == 0) {Spindle_Angle();}            // Keep track of the spindle angle, only run at spindle speed 0
 
 //----Serial output for current debuging----//
-  /*if (S_Timer.check() == 1) {Serial.print(Cut_Passes); Serial.print("  "); Serial.print(Cut_Depth,DEC);
-    Serial.print("  "); Serial.println(SpindleRPM,DEC);
+  /*if (S_Timer.check() == 1) {Serial.print(CrossSlide.distanceToGo(),DEC); Serial.print("  "); Serial.print(LeadScrew.distanceToGo(),DEC);
+    Serial.print("  "); Serial.println(LeadScrew.speed(),DEC);
   }*/
 
 //----Feature/Mode Sub Routines----//
@@ -88,6 +90,19 @@ if (SpindleRPM == 0) {Spindle_Angle();}            // Keep track of the spindle 
   if (Mode_Array_Pos == 6) {Auto_Radius();}
   if (Mode_Array_Pos == 7) {Chamfer();}
 
+}
+
+double Steps_per_Move(double move_length) {
+  double StepsPer;
+  if (Metric == 0) {
+    move_length = move_length / .001;
+    StepsPer = move_length * Steps_Per_Thou;
+  } 
+  else {
+    move_length = move_length / .01;
+    StepsPer = move_length * Steps_Per_hundredth_mm;
+  }
+  return StepsPer;
 }
 
 #include "Display.h"
