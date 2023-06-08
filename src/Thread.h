@@ -6,24 +6,21 @@ void Thread() {
   if (Thread_Mode == 0) {            //----Inch Threading----//
     TPI = TPI_Array[TPI_Array_Pos];
     rpm = ((LeadScrew_TPI*(SpindleRPM))/(TPI * TPI));        // This outputs Leadscrew RPM
-    stepsPerSec = ((rpm/60)*LeadSPR);                                 // This outputs rotations/second in steps
-    stepsPerSec = stepsPerSec;                                               // This is where Forward and Reverse is dictaded, SpindleRPM will change this, however there may be a need to change it manually
-    LeadScrew.setSpeed(stepsPerSec);
-    //Serial.println(rpm);
-    //Serial.println(digitalRead(LeadDir));
   } 
   else if (Thread_Mode == 1) {    //----Metric Threading----//
     Pitch = Pitch_Array[Pitch_Array_Pos];
     rpm = .00155*SpindleRPM*LeadScrew_TPI*(Pitch*Pitch);
-    stepsPerSec = ((rpm/60)*LeadSPR);
-    LeadScrew.setSpeed(stepsPerSec);
   }
+  stepsPerSec = ((rpm/60)*LeadSPR);     
+  LeadScrew.setSpeed(stepsPerSec);
 }
 
 void Auto_Thread() {
   // use "Encoder_Angle" to save the spindle angle when starting the thread, and then use the saved value to start the thread
   // may have to parse info to and from "Spindle_Angle()"
   // add a thread root? calculate proper dims based off of thread?
+  // due to the 2 steppers going on the crossslide and lead screw axis, in threading this could cause the cutter to cut on both sides
+    // -to fix this calculate the extra lead that the lead screw should start, and start it early so the cut stays on the leading edge of the tool
 
   /* Variables that are already declared: 
       in_DOC / mm_DOC - depth of cutting pass - user input
@@ -33,7 +30,8 @@ void Auto_Thread() {
   */
 
   Spindle_Angle();                      // will need to be continuously polled inorder to start at the same angle with each restart
-  //----Calculate Thread Depth----//
+
+  //----Calculate Thread Depth----//      // NEED TO DO: convert these to step length, rebuild only when changed
   if (Thread_Mode == 0 && SpindleRPM == 0) {in_Minor_Diameter();}  // dont want to do unneccessary calcs while the spindle is turning
   if (Thread_Mode == 1 && SpindleRPM == 0) {mm_Minor_Diameter();}  // dont want to do unneccessary calcs while the spindle is turning
 

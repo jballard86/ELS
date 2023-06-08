@@ -1,6 +1,7 @@
 /*
 Mode_6_SubMenu_Controls() is missing two submenu pages
 
+make a function to calculate max speed, and run in the main loop of each mode
 auto thread needs cut pass calculations
 auto turn needs cut pass calculations
 due to the 2 steppers going on the crossslide and lead screw axis, in threading this could cause the cutter to cut on both sides

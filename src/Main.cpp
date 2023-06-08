@@ -66,33 +66,30 @@ void loop() {
     -RPM_Calc runs on an interrupt timer in order to stay accurate with the RPM calculation
   */
 
-//LeadScrew.runSpeed();       // Accelstepper command for constant speed moves
-//LeadScrew.run();            // Accelstepper command for positional moves
-//CrossSlide.runSpeed();
-//CrossSlide.run();
-ZY_Steppers.run();
-
-
-if (SpindleRPM == 0) {Spindle_Angle();}            // Keep track of the spindle angle, only run at spindle speed 0
-
 //----Serial output for current debuging----//
   /*if (S_Timer.check() == 1) {Serial.print(CrossSlide.distanceToGo(),DEC); Serial.print("  "); Serial.print(LeadScrew.distanceToGo(),DEC);
     Serial.print("  "); Serial.println(LeadScrew.speed(),DEC);
   }*/
 
-//----Feature/Mode Sub Routines----//
-  if (Mode_Array_Pos == 0) {Feed();} 
-  if (Mode_Array_Pos == 1) {Thread();} 
-  if (Mode_Array_Pos == 2) {Auto_Thread();}
-  if (Mode_Array_Pos == 3) {Turn_to_Diameter();}
-  if (Mode_Array_Pos == 4) {Manual_Z();}
-  if (Mode_Array_Pos == 5) {Manual_X();}
-  if (Mode_Array_Pos == 6) {Auto_Radius();}
-  if (Mode_Array_Pos == 7) {Chamfer();}
+//----Feature/Mode Sub Routines----//             Proper Accelstepper run command for each feature
+  if (Mode_Array_Pos == 0) {Feed();               LeadScrew.runSpeed();} 
+  if (Mode_Array_Pos == 1) {Thread();             LeadScrew.runSpeed();} 
+  if (Mode_Array_Pos == 2) {Auto_Thread();        ZY_Steppers.run();}
+  if (Mode_Array_Pos == 3) {Turn_to_Diameter();   ZY_Steppers.run();}
+  if (Mode_Array_Pos == 4) {Manual_Z();           LeadScrew.run();}
+  if (Mode_Array_Pos == 5) {Manual_X();           CrossSlide.run();}
+  if (Mode_Array_Pos == 6) {Auto_Radius();        ZY_Steppers.run();}
+  if (Mode_Array_Pos == 7) {Chamfer();            ZY_Steppers.run();}
+  //if (Mode_Array_Pos == 8) {Taper();              ZY_Steppers.run();}
+  //if (Mode_Array_Pos == 9) {Knurling();           ZY_Steppers.run();}
 
 }
 
-double Steps_per_Move(double move_length) {
+/**
+  @brief Calculates the total number of steps to get from A to B
+  @param move_length  : length of move (in on mm)
+*/
+double Steps_per_Move(double move_length) {    
   double StepsPer;
   if (Metric == 0) {
     move_length = move_length / .001;

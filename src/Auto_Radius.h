@@ -6,10 +6,6 @@ void Auto_Radius() {
     Build_ZY_Array();                       // Build coordinate array of the radius
 
     //set feedrate (chip load?)
-    rpm = SpindleRPM*(In_FeedRate*In_FeedRate)*LeadScrew_TPI;
-    stepsPerSec = MaxLeadRPM * LeadSPR / 60;;
-    LeadScrew.setMaxSpeed(stepsPerSec);
-    CrossSlide.setMaxSpeed(stepsPerSec);
 
     Set_Radius_Start_Postion();             // Set motor start position in Steps, mm/in conversion already done
   }
@@ -63,8 +59,10 @@ if (SpindleRPM != 0) {            //auto radius rough cut
     // Finish Pass
 
 }
-
-void Build_ZY_Array() {                        // Build Radius_X[Radius_Max_steps] array
+/**
+  @brief Builds two arrays: Radius_Z and Radius_Y
+*/
+void Build_ZY_Array() {                       
   double modZ;
   double modY;
   double Radius;
@@ -93,11 +91,19 @@ void Build_ZY_Array() {                        // Build Radius_X[Radius_Max_step
   Build_ZY = 1;
 }
 
+/**
+  @brief Provides a single coordinate in the Radius_Z array
+  @param Z_Coord  : A modified step angle within a quadrant of a circle
+*/
 double Z_Coord(double Z_Coord) {        // X Coord function
   Z_Coord = in_Radius * cos((R_Step_Angle * Z_Coord) + 4.71239);  // 4.71239 = 270 degrees in Radians
   return Z_Coord;
 }
 
+/**
+  @brief Provides a single coordinate in the Radius_Y array
+  @param Y_Coord  : A modified step angle within a quadrant of a circle
+*/
 double Y_Coord(double Y_Coord) {        // Y Coord function
   Y_Coord = in_Radius * sin((-R_Step_Angle * Y_Coord) + 4.71239);  // 4.71239 = 270 degrees in Radians
   return Y_Coord;

@@ -1,3 +1,6 @@
+/**
+  @brief Refreshes the Display periodically based the  Refresh_Rate_Timer timer
+*/
 void Refresh() {
   if (Enc1.getEncoderPosition() != Mode_Array_Pos && SpindleRPM !=0) {Enc1.setEncoderPosition(Mode_Array_Pos);}  //this keeps the mode from being adjusted while the spindle is running
   

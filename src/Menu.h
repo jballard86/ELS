@@ -207,7 +207,7 @@ void Feed_Adjust(){             // Feed Adjust sub routine
   Feed_Display.setTextSize(4);
   Feed_Display.setCursor(0,55);
   if (Measure_Array_Pos == 0) {Feed_Display.print(In_FeedRate, 3);}
-  else {Feed_Display.print(mm_FeedRate, 3);}
+  else {Feed_Display.print(mm_FeedRate,2);}
 }
 
 void Auto_Feed_Adjust() {       // Auto Feed Adjust sub Routine

@@ -1,5 +1,5 @@
 
-//----This is activated every "RPM_Check_INTERVAL_MS" interval in order to calculate an accurate PRM---//
+//----This is activated every "RPM_Check_INTERVAL_MS" interval in order to calculate an accurate RPM---//
 void RPM_Calc() {   //calculate RPM w/fastest optimizations
 
   long long SpindleChange;
