@@ -61,8 +61,6 @@ double Refresh_Rate = 200000;
   double mm_DOC = .25;
   double in_length_of_cut = .5;
   double mm_length_of_cut = 12;
-  double Steps_Per_Thou = 0;
-  double Steps_Per_hundredth_mm = 0;
   double rpm;
 
 //----Radius Variables----//
@@ -81,8 +79,13 @@ double Refresh_Rate = 200000;
 //----Position Variables----//
   double CrossZ;
   double LeadY;
-  double Start_Pos[2];
-  double End_Pos[2];
+  long Start_Pos[2];
+  long End_Pos[2];
+  double Steps_Per_Thou = 0;          // .001"
+  double Steps_Per_hundredth_mm = 0;  // .01mm
+  int status = 0;
+  int Z_step = 0;
+  int Y_step = 0;
 
 //----setup Interface Encoders thir variables and pins----//
   Adafruit_seesaw Enc1;
@@ -137,8 +140,8 @@ double Refresh_Rate = 200000;
 //----Stepper Initilization----//
   AccelStepper LeadScrew(AccelStepper::DRIVER, LeadStp, LeadDir);
   AccelStepper CrossSlide(AccelStepper::DRIVER, CrossStp, CrossDir);
-  int Step_Pulse_Width = 5;
   MultiStepper ZY_Steppers;             // Sets up a multistepper enviroment for coordinated movement of the leadscrew and crossslide
+  int Step_Pulse_Width = 5;
 
 //----Menu Strings----//
   //----Direction Options----//
@@ -208,3 +211,5 @@ void Mode_6_Auto_Radius_Controls();
 void Mode_6_SubMenu_Controls();
 void testgraph();
 void Cut_Pass();
+double Steps_per_Move(double move_length);
+void Set_Radius_Start_Postion();
