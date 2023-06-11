@@ -1,6 +1,5 @@
 void Auto_Radius() {
-  double stepsPerSec;
-
+  double final_pass;
   if (Build_ZY == 0) {
     R_Step_Angle = 1.5708 / Radius_Steps;   // 90 degrees in radians / radius step value
     Build_ZY_Array();                       // Build coordinate array of the radius
@@ -11,56 +10,45 @@ void Auto_Radius() {
   }
   
 //----Will this work for all radius types?----//
-
-if (SpindleRPM != 0) {            //auto radius rough cut
-  if (Z_step <= Radius_Steps) {
-    if (LeadScrew.distanceToGo() == 0 && CrossSlide.distanceToGo() == 0) {
-      if (status == 0){
-        End_Pos[0] = Steps_per_Move(Radius_Z[Z_step]); 
-        End_Pos[1] = Steps_per_Move(Radius_Y[Y_step]);
-        ZY_Steppers.moveTo(End_Pos);
-        status = 1;
-        Serial.print("works"); Serial.println(Z_step);
-      }
-      if (status == 1) {
-        ZY_Steppers.moveTo(Start_Pos);
-      Z_step++;
-      Y_step++; 
-      status = 0;
-      if (Z_step == Radius_Steps) {status = 3;}
-      }
+  if (SpindleRPM != 0 && status != 3) {            //auto radius rough cut
+    if (Z_step <= Radius_Steps) {
+      if (LeadScrew.distanceToGo() == 0 && CrossSlide.distanceToGo() == 0) {
+        if (status == 0){
+          if (Metric == 0) {final_pass = .01;} else {final_pass = .25;}               // Sets up amount to be left for final pass
+          if (Radius_type == 0 || Radius_type == 2) {final_pass = final_pass * -1;}   // Radius type 0 and 2 requres Z to move in the opposite direction 
+          End_Pos[0] = Steps_per_Move(Radius_Z[Z_step]) + Steps_per_Move(final_pass); // Leaves material for the final pass
+          End_Pos[1] = Steps_per_Move(Radius_Y[Y_step]);
+          ZY_Steppers.moveTo(End_Pos);                                                // Move to "End Position"  This is closest to the feature
+          status = 1;
+        }
+          if (status == 1) {  // this starts 
+            Z_step++;
+            Y_step++;
+            Start_Pos[1] = Steps_per_Move(Radius_Y[Y_step]);                            // Resets the Y position to be current, and not at 0.0
+            ZY_Steppers.moveTo(Start_Pos); 
+            status = 0;
+          if (Z_step == Radius_Steps) {
+            status = 3;
+            Z_step = 0;                    // reset X and Y counters now that all roughing passes are complete
+            Y_step = 0;
+          }
+        }
+      } 
     } 
-  } 
-  if (LeadScrew.distanceToGo() == 0 && CrossSlide.distanceToGo() == 0) {        // auto radius finaly pass
-    if (status == 3) {
-      Z_step = 0;
-      Y_step = 0;
-      //final pass
+    if (LeadScrew.distanceToGo() == 0 && CrossSlide.distanceToGo() == 0) {        // auto radius finaly pass
+      if (status == 3) {
+        
+        //final pass
+      }
     }
+    //Serial.print(Z_step);
+    //Z_step = 0;
+    //Y_step = 0;
+    //run final pass
   }
-  //Serial.print(Z_step);
-  //Z_step = 0;
-  //Y_step = 0;
-  //run final pass
 }
 
-  // Set home position based off of Radius_Type
-  // loop * cut_passes
-      //start at x=0, y=radius and move to x = radius, y = y-DOC, repeat cut_passes, add allowance for final pass
-  // loop * final pass
-      // This cuts Build_XY_Array() with out and modifiers
-
-    // Setup Start_Pos array with current position
-    // Setup End_Pos array with desired move cordinate:
-      // Position = finish pass - DOC/Material to be removed 
-      // End_Pos[0] = Radius_Z[0];
-      // End_Pos[1] = Radius_Y[0];
-      // use: ZY_Steppers.moveTo(End_Pos);
-    // Finish Pass
-
-}
-/**
-  @brief Builds two arrays: Radius_Z and Radius_Y
+/** @brief Builds two arrays: Radius_Z and Radius_Y
 */
 void Build_ZY_Array() {                       
   double modZ;
@@ -91,24 +79,23 @@ void Build_ZY_Array() {
   Build_ZY = 1;
 }
 
-/**
-  @brief Provides a single coordinate in the Radius_Z array
-  @param Z_Coord  : A modified step angle within a quadrant of a circle
+/** @brief Provides a single coordinate in the Radius_Z array
+    @param Z_Coord  : A modified step angle within a quadrant of a circle
 */
 double Z_Coord(double Z_Coord) {        // X Coord function
   Z_Coord = in_Radius * cos((R_Step_Angle * Z_Coord) + 4.71239);  // 4.71239 = 270 degrees in Radians
   return Z_Coord;
 }
 
-/**
-  @brief Provides a single coordinate in the Radius_Y array
-  @param Y_Coord  : A modified step angle within a quadrant of a circle
+/** @brief Provides a single coordinate in the Radius_Y array
+    @param Y_Coord  : A modified step angle within a quadrant of a circle
 */
 double Y_Coord(double Y_Coord) {        // Y Coord function
   Y_Coord = in_Radius * sin((-R_Step_Angle * Y_Coord) + 4.71239);  // 4.71239 = 270 degrees in Radians
   return Y_Coord;
 }
 
+/** @brief Determains how many total cut passes there should be, possibly depreciated */
 void Cut_Pass() {       // This is only calculated while the Depth of Cut Submenu is active
   double Radius;
   double DOC;
@@ -125,6 +112,7 @@ void Cut_Pass() {       // This is only calculated while the Depth of Cut Submen
   Cut_Passes = Cut_Depth / DOC;
 }
 
+/** @brief  sets the starting position of each radius type using the current tool position */
 void Set_Radius_Start_Postion(){
   double Radius;
   if (Metric == 0) {Radius = in_Radius;} else {Radius = mm_Radius;}
@@ -148,13 +136,4 @@ void Set_Radius_Start_Postion(){
   Start_Pos[0] = LeadScrew.currentPosition();
   Start_Pos[1] = CrossSlide.currentPosition();
 }
-/*
-//----Position Variables----//
-  double CrossZ;
-  double LeadY;
-  double Start_Pos[2];
-  double End_Pos[2];
 
-  move example:
-    ZY_Steppers.moveTo(End_Pos);
-*/
