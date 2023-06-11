@@ -9,42 +9,36 @@ void Auto_Radius() {
     Set_Radius_Start_Postion();             // Set motor start position in Steps, mm/in conversion already done
   }
   
-//----Will this work for all radius types?----//
-  if (SpindleRPM != 0 && status != 3) {            //auto radius rough cut
+//----Should work for all radius types----// 
+  if (SpindleRPM != 0) {            //auto radius rough cut
     if (Z_step <= Radius_Steps) {
-      if (LeadScrew.distanceToGo() == 0 && CrossSlide.distanceToGo() == 0) {
-        if (status == 0){
-          if (Metric == 0) {final_pass = .01;} else {final_pass = .25;}               // Sets up amount to be left for final pass
-          if (Radius_type == 0 || Radius_type == 2) {final_pass = final_pass * -1;}   // Radius type 0 and 2 requres Z to move in the opposite direction 
-          End_Pos[0] = Steps_per_Move(Radius_Z[Z_step]) + Steps_per_Move(final_pass); // Leaves material for the final pass
-          End_Pos[1] = Steps_per_Move(Radius_Y[Y_step]);
-          ZY_Steppers.moveTo(End_Pos);                                                // Move to "End Position"  This is closest to the feature
-          status = 1;
-        }
-          if (status == 1) {  // this starts 
-            Z_step++;
-            Y_step++;
-            Start_Pos[1] = Steps_per_Move(Radius_Y[Y_step]);                            // Resets the Y position to be current, and not at 0.0
-            ZY_Steppers.moveTo(Start_Pos); 
-            status = 0;
-          if (Z_step == Radius_Steps) {
-            status = 3;
-            Z_step = 0;                    // reset X and Y counters now that all roughing passes are complete
-            Y_step = 0;
-          }
-        }
+      if (ZY_Movement() == 0 && status == 0) {
+        if (Metric == 0) {final_pass = final_pass_in;} else {final_pass = final_pass_mm;}  // Sets up amount to be left for final pass
+        if (Radius_type == 0 || Radius_type == 2) {final_pass = final_pass * -1;}          // Radius type 0 and 2 requres Z to move in the opposite direction 
+        End_Pos[0] = Steps_per_Move(Radius_Z[Z_step]) + Steps_per_Move(final_pass);        // Leaves material for the final pass
+        End_Pos[1] = Steps_per_Move(Radius_Y[Y_step]);
+        ZY_Steppers.moveTo(End_Pos);                   // Move to "End Position"  This is closest to the feature
+        status = 1;
+      }
+      if (ZY_Movement() == 0 && status == 1) {  // this starts the cut in the opposite direction
+        Z_step++;
+        Y_step++;
+        Start_Pos[1] = Steps_per_Move(Radius_Y[Y_step]);                            // Resets the Y position to be current, and not at 0.0
+        ZY_Steppers.moveTo(Start_Pos); 
+        status = 0;
+      }
+      if (Z_step == Radius_Steps) {
+        status = 3;
+        Z_step = 0;                    // reset X and Y counters now that all roughing passes are complete
+        Y_step = 0;
       } 
     } 
-    if (LeadScrew.distanceToGo() == 0 && CrossSlide.distanceToGo() == 0) {        // auto radius finaly pass
-      if (status == 3) {
-        
-        //final pass
-      }
+    if (ZY_Movement() == 0 && status == 3) {        // auto radius final pass
+      //final pass
     }
-    //Serial.print(Z_step);
-    //Z_step = 0;
-    //Y_step = 0;
-    //run final pass
+    if (ZY_Movement() == 0 && status == 4) {        // auto radius return to start positon
+      Set_Radius_Start_Postion();
+    }
   }
 }
 

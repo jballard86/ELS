@@ -102,6 +102,12 @@ double Steps_per_Move(double move_length) {
   return StepsPer;
 }
 
+/** @brief Adds up all remaining movement of the cross slide and lead screw.  Zero = no movement */
+double ZY_Movement() {
+  double remaining_distance = LeadScrew.distanceToGo() + CrossSlide.distanceToGo();
+  return remaining_distance;
+}
+
 #include "Display.h"
 #include "Feed.h"
 #include "Interface.h"

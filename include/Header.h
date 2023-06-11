@@ -86,6 +86,8 @@ double Refresh_Rate = 200000;
   int status = 0;
   int Z_step = 0;
   int Y_step = 0;
+  double final_pass_mm = .5;
+  double final_pass_in = .01;
 
 //----setup Interface Encoders thir variables and pins----//
   Adafruit_seesaw Enc1;
@@ -213,3 +215,4 @@ void testgraph();
 void Cut_Pass();
 double Steps_per_Move(double move_length);
 void Set_Radius_Start_Postion();
+double ZY_Movement();

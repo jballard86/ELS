@@ -1,6 +1,5 @@
 // https://www.machiningdoctor.com/charts/metric-thread-charts/
 // https://www.machiningdoctor.com/charts/unified-inch-threads-charts/
-
 void Thread() {
   double stepsPerSec;
   if (Thread_Mode == 0) {            //----Inch Threading----//
