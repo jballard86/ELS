@@ -27,16 +27,14 @@ void setup() {
 
 //----Setup Various Display Methods----//
   Serial.begin(115200);             // starts serial
-    delay(200);
   Wire.begin();                     // starts I2C
     Wire.setSDA(SDA_Pin);           //setting up I2C Pins, if others are needed setup Wire1, Wire2, etc
-    Wire.setSCL(SCL_Pin);
-    
+    Wire.setSCL(SCL_Pin);   
   matrix.begin(0x70);               // starts 7 segment display, the () is the address
     matrix.setBrightness(15);       // sets 7 segment brightness to max, applicable values are 0-15
   Start_Feed_Display();             //runs display start routine
   Start_Graph_Display();
-  delay(500);
+  delay(200);
 
 //----Start I2C Encoder Interface----//
   Enc1.begin(0x36);
@@ -82,6 +80,7 @@ void loop() {
   if (Mode_Array_Pos == 7) {Chamfer();            ZY_Steppers.run();}
   //if (Mode_Array_Pos == 8) {Taper();              ZY_Steppers.run();}
   //if (Mode_Array_Pos == 9) {Knurling();           ZY_Steppers.run();}
+  //if (Mode_Array_Pos == 10) {Test_Menu();         ZY_Steppers.run();}
 
 }
 

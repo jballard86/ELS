@@ -29,6 +29,11 @@ void Refresh() {
     graph_Radius_Array();
     Graph_Display.display();
   }
+  if (Mode_Array_Pos == 6 && submenu == 5 && SpindleRPM != 0){    //this allows the operation to be stopped when running
+    start_or_stop();
+    Radius_Update();
+    Feed_Display.display();
+  }
   
 }
 

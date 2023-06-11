@@ -35,9 +35,12 @@ void Auto_Radius() {
     } 
     if (ZY_Movement() == 0 && status == 3) {        // auto radius final pass
       //final pass
+      if (ZY_Movement() == 0) {status = 4;}
     }
     if (ZY_Movement() == 0 && status == 4) {        // auto radius return to start positon
       Set_Radius_Start_Postion();
+      ZY_Steppers.moveTo(Start_Pos);
+      status = -1;                      // set status to -1 so no modes activate
     }
   }
 }

@@ -83,7 +83,7 @@ double Refresh_Rate = 200000;
   long End_Pos[2];
   double Steps_Per_Thou = 0;          // .001"
   double Steps_Per_hundredth_mm = 0;  // .01mm
-  int status = 0;
+  int status = -1;
   int Z_step = 0;
   int Y_step = 0;
   double final_pass_mm = .5;
@@ -216,3 +216,5 @@ void Cut_Pass();
 double Steps_per_Move(double move_length);
 void Set_Radius_Start_Postion();
 double ZY_Movement();
+void start_or_stop();
+void Radius_Update();

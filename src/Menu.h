@@ -375,12 +375,19 @@ void Mode_6_SubMenu() {         // Auto Thread Sub Menu
       Feed_Display.setCursor(0,65);
       Feed_Display.println(" Encoder to");
       Feed_Display.setCursor(0,85);
-      Feed_Display.println(" Start!");
-      Auto_Radius_Draw();
-      //display radius
-      //use right encoder button to start cut
-      // scrolling left wheel will stop cut
+      Feed_Display.println(" Start/Stop");
+      
+    
     }
   }
 }
 
+void Radius_Update(){
+  Feed_Display.setCursor(0,100);
+      Feed_Display.println(" Current Pos");
+      Feed_Display.println(Z_step && "Out of" && Radius_Steps);
+      Feed_Display.setCursor(0,115);
+      if (status == 0 || status == 1) {Feed_Display.println(" Roughing");}
+      else if (status == 3) {Feed_Display.println(" Finishing");}
+      else if (status == 4) {Feed_Display.println(" Complete");}
+}

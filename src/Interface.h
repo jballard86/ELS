@@ -616,7 +616,7 @@ void Mode_6_SubMenu_Controls() {                              // Auto Turn Sub M
     } 
     if (old_steps != Radius_Steps) {Build_ZY = 0;}
   }
-  if (submenu == 4) { 
+  if (submenu == 4) {                                                           // submenu 4 Depth of Cut input
     if (Metric == 0) {
       if (Enc2.getEncoderPosition() < 0) {
         in_DOC = in_DOC + .001;
@@ -647,5 +647,12 @@ void Mode_6_SubMenu_Controls() {                              // Auto Turn Sub M
 
     Cut_Pass();           //calculate the total cut passes
   } 
-  if (submenu == 5) { }
+  if (submenu == 5) {
+    start_or_stop();
+  }
+}
+
+void start_or_stop() {
+   if (! Enc2.digitalRead(Enc_Button) && status == -1) {status = 0;}  // start auto radius
+    else {status = -1; LeadScrew.stop(); CrossSlide.stop();}           // stop auto radius at current position
 }
